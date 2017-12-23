@@ -140,6 +140,106 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-python/psutil-apply" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/23/python/psutil-apply/">psutil库的简单应用</a>
+    </h1>
+  
+
+        
+        <a href="/2015/07/23/python/psutil-apply/" class="archive-article-date">
+  	<time datetime="2015-07-23T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<ul>
+<li><a href="https://pypi.python.org/pypi/psutil/" target="_blank" rel="noopener">https://pypi.python.org/pypi/psutil/</a></li>
+</ul>
+</blockquote>
+<h2 id="为Logstash提供日志"><a href="#为Logstash提供日志" class="headerlink" title="为Logstash提供日志"></a>为Logstash提供日志</h2><p>使用 <code>psutil</code> 模块获取系统的CPU、内存和硬盘信息，通过 <code>TCP</code> 或 <code>UDP</code> 的方式传递给 <code>Logstash</code>，测试代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> gevent</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">IP = <span class="string">'YourServerIP'</span></span><br><span class="line">PORT = <span class="number">5000</span></span><br><span class="line">TIMES = <span class="number">3</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getlog</span><span class="params">()</span>:</span></span><br><span class="line">    cts = psutil.cpu_times()</span><br><span class="line">    mem = psutil.virtual_memory()</span><br><span class="line">    disk = psutil.disk_usage(<span class="string">'c:'</span>)</span><br><span class="line">    cpulog = dict(cpu = dict(user = cts.user, system = cts.system, idle = cts.idle))</span><br><span class="line">    memlog = dict(memory= dict(total = mem.total, available = mem.available, percent = mem.percent, used = mem.used, free = mem.free))</span><br><span class="line">    disklog = dict(disk = dict(total= disk.total, used = disk.used, free = disk.free, percent = disk.percent))</span><br><span class="line">    <span class="keyword">import</span> json</span><br><span class="line">    <span class="keyword">return</span> json.dumps(cpulog), json.dumps(memlog), json.dumps(disklog)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(log)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        s = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)</span><br><span class="line">        s.sendto(log,(IP,PORT))</span><br><span class="line">        s.close()</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        cpulog, memlog, disklog = getlog()</span><br><span class="line">        gevent.spawn(f, cpulog).join()</span><br><span class="line">        gevent.spawn(f, memlog).join()</span><br><span class="line">        gevent.spawn(f, disklog).join()</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'send log!'</span></span><br><span class="line">        time.sleep(TIMES)</span><br></pre></td></tr></table></figure>
+<p>在 <code>Logstash</code> 中，需要修改配置文件如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">input &#123;</span><br><span class="line">    udp &#123;</span><br><span class="line">        port =&gt; 5000</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">filter &#123;</span><br><span class="line">    json &#123;</span><br><span class="line">        source =&gt; &quot;message&quot;</span><br><span class="line">	target =&gt; &quot;jsoncontent&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">    stdout &#123; codec =&gt; rubydebug</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行 <code>Logstash</code>：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/logstash -f udpInput.conf</span><br></pre></td></tr></table></figure></p>
+<p>同时运行 <code>测试代码</code> ，查看 <code>Logstash</code> 控制台，输出以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">        &quot;message&quot; =&gt; &quot;&#123;\&quot;cpu\&quot;: &#123;\&quot;idle\&quot;: 153216.078125, \&quot;system\&quot;: 3585.875, \&quot;user\&quot;: 4711.96337890625&#125;&#125;&quot;,</span><br><span class="line">       &quot;@version&quot; =&gt; &quot;1&quot;,</span><br><span class="line">     &quot;@timestamp&quot; =&gt; &quot;2015-07-08T02:54:01.773Z&quot;,</span><br><span class="line">           &quot;host&quot; =&gt; &quot;192.168.3.15&quot;,</span><br><span class="line">    &quot;jsoncontent&quot; =&gt; &#123;</span><br><span class="line">        &quot;cpu&quot; =&gt; &#123;</span><br><span class="line">              &quot;idle&quot; =&gt; 153216.078125,</span><br><span class="line">            &quot;system&quot; =&gt; 3585.875,</span><br><span class="line">              &quot;user&quot; =&gt; 4711.96337890625</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">        &quot;message&quot; =&gt; &quot;&#123;\&quot;memory\&quot;: &#123;\&quot;available\&quot;: 1295798272, \&quot;total\&quot;: 8526020608, \&quot;percent\&quot;: 84.8, \&quot;free\&quot;: 1295798272, \&quot;used\&quot;: 7230222336&#125;&#125;&quot;,</span><br><span class="line">       &quot;@version&quot; =&gt; &quot;1&quot;,</span><br><span class="line">     &quot;@timestamp&quot; =&gt; &quot;2015-07-08T02:54:01.773Z&quot;,</span><br><span class="line">           &quot;host&quot; =&gt; &quot;192.168.3.15&quot;,</span><br><span class="line">    &quot;jsoncontent&quot; =&gt; &#123;</span><br><span class="line">        &quot;memory&quot; =&gt; &#123;</span><br><span class="line">            &quot;available&quot; =&gt; 1295798272,</span><br><span class="line">                &quot;total&quot; =&gt; 8526020608,</span><br><span class="line">              &quot;percent&quot; =&gt; 84.8,</span><br><span class="line">                 &quot;free&quot; =&gt; 1295798272,</span><br><span class="line">                 &quot;used&quot; =&gt; 7230222336</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">        &quot;message&quot; =&gt; &quot;&#123;\&quot;disk\&quot;: &#123;\&quot;total\&quot;: 64424505344, \&quot;percent\&quot;: 75.4, \&quot;free\&quot;: 15828262912, \&quot;used\&quot;: 48596242432&#125;&#125;&quot;,</span><br><span class="line">       &quot;@version&quot; =&gt; &quot;1&quot;,</span><br><span class="line">     &quot;@timestamp&quot; =&gt; &quot;2015-07-08T02:54:01.774Z&quot;,</span><br><span class="line">           &quot;host&quot; =&gt; &quot;192.168.3.15&quot;,</span><br><span class="line">    &quot;jsoncontent&quot; =&gt; &#123;</span><br><span class="line">        &quot;disk&quot; =&gt; &#123;</span><br><span class="line">              &quot;total&quot; =&gt; 64424505344,</span><br><span class="line">            &quot;percent&quot; =&gt; 75.4,</span><br><span class="line">               &quot;free&quot; =&gt; 15828262912,</span><br><span class="line">               &quot;used&quot; =&gt; 48596242432</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h2 id="基于psutil的开源系统"><a href="#基于psutil的开源系统" class="headerlink" title="基于psutil的开源系统"></a>基于psutil的开源系统</h2><p>在psutil模块的介绍中，提供了三个使用psutil实现的 <code>Example applications</code>。尝试使用了glances和psdash，对于一般系统监控，可以任选其一，关于它们的介绍可以参考以下连接：</p>
+<blockquote>
+<ul>
+<li><a href="http://www.oschina.net/p/glances" target="_blank" rel="noopener">glances介绍</a></li>
+<li><a href="http://www.oschina.net/p/psdash" target="_blank" rel="noopener">psdash介绍</a></li>
+</ul>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">运维</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">psutil</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/07/23/python/psutil-apply/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-python/psutil-start-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1177,7 +1277,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">摄影</a>
+                <a href="javascript:void(0)" class="js-tag color3">读书</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1185,11 +1285,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">摄影</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">猫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">读书</a>
+                <a href="javascript:void(0)" class="js-tag color3">咖啡</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1209,15 +1313,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Kibana4</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1229,11 +1325,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
+                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">传感器</a>
+                <a href="javascript:void(0)" class="js-tag color3">Kibana4</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1245,15 +1345,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">传感器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">yeelink</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">VPS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
               </li>
             
             <div class="clearfix"></div>
