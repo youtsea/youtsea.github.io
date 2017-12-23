@@ -140,6 +140,164 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-design-patterns/command" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/01/design-patterns/command/">设计模式实践-命令模式</a>
+    </h1>
+  
+
+        
+        <a href="/2017/01/01/design-patterns/command/" class="archive-article-date">
+  	<time datetime="2017-01-01T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>向仪表发送采集命令</p>
+<h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><h3 id="仪表命令接口"><a href="#仪表命令接口" class="headerlink" title="仪表命令接口"></a>仪表命令接口</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns.Command</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 仪表命令接口</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IMeterCommand</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 执行命令</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">Execute</span>(<span class="params"></span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="采集命令"><a href="#采集命令" class="headerlink" title="采集命令"></a>采集命令</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns.Command</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 采集命令</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">CollectCommand</span> : <span class="title">IMeterCommand</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 命令接受对象</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">readonly</span> Receiver _receiver;</span><br><span class="line"></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> Initializes a new instance of the <span class="doctag">&lt;see cref="CollectCommand" /&gt;</span> class</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="receiver"&gt;</span>命令接受对象<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">CollectCommand</span>(<span class="params">Receiver receiver</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>._receiver = receiver;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 执行命令</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Execute</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>._receiver.Action(<span class="string">"采集命令"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="调用者对象"><a href="#调用者对象" class="headerlink" title="调用者对象"></a>调用者对象</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns.Command</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 命令发送者</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Invoker</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 命令对象</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">readonly</span> IMeterCommand command;</span><br><span class="line"></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> Initializes a new instance of the <span class="doctag">&lt;see cref="Invoker" /&gt;</span> class</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="command"&gt;</span>命令对象<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Invoker</span>(<span class="params">IMeterCommand command</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.command = command;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 调用命令</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Call</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.command.Execute();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="接收者对象"><a href="#接收者对象" class="headerlink" title="接收者对象"></a>接收者对象</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns.Command</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 命令发送者</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Invoker</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 命令对象</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">readonly</span> IMeterCommand command;</span><br><span class="line"></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> Initializes a new instance of the <span class="doctag">&lt;see cref="Invoker" /&gt;</span> class</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="command"&gt;</span>命令对象<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Invoker</span>(<span class="params">IMeterCommand command</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.command = command;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 调用命令</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Call</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.command.Execute();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="相关调用"><a href="#相关调用" class="headerlink" title="相关调用"></a>相关调用</h2><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Receiver receiver = <span class="keyword">new</span> Receiver();</span><br><span class="line">IMeterCommand command = <span class="keyword">new</span> CollectCommand(receiver);</span><br><span class="line">Invoker invoker = <span class="keyword">new</span> Invoker(command);</span><br><span class="line">invoker.Call();</span><br></pre></td></tr></table></figure>
+<h3 id="Out"><a href="#Out" class="headerlink" title="Out"></a>Out</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">发送数据：采集命令</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/01/01/design-patterns/command/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-design-patterns/decorator" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/01/design-patterns/decorator/">设计模式实践-装饰器</a>
+    </h1>
+  
+
+        
+        <a href="/2017/01/01/design-patterns/decorator/" class="archive-article-date">
+  	<time datetime="2017-01-01T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>使用HongDian DTU后需要在原本发送的逻辑前先发送HongDian规定的内容</p>
+<h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><h3 id="DTU组件接口："><a href="#DTU组件接口：" class="headerlink" title="DTU组件接口："></a>DTU组件接口：</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns.Decorator</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> DTU组件接口</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IDtuComponent</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 向DTU发送数据</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">SendData</span>(<span class="params"></span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="标准DTU组件实现："><a href="#标准DTU组件实现：" class="headerlink" title="标准DTU组件实现："></a>标准DTU组件实现：</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns.Decorator</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 标准DTU组件</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">StandDtuComponent</span> : <span class="title">IDtuComponent</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 向标准DTU发送数据</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SendData</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"发送透明DTU数据"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="宏电DTU组件实现："><a href="#宏电DTU组件实现：" class="headerlink" title="宏电DTU组件实现："></a>宏电DTU组件实现：</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns.Decorator</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 宏电DTU组件</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HongDianDtu</span> : <span class="title">IDtuComponent</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> dtu组件</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">readonly</span> IDtuComponent _dtuComponent;</span><br><span class="line"></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> Initializes a new instance of the <span class="doctag">&lt;see cref="HongDianDtu" /&gt;</span> class.</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="dtuComponent"&gt;</span>DTU组件<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">HongDianDtu</span>(<span class="params">IDtuComponent dtuComponent</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>._dtuComponent = dtuComponent;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 向宏电DTU发送数据</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SendData</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            Console.WriteLine(<span class="string">"发送宏电Dtu数据"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// some action</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">this</span>._dtuComponent.SendData();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="相关调用"><a href="#相关调用" class="headerlink" title="相关调用"></a>相关调用</h2><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">IDtuComponent standDtu = <span class="keyword">new</span> StandDtuComponent();</span><br><span class="line">IDtuComponent hongDianDtu = <span class="keyword">new</span> HongDianDtu(standDtu);</span><br><span class="line">hongDianDtu.SendData();</span><br></pre></td></tr></table></figure>
+<p>Out：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">发送宏电Dtu数据</span><br><span class="line">发送透明DTU数据</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/01/01/design-patterns/decorator/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-design-patterns/flyweight" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -463,83 +621,6 @@
 
 
   
-    <article id="post-design-patterns/prototype" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/01/design-patterns/prototype/">设计模式实践-原型模式</a>
-    </h1>
-  
-
-        
-        <a href="/2017/01/01/design-patterns/prototype/" class="archive-article-date">
-  	<time datetime="2017-01-01T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>使用原型模式获取命令对象</p>
-<h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><h3 id="命令对象"><a href="#命令对象" class="headerlink" title="命令对象"></a>命令对象</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns.Prototype</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 命令对象</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Command</span> : <span class="title">PrototypeBase</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> Gets or sets 命令头</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">string</span> _commandHeader = <span class="string">"固定命令头"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> Gets or sets 命令校验部分</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">string</span> CommandCheck &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> Gets or sets 命令内容</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">string</span> CommandContent &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="原型对象"><a href="#原型对象" class="headerlink" title="原型对象"></a>原型对象</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns.Prototype</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 原型接口 </span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PrototypeBase</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 获取原型</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span>原型对象<span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">object</span> <span class="title">CloneObject</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.MemberwiseClone();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="相关调用"><a href="#相关调用" class="headerlink" title="相关调用"></a>相关调用</h2><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Prototype.Command command = <span class="keyword">new</span> Prototype.Command();</span><br><span class="line">Prototype.Command command1 = (Prototype.Command) command.CloneObject();</span><br><span class="line">Prototype.Command command2 = (Prototype.Command)command.CloneObject();</span><br><span class="line">Prototype.Command command3 = (Prototype.Command)command.CloneObject()</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/01/design-patterns/prototype/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-uncategorized/get-vultr" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -793,241 +874,28 @@
 
 
   
-    <article id="post-scrapy/scrapy-collection" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-python/pdfminer" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/10/scrapy/scrapy-collection/">scrapy系列</a>
+      <a class="article-title" href="/2016/07/25/python/pdfminer/">pdfminer</a>
     </h1>
   
 
         
-        <a href="/2015/08/10/scrapy/scrapy-collection/" class="archive-article-date">
-  	<time datetime="2015-08-10T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-10</time>
+        <a href="/2016/07/25/python/pdfminer/" class="archive-article-date">
+  	<time datetime="2016-07-25T15:07:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><blockquote>
-<ul>
-<li><a href="#1st">本地网站爬取</a></li>
-<li><a href="#2nd">房产网站信息爬取</a></li>
-<li><a href="#3rd">论坛信息爬取</a></li>
-<li><a href="#4th">爬虫ban策略和反ban策略</a></li>
-<li><a href="#5th">代理IP的验证</a></li>
-<li><a href="#6th">分布式爬虫</a></li>
-<li><a href="#7th">学习资料</a></li>
-</ul>
-</blockquote>
-<h1 id="1st"><a href="#1st" class="headerlink" title="1st"></a>1st</h1><h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>研究 <code>Apache Solr</code> 和 <code>Elasticsearch</code> 时缺少内容，于是以爬虫的方式获取资源。未来有需要将会学习使用 <code>Apache Solr</code> 或 <code>Elasticsearch</code> 实现企业级搜索引擎</p>
-<h2 id="Scrapy"><a href="#Scrapy" class="headerlink" title="Scrapy"></a>Scrapy</h2><p>python-scrapy是个快速实现爬虫的高层次框架，感谢python带来的无限可能。关于Scrapy，有兴趣的可以点这里：<a href="http://scrapy.org/" target="_blank" rel="noopener">Scrapy</a></p>
-<h3 id="爬取目标"><a href="#爬取目标" class="headerlink" title="爬取目标"></a>爬取目标</h3><blockquote>
-<ul>
-<li>cnxw.com.cn     苍南新闻</li>
-<li>cncn.gov.cn     苍南政府</li>
-<li>cnjyw.net       苍南教育网</li>
-<li>cnlx.gov.cn     灵溪政务</li>
-<li>cnhrss.gov.cn   苍南人力资源</li>
-<li>0577cnw.com     苍南网</li>
-<li>cnlxw.cn        苍南灵溪网</li>
-<li>cnzgh.org       苍南总工会</li>
-<li>cnys.gov.cn     苍南宜山</li>
-<li>cnlg.cn         苍南龙港</li>
-<li>zjjx.gov.cn     金乡</li>
-<li>cngt.gov.cn     苍南国土资源</li>
-<li>cnkjj.gov.cn    苍南科技</li>
-<li>cnmz.gov.cn     苍南明政</li>
-<li>cnwmw.gov.cn    苍南文明网</li>
-<li>cangnan5.com    苍南在线</li>
-</ul>
-</blockquote>
-<h3 id="目标分析"><a href="#目标分析" class="headerlink" title="目标分析"></a>目标分析</h3><p>对于新闻类网站，例如 <code>cnxw.com.cn</code> ，使用以下代码即可获取整站新闻:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">regex_cncn = <span class="string">'.*cncn.gov.cn/art/.*html'</span></span><br></pre></td></tr></table></figure></p>
-<p>对于使用了动态页面的站点，例如 <code>cnjyw.net</code> ，使用以下代码即可:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">regex_cnjyw = <span class="string">'.*cnjyw.net/.*aspx?id=.*'</span></span><br></pre></td></tr></table></figure></p>
-<p>对于 <code>0577cnw.com、cangnan5.com和cnlg.cn</code> ，它们使用相同的Discuz系列，可以使用类似如下的代码:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">regex_0577cnw = <span class="string">'.*0577cnw.com/.*html'</span></span><br></pre></td></tr></table></figure></p>
-<p>由于这几个站点都使用BBS发布数据，所以在制定URL规则的时候需要过滤除第一页之外的其他页面，可以使用类似如下的代码:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">regex_0577cnw = <span class="string">'.*0577cnw.com/.*-1-1.html'</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><p>Scrapy默认使用了深度优先进行爬取，因此它会以<a href="#爬取目标"><code>目标</code></a>为顺序进行爬取。由于各个站点之间可能有重复的URL出现，需要使用指纹信息以避免重复采集。Redis是一个 <code>Key-Value</code> 数据库，并支持python。每次进行爬取页面之前会在Redis数据库查询该页面的URL是否存在，不存在则进行爬取。相关代码如下:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">r = getRedis()</span><br><span class="line">data = r.get(url)</span><br><span class="line"><span class="keyword">if</span>(data <span class="keyword">is</span> <span class="keyword">None</span>):</span><br><span class="line">    ...</span><br><span class="line">    r.set(key, response.url)</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<p>关于指纹信息，最终采用对URL做MD5计算生成。代码如下:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">m = hashlib.md5()</span><br><span class="line">m.update(url)</span><br><span class="line"><span class="keyword">return</span> m.hexdigest()</span><br></pre></td></tr></table></figure>
-<h3 id="Goose-Extractor"><a href="#Goose-Extractor" class="headerlink" title="Goose Extractor"></a>Goose Extractor</h3><p>到目前为止，爬虫部分的设计已经结束，只要执行，它就会爬遍<a href="#爬取目标"><code>目标</code></a>所有符合规则的页面，接下来还需要对页面进行解析。 <code>Goose
-Extractor</code> 是一个Python的开源文章提取库。可以用它提取文章的文本内容、图片、视频、元信息和标签，从GitHub可以获取源码和示例。正如GitHub所描述的，只要如下代码即可获取页面的标题和正文:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">url = <span class="string">"http://bbs.0577cnw.com/thread-43205-1-1.html"</span></span><br><span class="line">g = Goose(&#123;<span class="string">'stopwords_class'</span>: StopWordsChinese&#125;)</span><br><span class="line">article = g.extract(url=url)</span><br><span class="line">title = article.title</span><br><span class="line">content = article.cleaned_text</span><br></pre></td></tr></table></figure>
-<p>可以从这里获取 <code>Goose
-Extractor</code> 的相关信息：<a href="https://pypi.python.org/pypi/goose-extractor/" target="_blank" rel="noopener"><code>Goose</code></a></p>
-<h2 id="The-End"><a href="#The-End" class="headerlink" title="The End"></a>The End</h2><p>至此，基于scrapy框架的爬虫基本实现。单机运行了几天，爬取了几十万的页面并解析，没有防BAN处理</p>
-<h1 id="2nd"><a href="#2nd" class="headerlink" title="2nd"></a>2nd</h1><h2 id="房产网站信息爬取"><a href="#房产网站信息爬取" class="headerlink" title="房产网站信息爬取"></a>房产网站信息爬取</h2><p>几天前在微信朋友圈看到苍南房地产微站，想起之前写过一个关于房地产的爬虫。最开始以百度排行第一的www.cnfce.net作为目标，当作熟悉scrapy的作业</p>
-<h3 id="URL规则分析"><a href="#URL规则分析" class="headerlink" title="URL规则分析"></a>URL规则分析</h3><p>以<a href="http://www.cnfce.net/sale/为分析目标，简称为" target="_blank" rel="noopener">http://www.cnfce.net/sale/为分析目标，简称为</a> <code>目标</code></p>
-<p><code>目标</code> 以分页的方式展示出售房源，设置爬取页面为:</p>
-<pre><code>http://www.cnfce.net/sale/page\d*.html
-</code></pre><p>由于页面的有效范围为:[1,50]，可以通过设置start_urls指定爬取页面:</p>
-<pre><code>for i in range(1,51):
-    start_urls.append(&quot;http://www.cnfce.net/sale/page%s.html&quot; %i)
-</code></pre><p>到这里，爬虫已经可以爬遍 <code>目标</code> 的所有出售房源。由于房源的详细信息还未获取到，还需要对爬到的页面进行解析，获取类似如下的信息:</p>
-<blockquote>
-<ul>
-<li>区域 </li>
-<li>小区</li>
-<li>房型</li>
-<li>楼层 </li>
-<li>户型</li>
-<li>装修 </li>
-<li>面积 </li>
-<li>单价</li>
-<li>价格</li>
-<li>日期</li>
-</ul>
-</blockquote>
-<h3 id="chrome开发者工具和选择器"><a href="#chrome开发者工具和选择器" class="headerlink" title="chrome开发者工具和选择器"></a>chrome开发者工具和选择器</h3><p>scrapy通过选择器(seletors)提取数据，通过特定的 XPath 或者 CSS表达式来“选择”HTML文件中的某个部分。使用chrome开发者工具可以很方便的得到自己所需要的 <code>XPath</code> 。例如通过以下 <code>XPath</code> ，即可获取展示部分的div:<br>    //*[@id=”main”]<br>通过:</p>
-<pre><code>xpath(&apos;//*[@id=&quot;mainn&quot;]/ul[re:test(@class, &quot;ul[0-1]&quot;)]&apos;)
-</code></pre><p>获取展示部分中的所有记录的合集</p>
-<p>使用以下代码既可遍历当前页面的所有记录:</p>
-<pre><code>records = response.xpath(&apos;//*[@id=&quot;mainn&quot;]/ul[re:test(@class, &quot;ul[0-1]&quot;)]&apos;)
-for record in records:
-    ......
-</code></pre><p>通过下面代码，可以获取到各个字段的数值:</p>
-<pre><code>item[&apos;area&apos;] = record.xpath(&apos;li[re:test(@class, &quot;lifw[0-1]&quot;)]/a/text()&apos;).extract() 
-item[&apos;unitprice&apos;] = record.xpath(&apos;li[re:test(@class, &quot;lidj[0-1]&quot;)]/a/text()&apos;).extract() 
-item[&apos;price&apos;] = record.xpath(&apos;li[re:test(@class, &quot;lijg[0-1]&quot;)]/a/text()&apos;).extract() 
-item[&apos;date&apos;] = record.xpath(&apos;li[re:test(@class, &quot;lirq[0-1]&quot;)]/a/text()&apos;).extract()
-......
-</code></pre><h2 id="运行效果"><a href="#运行效果" class="headerlink" title="运行效果"></a>运行效果</h2><p>在硬件配置和网络条件尚可的情况下，1分钟内即可爬遍50个页面，获取2000+条记录，内容大志如下:</p>
-<pre><code>url,date,price,unitprice,area
-/sale/10024038.html,2015-02-24,102.00万,8500元,灵溪镇
-/sale/10023090.html,2015-02-22,116.00万,8854元,灵溪镇
-/sale/10022669.html,2015-02-22,70.00万,5468元,灵溪镇
-/sale/10019716.html,2015-02-14,243.00万,14294元,灵溪镇
-/sale/10023935.html,2015-02-14,188.50万,13876元,灵溪镇
-/sale/10023939.html,2015-02-14,105.00万,3750元,灵溪镇
-/sale/10024011.html,2015-02-14,215.00万,7166元,灵溪镇
-/sale/10022802.html,2015-02-14,158.00万,6076元,灵溪镇
-/sale/10022803.html,2015-02-14,90.00万,9782元,灵溪镇
-......
-</code></pre><h2 id="The-End-1"><a href="#The-End-1" class="headerlink" title="The End"></a>The End</h2><p>如果有需求，可以深入爬取，进入某条记录的详细页面，例如:</p>
-<pre><code>sale/10024038.html
-</code></pre><p>获取该房源的更详细的信息</p>
-<h1 id="3rd"><a href="#3rd" class="headerlink" title="3rd"></a>3rd</h1><h2 id="论坛信息爬取"><a href="#论坛信息爬取" class="headerlink" title="论坛信息爬取"></a>论坛信息爬取</h2><p><a href="http://www.0577cnw.com" target="_blank" rel="noopener">苍南网</a>，<a href="http://www.cangnan5.com" target="_blank" rel="noopener">苍南在线</a>，<a href="http://cnlg.cn" target="_blank" rel="noopener">龙港网</a>均使用了Discuz系统，因此只要设计出一种爬虫即可实现这三个站点论坛数据的爬取。在服务器未做设置的情况下，可以轻易实现整站的爬取</p>
-<h3 id="URL规则分析-1"><a href="#URL规则分析-1" class="headerlink" title="URL规则分析"></a>URL规则分析</h3><p>以 <code>http://www.cangnan5.com/forum-143-1.html</code> 为分析目标，简称为 <code>目标</code> 。</p>
-<p><code>目标</code> 为今日苍南板块，每个帖子分为主题、标题、作者等几个部分。本篇仅研究标题和帖子URL的获取，目标页面的url规则为:</p>
-<pre><code>http://www.cangnan5.com/forum-143-d*.html
-</code></pre><p>截至本篇，页面的有效范围为:[1,206]，因此可以通过设置start_urls指定爬取页面:</p>
-<pre><code>for i in range(1,206):
-    start_urls.append(&quot;http://www.cangnan5.com/forum-143-%s.html&quot; %i)
-</code></pre><p>到这里，爬虫可以爬遍今日苍南板块的所有页面了。接下来还需要对爬到的页面进行解析，获取类似如下的信息:</p>
-<blockquote>
-<ul>
-<li>标题 </li>
-<li>帖子   </li>
-<li>URL</li>
-</ul>
-</blockquote>
-<h3 id="chrome开发者工具和选择器-1"><a href="#chrome开发者工具和选择器-1" class="headerlink" title="chrome开发者工具和选择器"></a>chrome开发者工具和选择器</h3><p>scrapy通过选择器(seletors)提取数据，使用特定的 XPath 或者 CSS<br>表达式来“选择”<br>HTML文件中的某个部分。使用chrome开发者工具可以很方便的得到自己所需要的XPath。例如通过以下XPath，即可获取每个页面所有帖子的集合:</p>
-<pre><code>//tbody[re:test(@id, &quot;normalthread_\d+&quot;)]/tr/th/a[3]
-</code></pre><p>使用以下代码既可遍历当前页面的所有记录:</p>
-<pre><code>records = response.xpath(&apos;//tbody[re:test(@id, &quot;normalthread_\d+&quot;)]/tr/th/a[3]&apos;)
-for record in records:
-    ......
-</code></pre><p>通过下面代码，可以获取到标题和帖子URL字段:</p>
-<pre><code>item[&apos;title&apos;] = record.xpath(&apos;text()&apos;).extract()
-item[&apos;url&apos;] = record.xpath(&apos;@href&apos;).extract()
-</code></pre><h3 id="运行效果-1"><a href="#运行效果-1" class="headerlink" title="运行效果"></a>运行效果</h3><p>为了避免不必要的流量，只最一个页面进行爬取，获得类似如下数据:</p>
-<pre><code>url,title
-http://www.cangnan5.com/thread-38492-1-1.html,震惊！苍南渔民废弃的“老船木”卖出天价！
-http://www.cangnan5.com/thread-38490-1-1.html,&quot;苍南环卫工讨红包被拒,商家门前垃圾成堆!&quot;
-http://www.cangnan5.com/thread-38489-1-1.html,&quot;苍南有个奇葩姓,姓＂操＂&quot;
-http://www.cangnan5.com/thread-38487-1-1.html,&quot;苍南小偷潜伏15小时,刀逼女主人破密码&quot;
-http://www.cangnan5.com/thread-38486-1-1.html,瑞安酒驾女汉子被查后当众脱裤子？
-......
-</code></pre><h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>本地论坛的内容确实有点low</p>
-<p>⊙﹏⊙‖∣°</p>
-<h1 id="4th"><a href="#4th" class="headerlink" title="4th"></a>4th</h1><h2 id="爬虫ban策略和反ban策略"><a href="#爬虫ban策略和反ban策略" class="headerlink" title="爬虫ban策略和反ban策略"></a>爬虫ban策略和反ban策略</h2><p>关于为什么要有爬虫ban策略，可以参考此文：<a href="http://www.iteye.com/topic/718874" target="_blank" rel="noopener">关于网络爬虫</a></p>
-<p>之前分布爬取的时候因为设计的爬虫比较弱智，一天内爬取某站上百万次。反省了一下，出于道德考虑，我把爬虫运行的时间集中在深夜。</p>
-<p>关于为什么别人把你的爬虫ban了之后需要有反ban策略，当然是因为需要获取有价值的信息</p>
-<p>(#‵′)</p>
-<h2 id="关于robots协议"><a href="#关于robots协议" class="headerlink" title="关于robots协议"></a>关于robots协议</h2><p>robots协议，请参考百度百科：<a href="http://baike.baidu.com/link?url=M0asQts72ScQB9KoC_EzlGzZzTK-WDksviho7Tj7pk4Y7OyPWApWz0De65FIhKvi-px-lxxcr2fvMp4Jim24u_dUgEfNXhgslD8Zly8HULFy36qbz2nSSlGypzayU14r" target="_blank" rel="noopener">robots协议</a></p>
-<p>制定robots.txt可以阻止有道德的爬虫，例如google、百度…</p>
-<p>而对于无品的爬虫，根本不遵循robots.txt的内容，就好像直接把别人家门踢开一样。</p>
-<h2 id="爬虫的防范"><a href="#爬虫的防范" class="headerlink" title="爬虫的防范"></a>爬虫的防范</h2><p>本篇所涉及的爬虫防范主要针对无品爬虫，毕竟对于google、百度等爬虫，简单robots.txt就可以将他们拒之门外</p>
-<h3 id="IP封锁"><a href="#IP封锁" class="headerlink" title="IP封锁"></a>IP封锁</h3><p>简单的说是将你的IP甚至IP段拉入黑名单，以此达到防范目的</p>
-<h3 id="IP访问频率限制"><a href="#IP访问频率限制" class="headerlink" title="IP访问频率限制"></a>IP访问频率限制</h3><p>部分爬虫对网站的利益会大于其毙，通过爬虫身后的产品可以宣传自己，例如搜索引擎。此时，在保证允许爬虫爬取，可以通过IP访问频率限制来防止高并发下导致网站无法正常运行的情况。</p>
-<h3 id="User-Agent"><a href="#User-Agent" class="headerlink" title="User-Agent"></a>User-Agent</h3><p>用户代理<br>User-Agent，是指浏览器,它的信息包括硬件平台、系统软件、应用软件和用户个人偏好。服务器端可以通过分析User-Agent来获取爬虫行为。例如出现 <code>baiduspider</code> 的 <code>User-Agent</code> 代表百度爬虫曾经来访过。在对IP未做限制的情况下，可以通过分析 <code>User-Agent</code> 来判断哪些爬虫耍了流氓。</p>
-<h2 id="爬虫反ban策略"><a href="#爬虫反ban策略" class="headerlink" title="爬虫反ban策略"></a>爬虫反ban策略</h2><p>一般来说，对于一个网站，除非关闭服务，否则是没有完美的策略来防范爬虫的。Scrapy官方文档提到了集中防Ban的策略：<a href="http://doc.scrapy.org/en/0.24/topics/practices.html#bans" target="_blank" rel="noopener">Scrapy文档</a></p>
-<p>除去费用来说，使用高度分布式的下载器是最理想的反ban策略</p>
-<h3 id="IP池"><a href="#IP池" class="headerlink" title="IP池"></a>IP池</h3><p>一般的服务器，会将比较频繁访问的IP拉入黑名单，导致爬虫无法正常访问该站点。通过IP池可以一定程度上解决该问题。</p>
-<p>打个比方，IP池可以想象成一个拥有很多IP的池子。当你爬取某个站点时，随机从池子中获取一个IP作为代理，以达到防止被服务器认出的效果。</p>
-<h3 id="DOWNLOAD-DELAY设置"><a href="#DOWNLOAD-DELAY设置" class="headerlink" title="DOWNLOAD_DELAY设置"></a>DOWNLOAD_DELAY设置</h3><p>某些服务器会以每秒的访问量来识别爬虫，通过 <code>DOWNLOAD\_DELAY</code> ，可以设置爬虫延时</p>
-<h3 id="User-Agent池"><a href="#User-Agent池" class="headerlink" title="User-Agent池"></a>User-Agent池</h3><p>使用 <code>User-Agent</code> 池，轮流选择之一来作为 <code>User-Agent</code> 。池中包含常见的浏览器的 <code>User-Agent</code> ，以达到骗过浏览器伪装自己的目的</p>
-<h2 id="The-End-2"><a href="#The-End-2" class="headerlink" title="The End"></a>The End</h2><p>本篇纯属于搬砖文，ban和反ban的内容均来之网络</p>
-<p>对于ban，目前 <code>apache</code> 和 <code>nginx</code> 均可实现相关功能</p>
-<h1 id="5th"><a href="#5th" class="headerlink" title="5th"></a>5th</h1><h2 id="代理IP的验证"><a href="#代理IP的验证" class="headerlink" title="代理IP的验证"></a>代理IP的验证</h2><p>进行反ban策略时，我们通过某种途径获取了一批代理IP，简称 <code>IPs</code> 。此时，还需要对 <code>IPs</code> 进行筛选，获取其中可用的IP集合作为爬虫的IP池。</p>
-<h3 id="IPs的获取"><a href="#IPs的获取" class="headerlink" title="IPs的获取"></a>IPs的获取</h3><p>反ban的策略中，类似Crawlera的产品是很好的方案，但是通常需要付费授权，本篇主要讨论以免费的方式获取 <code>IPs</code> 。目前可以通过网络爬虫的方式对各个代理IP发布站进行抓取以获取 <code>IPs</code> ，或者通过商业软件的试用版获取 <code>IPs</code> </p>
-<h4 id="代理IP发布站"><a href="#代理IP发布站" class="headerlink" title="代理IP发布站"></a>代理IP发布站</h4><p>例如 <a href="http://www.xici.net.co/" target="_blank" rel="noopener">http://www.xici.net.co/</a><br>等站点，对于编写爬虫获取代理IP，可以参考 <a href="#1st">1st</a></p>
-<p><code>要修改部分</code></p>
-<h4 id="商业软件"><a href="#商业软件" class="headerlink" title="商业软件"></a>商业软件</h4><p>No Hands Proxies 是一个很好的选择</p>
-<h2 id="IPs的筛选"><a href="#IPs的筛选" class="headerlink" title="IPs的筛选"></a>IPs的筛选</h2><p>遍历 <code>IPs</code> ，并设置代理访问百度，通过返回信息判断该IP是否有效。通过下面的代码可以轻松遍历 <code>IPs</code>:</p>
-<pre><code>for line in file:
-    ip_queue.put(line.rstrip())
-</code></pre><p>通过下面的代码可以设置代理:</p>
-<pre><code>opener = urllib2.build_opener(urllib2.ProxyHandler({&apos;http&apos;:&apos;http://%s/&apos;%ip}))
-</code></pre><p>通过下面的代码访问百度:</p>
-<pre><code>request = urllib2.Request(&apos;http://www.baidu.com/&apos;)
-response = opener.open(request, timeout=30)
-</code></pre><p>可以使用response的url来判断代理是否有效:</p>
-<pre><code>response.geturl().find(&quot;baidu&quot;)
-</code></pre><p>最终效果如下:</p>
-<pre><code>183.207.228.123:80: is valid!
-111.13.12.216:80: is valid!
-116.236.216.116:8080: is valid!
-221.176.14.72:80: is valid!
-218.5.74.174:80: is valid!
-</code></pre><h1 id="6th"><a href="#6th" class="headerlink" title="6th"></a>6th</h1><h2 id="分布式爬虫"><a href="#分布式爬虫" class="headerlink" title="分布式爬虫"></a>分布式爬虫</h2><p>在单机运行爬虫的时候，已经充分利用硬件资源，无法提高爬虫的效率，此时可以考虑分布式爬虫。可以这么理解，在打扫一间很大很大的房间时，已经双手甚至双脚都用了，此时可以叫其他人帮忙打扫以增加打扫速度。换做分布式爬虫而言，就是N台主机协同合作一个爬虫项目</p>
-<h2 id="分布式爬虫的实现方式"><a href="#分布式爬虫的实现方式" class="headerlink" title="分布式爬虫的实现方式"></a>分布式爬虫的实现方式</h2><p>分布式爬虫首先要实现一个任务队列，该任务队列可以理解成对某个页面的访问。然后每个主机通过访问任务队列并执行相关任务，同时向任务队列添加新任务，即任务调度的过程。添加任务的时候会通过指纹信息来判断该任务是否已经被执行过。最后，当任务队列的长度为0时，结束爬虫。</p>
-<h3 id="Scrapy-redis"><a href="#Scrapy-redis" class="headerlink" title="Scrapy-redis"></a>Scrapy-redis</h3><p><code>scrapy-redis</code> 是一个实现Scrapy分布式的框架，可以从<a href="https://github.com/darkrho/scrapy-redis" target="_blank" rel="noopener">这里</a>获取关于 <code>scrapy-redis</code> 的介绍。根据文档，安装 <code>scrapy-redis</code> 后，只要在原有Scrapy爬虫的基础上添加如下代码即可实现分布式:</p>
-<pre><code>SCHEDULER = &quot;scrapy_redis.scheduler.Scheduler&quot;
-SCHEDULER_PERSIST = True
-</code></pre><p>同时我们需要通过如下代码指定Redis服务器的地址:</p>
-<pre><code>REDIS_HOST = &apos;192.168.1.132&apos;
-REDIS_PORT = 6379
-</code></pre><h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>本段取自<a href="https://github.com/darkrho/scrapy-redis" target="_blank" rel="noopener"><code>scrapy-redis</code></a>中的README</p>
-<ol>
-<li>安装scrapy-redis</li>
-<li>第一次运行爬虫并停止它:</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> example-project</span><br><span class="line">$ scrapy crawl dmoz</span><br><span class="line">... [dmoz] ...</span><br><span class="line">^C</span><br></pre></td></tr></table></figure>
-<ol>
-<li>再次运行恢复停止的爬虫:</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ scrapy crawl dmoz</span><br><span class="line">... [dmoz] DEBUG: Resuming crawl (9019 requests scheduled)</span><br></pre></td></tr></table></figure>
-<ol>
-<li>启动一个或多个其他主机上的爬虫:</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ scrapy crawl dmoz</span><br><span class="line">... [dmoz] DEBUG: Resuming crawl (8712 requests scheduled)</span><br></pre></td></tr></table></figure>
-<h1 id="7th"><a href="#7th" class="headerlink" title="7th"></a>7th</h1><h2 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h2><p>在 <a href="https://realpython.com" target="_blank" rel="noopener">https://realpython.com</a> 看到两篇关于Scrapy入门的文章写的很好</p>
-<blockquote>
-<ul>
-<li><a href="https://realpython.com/blog/python/web-scraping-with-scrapy-and-mongodb/" target="_blank" rel="noopener">Web Scraping With Scrapy and MongoDB</a></li>
-<li><a href="https://realpython.com/blog/python/web-scraping-and-crawling-with-scrapy-and-mongodb/" target="_blank" rel="noopener">Web Scraping and Crawling With Scrapy and MongoDB</a></li>
-</ul>
-</blockquote>
-<p>尝试翻译这两篇文章，鉴于语言水平的问题，字面意思和原文出入比较大，所以决定私藏</p>
-<p><code>readthedocs</code> 上提供了官方文档的中文版，感谢翻译者</p>
-<blockquote>
-<ul>
-<li><a href="http://scrapy-chs.readthedocs.org/zh_CN/latest/index.html" target="_blank" rel="noopener">http://scrapy-chs.readthedocs.org/zh_CN/latest/index.html</a></li>
-</ul>
-</blockquote>
-<p>提供几个较好的scrapy系列</p>
-<blockquote>
-<ul>
-<li><a href="http://www.52ml.net/4318.html" target="_blank" rel="noopener">我爱机器学习</a></li>
-<li><a href="http://blog.csdn.net/u012150179/article/details/32343635" target="_blank" rel="noopener">Scrapy研究探索系列</a></li>
-<li><a href="http://www.cnblogs.com/txw1958/archive/2012/07/12/scrapy_installation_introduce.html" target="_blank" rel="noopener">方倍工作室</a></li>
-</ul>
-</blockquote>
-
+        <h2 id="遍历Pdf每一页"><a href="#遍历Pdf每一页" class="headerlink" title="遍历Pdf每一页"></a>遍历Pdf每一页</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pdfminer.converter <span class="keyword">import</span> PDFPageAggregator</span><br><span class="line"><span class="keyword">from</span> pdfminer.pdfparser <span class="keyword">import</span> PDFParser</span><br><span class="line"><span class="keyword">from</span> pdfminer.pdfdocument <span class="keyword">import</span> PDFDocument</span><br><span class="line"><span class="keyword">from</span> pdfminer.pdfpage <span class="keyword">import</span> PDFPage</span><br><span class="line"><span class="keyword">from</span> pdfminer.pdfpage <span class="keyword">import</span> PDFTextExtractionNotAllowed</span><br><span class="line"><span class="keyword">from</span> pdfminer.pdfinterp <span class="keyword">import</span> PDFResourceManager</span><br><span class="line"><span class="keyword">from</span> pdfminer.pdfinterp <span class="keyword">import</span> PDFPageInterpreter</span><br><span class="line"><span class="keyword">from</span> pdfminer.layout <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">fp = open(<span class="string">'test.pdf'</span>, <span class="string">'rb'</span>)</span><br><span class="line">parser = PDFParser(fp)</span><br><span class="line">document = PDFDocument(parser, <span class="string">''</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> document.is_extractable:</span><br><span class="line">    <span class="keyword">raise</span> PDFTextExtractionNotAllowed</span><br><span class="line">rsrcmgr = PDFResourceManager(caching = <span class="keyword">False</span>)</span><br><span class="line">laparams = LAParams()</span><br><span class="line">device = PDFPageAggregator(rsrcmgr, laparams=laparams)</span><br><span class="line">interpreter = PDFPageInterpreter(rsrcmgr, device)</span><br><span class="line"><span class="keyword">for</span> page <span class="keyword">in</span> PDFPage.create_pages(document):</span><br><span class="line">    interpreter.process_page(page)</span><br><span class="line">    layout = device.get_result()  </span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> layout:  </span><br><span class="line">        <span class="keyword">if</span>(isinstance(x, LTTextBoxHorizontal)):  </span><br><span class="line">            print(len(x.get_text()))</span><br></pre></td></tr></table></figure>
+<h2 id="获取pdf目录"><a href="#获取pdf目录" class="headerlink" title="获取pdf目录"></a>获取pdf目录</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pdfminer.pdfparser <span class="keyword">import</span> PDFParser</span><br><span class="line"><span class="keyword">from</span> pdfminer.pdfdocument <span class="keyword">import</span> PDFDocument</span><br><span class="line"></span><br><span class="line">fp = open(<span class="string">'test.pdf'</span>, <span class="string">'rb'</span>)</span><br><span class="line">parser = PDFParser(fp)</span><br><span class="line">document = PDFDocument(parser, <span class="string">''</span>)</span><br><span class="line"></span><br><span class="line">outlines = document.get_outlines()</span><br><span class="line"><span class="keyword">for</span> (level,title,dest,a,se) <span class="keyword">in</span> outlines:</span><br><span class="line">        print(level, title)</span><br></pre></td></tr></table></figure>
       
 
       
@@ -1042,14 +910,6 @@ REDIS_PORT = 6379
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">scrapy</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
-        		</li>
       		
 		</ul>
 	</div>
@@ -1058,130 +918,7 @@ REDIS_PORT = 6379
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2015/08/10/scrapy/scrapy-collection/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-sa/elk-start" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/03/sa/elk-start/">ELK实践</a>
-    </h1>
-  
-
-        
-        <a href="/2015/08/03/sa/elk-start/" class="archive-article-date">
-  	<time datetime="2015-08-03T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
-<ul>
-<li><a href="https://www.elastic.co/downloads/kibana" target="_blank" rel="noopener">https://www.elastic.co/downloads/kibana</a></li>
-<li><a href="http://kibana.logstash.es/content/" target="_blank" rel="noopener">http://kibana.logstash.es/content/</a> </li>
-</ul>
-</blockquote>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>本次实验的安装环境为：ubuntu 15。</p>
-<p>ELK的组成包括 <code>ElasticSearch</code>、 <code>Logstash</code>和<code>Kibana</code>。根据 <a href="/2015/07/05/ElasticSearch-start/"><code>ElasticSearch单机入门实验</code></a> 和 <a href="/2015/07/06/Logstash-start/"><code>Logstash单机入门实验</code></a>安装 <code>ElasticSearch</code> 和 <code>Logstash</code>。</p>
-<h3 id="Kibana的安装"><a href="#Kibana的安装" class="headerlink" title="Kibana的安装"></a>Kibana的安装</h3><p>从 <a href="#参考"><code>参考</code></a> 下载 <code>Kibana</code> ，官方提供的 <code>Installation Steps</code> 说明很简单， 只有四步：</p>
-<blockquote>
-<ol>
-<li>解压</li>
-<li>config/kibana.yml配置文件</li>
-<li>设置 <code>ElasticSearch</code> 实例</li>
-<li>运行</li>
-</ol>
-</blockquote>
-<p>解压 <code>Kibana</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -zxvf kibana-4.1.1-linux-x64.tar.gz -C /opt</span><br></pre></td></tr></table></figure>
-<p>因为是单机测试， <code>kibana.yml</code> 无需修改，实际应用中需要根据 <code>ElasticSearch</code> 的安装情况设置 <code>port</code>、<code>host</code>和<code>elasticsearch_url</code>。</p>
-<p>运行 <code>Kibana</code>：</p>
-<blockquote>
-<p>在运行 <code>Kibana</code> 之前需要保证 <code>ElasticSearch</code> 正常运行。</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/kibana</span><br></pre></td></tr></table></figure>
-<p>访问<a href="http://YourServerIP:5601/" target="_blank" rel="noopener">http://YourServerIP:5601/</a> 测试 <code>Kibana</code> 是否安装成功。</p>
-<h2 id="ELK测试"><a href="#ELK测试" class="headerlink" title="ELK测试"></a>ELK测试</h2><p>最近数据库服务器被人攻击，频繁暴破数据库管理员的密码，生成了大量日志文件。因此，本测试将该日志文件作为ELK样本，使用 <code>Logstash</code> 获取日志中的IP并保存到 <code>ElasticSearch</code> 中，同时使用 <code>Kibana</code> 查看和分析日志。</p>
-<h3 id="配置Logstash"><a href="#配置Logstash" class="headerlink" title="配置Logstash"></a>配置Logstash</h3><p>编辑 <code>Logstash</code> 配置文件如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">input&#123;</span><br><span class="line">    file &#123;</span><br><span class="line">        path =&gt; [&quot;/var/log/dbLog/*.log&quot;]</span><br><span class="line">        type =&gt; &quot;system&quot;</span><br><span class="line">        start_position =&gt; &quot;beginning&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">filter &#123;</span><br><span class="line">    grok &#123;</span><br><span class="line">        match =&gt; &#123;</span><br><span class="line">            &quot;message&quot; =&gt; &quot;%&#123;IPV4:message&#125;&quot;</span><br><span class="line">        &#125;</span><br><span class="line">	overwrite =&gt; [&quot;message&quot;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">    if !(&quot;_grokparsefailure&quot; in [tags]) &#123;</span><br><span class="line">	elasticsearch &#123; </span><br><span class="line">			host =&gt; &quot;yourElasticsearchServerIP&quot;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行 <code>Logstash</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/logstash -f dbInput.conf</span><br></pre></td></tr></table></figure>
-<p>运行成功后，<code>Logstash</code>自动分析数据库日志文件，获取其中的IP地址并保存至 <code>Elasticsearch</code> 当中。</p>
-<h3 id="Kibana的配置"><a href="#Kibana的配置" class="headerlink" title="Kibana的配置"></a>Kibana的配置</h3><p>访问<a href="http://YourServerIP:5601，进入" target="_blank" rel="noopener">http://YourServerIP:5601，进入</a> <code>Setting</code>，填写 <code>index name or pattern</code> 为 <code>logstash-*</code>并点击创建：</p>
-<p><img src="/img/elk-start/03.png" alt="03.png"></p>
-<p>在 <code>Discover</code> 页中可以实现日志数据的交互式探索，效果图如下：<br><img src="/img/elk-start/01.png" alt="01.png"><br>从图中可以查看时间间隔内 <code>日志的接收量</code>、<code>日志数据</code>、<code>日志的处理时间</code> 等数据。</p>
-<p><code>Visualize</code> 页可以实现日志数据的可视化操作，效果图如下：<br><img src="/img/elk-start/02.png" alt="02.png"><br>根据上图，可以分析出哪些 <code>IP</code> 对数据库管理员的密码进行暴破。</p>
-<p>##结论<br>本篇只是最基础的安装和测试，实验中均使用了默认的参数和配置。<a href="#配置Logstash"><code>配置Logstash</code></a> 中使用默认的配置，仅对日志文件做了IP的简单筛选，并没有涉及到错误类型和日志生成时间等数据的解析。接下来以下图为基础，学习 <code>ELK</code> 的应用。</p>
-<p><img src="http://img1.51cto.com/attachment/201211/225912530.png" alt="ELK理论拓扑"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">运维</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Logstash</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ElasticSearch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Kibana4</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/08/03/sa/elk-start/">展开全文 >></a>
+          <a class="article-more-a" href="/2016/07/25/python/pdfminer/">展开全文 >></a>
         </p>
       
 

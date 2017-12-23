@@ -375,6 +375,83 @@
 
 
   
+    <article id="post-work/TC-BCompare" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/23/work/TC-BCompare/">Total Commander集成Beyond Compare</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/23/work/TC-BCompare/" class="archive-article-date">
+  	<time datetime="2017-12-23T11:23:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="比较目录"><a href="#比较目录" class="headerlink" title="比较目录"></a>比较目录</h3><p>在工具栏上右键单击，选择【更改】，找到<strong>Beyond Compare</strong>所在的路径下的可执行文件，例如：<code>D:\tools\Beyond Compare\BCompare.exe</code>，在参数一栏中输入<code>%T %P</code> 。其中，<code>%T</code>代表目标路径，<code>%P</code>代表来源路径，<code>%T</code>和<code>%P</code>中间有空格。</p>
+<p><img src="/img/TC-BCompare-p2.png" alt="TC-BCompare-p1"></p>
+<h3 id="比较文件"><a href="#比较文件" class="headerlink" title="比较文件"></a>比较文件</h3><p>在工具栏上右键单击，选择【更改】，找到<strong>Beyond Compare</strong>所在的路径下的可执行文件，例如：<code>D:\tools\Beyond Compare\BCompare.exe</code>，在参数一栏中输入<code>%T%M  %P%N</code> 。其中，<code>%T</code>代表目标路径，<code>%P</code>代表来源路径，<code>%M</code>代表目标文件夹中的当前文件名，<code>%N</code>代表光标所在处的文件名，<code>%T%M</code>和<code>%P%N</code>中间有空格。</p>
+<p><img src="/img/TC-BCompare-p2.png" alt="TC-BCompare-p2"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/23/work/TC-BCompare/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-life/this-is-us" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -949,91 +1026,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/09/13/python/pytest-apply-and-plugin/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-scrapy/scrapy-sn-jd" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/09/scrapy/scrapy-sn-jd/">抓取苏宁和京东价格</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/09/scrapy/scrapy-sn-jd/" class="archive-article-date">
-  	<time datetime="2017-09-09T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近业务部门需要对比平台上几个竞争对手的在售商品价格，因此编写了苏宁和京东的价格抓取脚本。</p>
-<h2 id="苏宁"><a href="#苏宁" class="headerlink" title="苏宁"></a>苏宁</h2><p>业务部门会将需要抓取的商品的信息和<code>url</code>以Excel方式提交，因此我只需要遍历Excel并抓取指定<code>url</code>即可。由于苏宁商品页面的价格是动态生成的，因此使用<code>selenium</code>抓取。代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">price_els = driver.find_elements_by_xpath(<span class="string">"//*[@id='mainPrice']"</span>)</span><br><span class="line"><span class="keyword">if</span> len(price_els) == <span class="number">1</span>:</span><br><span class="line">    small_price_els = price_els[<span class="number">0</span>].find_elements_by_xpath(<span class="string">".//*[@class='small-price']"</span>)</span><br><span class="line">    main_price_els = price_els[<span class="number">0</span>].find_elements_by_xpath(<span class="string">".//*[@class='small-price']"</span>)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
-<p>在这里之所以使用<code>find_elements_by_xpath</code>而不是<code>find_element_by_xpath</code>是因为<code>find_element_by_xpath</code>在定位不到元素时会发生异常，而我在有限的时间里并不保证所有的页面都包含<code>id=&#39;mainPrice&#39;</code>。</p>
-<h2 id="京东"><a href="#京东" class="headerlink" title="京东"></a>京东</h2><p>相对于苏宁，京东的有一个<code>api</code>接口可以查询价格，只要业务部门提供京东商品的<code>sku</code>代码即可。以<code>1816417</code>为例，访问<code>http://p.3.cn/prices/mgets?skuIds=J_1816417</code>，返回：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">"id"</span>: <span class="string">"J_1816417"</span>,</span><br><span class="line">    <span class="attr">"p"</span>: <span class="string">"1439.00"</span>,</span><br><span class="line">    <span class="attr">"m"</span>: <span class="string">"1699.00"</span>,</span><br><span class="line">    <span class="attr">"op"</span>: <span class="string">"1439.00"</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>因此只要使用<code>requests</code>即可抓取京东价格数据：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">response = requests.get(goods_url, headers=HEADERS)</span><br><span class="line">price = json.loads(response.text)[<span class="number">0</span>][<span class="string">'p'</span>]</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/09/scrapy/scrapy-sn-jd/">展开全文 >></a>
         </p>
       
 
