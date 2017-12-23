@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/01/01/design-patterns/simple_factory/index.html">
 <meta property="og:site_name" content="4Thing&#39;Blog">
 <meta property="og:description" content="场景每种仪表都实现了统一的接口，设计一个工厂，生产不同的仪表 实现代码仪表接口：12345678910111213namespace DesignPatterns.SimpleFactory&amp;#123;    /// &amp;lt;summary&amp;gt;    /// 仪表接口    /// &amp;lt;/summary&amp;gt;    public interface IMeter    &amp;#123;">
-<meta property="og:updated_time" content="2017-12-18T14:24:59.589Z">
+<meta property="og:updated_time" content="2017-12-23T13:36:07.761Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式实践-简单工厂">
 <meta name="twitter:description" content="场景每种仪表都实现了统一的接口，设计一个工厂，生产不同的仪表 实现代码仪表接口：12345678910111213namespace DesignPatterns.SimpleFactory&amp;#123;    /// &amp;lt;summary&amp;gt;    /// 仪表接口    /// &amp;lt;/summary&amp;gt;    public interface IMeter    &amp;#123;">
@@ -203,18 +203,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/01/01/design-patterns/memento/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/01/01/design-patterns/singleton/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          设计模式实践-备忘录模式
+          设计模式实践-单例
         
       </div>
     </a>
   
   
-    <a href="/2017/01/01/design-patterns/proxy/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">设计模式实践-代理模式</div>
+    <a href="/2017/01/01/design-patterns/abstarct_factory/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">设计模式实践-抽象工厂</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -241,7 +241,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x573A;&#x666F;" class="headerlink" title="&#x573A;&#x666F;"></a>&#x573A;&#x666F;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现代码"><span class="toc-number">2.</span> <span class="toc-text"><a href="#&#x5B9E;&#x73B0;&#x4EE3;&#x7801;" class="headerlink" title="&#x5B9E;&#x73B0;&#x4EE3;&#x7801;"></a>&#x5B9E;&#x73B0;&#x4EE3;&#x7801;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#仪表接口："><span class="toc-number">2.1.</span> <span class="toc-text"><a href="#&#x4EEA;&#x8868;&#x63A5;&#x53E3;&#xFF1A;" class="headerlink" title="&#x4EEA;&#x8868;&#x63A5;&#x53E3;&#xFF1A;"></a>&#x4EEA;&#x8868;&#x63A5;&#x53E3;&#xFF1A;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仪表A实现："><span class="toc-number">2.2.</span> <span class="toc-text"><a href="#&#x4EEA;&#x8868;A&#x5B9E;&#x73B0;&#xFF1A;" class="headerlink" title="&#x4EEA;&#x8868;A&#x5B9E;&#x73B0;&#xFF1A;"></a>&#x4EEA;&#x8868;A&#x5B9E;&#x73B0;&#xFF1A;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仪表B实现："><span class="toc-number">2.3.</span> <span class="toc-text"><a href="#&#x4EEA;&#x8868;B&#x5B9E;&#x73B0;&#xFF1A;" class="headerlink" title="&#x4EEA;&#x8868;B&#x5B9E;&#x73B0;&#xFF1A;"></a>&#x4EEA;&#x8868;B&#x5B9E;&#x73B0;&#xFF1A;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工厂接口："><span class="toc-number">2.4.</span> <span class="toc-text"><a href="#&#x5DE5;&#x5382;&#x63A5;&#x53E3;&#xFF1A;" class="headerlink" title="&#x5DE5;&#x5382;&#x63A5;&#x53E3;&#xFF1A;"></a>&#x5DE5;&#x5382;&#x63A5;&#x53E3;&#xFF1A;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工厂实现："><span class="toc-number">2.5.</span> <span class="toc-text"><a href="#&#x5DE5;&#x5382;&#x5B9E;&#x73B0;&#xFF1A;" class="headerlink" title="&#x5DE5;&#x5382;&#x5B9E;&#x73B0;&#xFF1A;"></a>&#x5DE5;&#x5382;&#x5B9E;&#x73B0;&#xFF1A;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用枚举类型生产仪表"><span class="toc-number">2.6.</span> <span class="toc-text"><a href="#&#x4F7F;&#x7528;&#x679A;&#x4E3E;&#x7C7B;&#x578B;&#x751F;&#x4EA7;&#x4EEA;&#x8868;" class="headerlink" title="&#x4F7F;&#x7528;&#x679A;&#x4E3E;&#x7C7B;&#x578B;&#x751F;&#x4EA7;&#x4EEA;&#x8868;"></a>&#x4F7F;&#x7528;&#x679A;&#x4E3E;&#x7C7B;&#x578B;&#x751F;&#x4EA7;&#x4EEA;&#x8868;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#仪表类型枚举："><span class="toc-number">2.6.1.</span> <span class="toc-text"><a href="#&#x4EEA;&#x8868;&#x7C7B;&#x578B;&#x679A;&#x4E3E;&#xFF1A;" class="headerlink" title="&#x4EEA;&#x8868;&#x7C7B;&#x578B;&#x679A;&#x4E3E;&#xFF1A;"></a>&#x4EEA;&#x8868;&#x7C7B;&#x578B;&#x679A;&#x4E3E;&#xFF1A;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#生产仪表方法："><span class="toc-number">2.6.2.</span> <span class="toc-text"><a href="#&#x751F;&#x4EA7;&#x4EEA;&#x8868;&#x65B9;&#x6CD5;&#xFF1A;" class="headerlink" title="&#x751F;&#x4EA7;&#x4EEA;&#x8868;&#x65B9;&#x6CD5;&#xFF1A;"></a>&#x751F;&#x4EA7;&#x4EEA;&#x8868;&#x65B9;&#x6CD5;&#xFF1A;</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#静态工厂"><span class="toc-number">2.7.</span> <span class="toc-text"><a href="#&#x9759;&#x6001;&#x5DE5;&#x5382;" class="headerlink" title="&#x9759;&#x6001;&#x5DE5;&#x5382;"></a>&#x9759;&#x6001;&#x5DE5;&#x5382;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#静态工厂实现："><span class="toc-number">2.7.1.</span> <span class="toc-text"><a href="#&#x9759;&#x6001;&#x5DE5;&#x5382;&#x5B9E;&#x73B0;&#xFF1A;" class="headerlink" title="&#x9759;&#x6001;&#x5DE5;&#x5382;&#x5B9E;&#x73B0;&#xFF1A;"></a>&#x9759;&#x6001;&#x5DE5;&#x5382;&#x5B9E;&#x73B0;&#xFF1A;</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关调用"><span class="toc-number">3.</span> <span class="toc-text"><a href="#&#x76F8;&#x5173;&#x8C03;&#x7528;" class="headerlink" title="&#x76F8;&#x5173;&#x8C03;&#x7528;"></a>&#x76F8;&#x5173;&#x8C03;&#x7528;</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-number">1.</span> <span class="toc-text">场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现代码"><span class="toc-number">2.</span> <span class="toc-text">实现代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#仪表接口："><span class="toc-number">2.1.</span> <span class="toc-text">仪表接口：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仪表A实现："><span class="toc-number">2.2.</span> <span class="toc-text">仪表A实现：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仪表B实现："><span class="toc-number">2.3.</span> <span class="toc-text">仪表B实现：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工厂接口："><span class="toc-number">2.4.</span> <span class="toc-text">工厂接口：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工厂实现："><span class="toc-number">2.5.</span> <span class="toc-text">工厂实现：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用枚举类型生产仪表"><span class="toc-number">2.6.</span> <span class="toc-text">使用枚举类型生产仪表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#仪表类型枚举："><span class="toc-number">2.6.1.</span> <span class="toc-text">仪表类型枚举：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#生产仪表方法："><span class="toc-number">2.6.2.</span> <span class="toc-text">生产仪表方法：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#静态工厂"><span class="toc-number">2.7.</span> <span class="toc-text">静态工厂</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#静态工厂实现："><span class="toc-number">2.7.1.</span> <span class="toc-text">静态工厂实现：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关调用"><span class="toc-number">3.</span> <span class="toc-text">相关调用</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -349,7 +349,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">读书</a>
+                <a href="javascript:void(0)" class="js-tag color3">摄影</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -357,15 +357,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">摄影</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">猫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">celery</a>
+                <a href="javascript:void(0)" class="js-tag color3">读书</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -385,19 +381,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Kibana4</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -406,6 +406,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">传感器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -421,15 +425,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
+                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
               </li>
             
             <div class="clearfix"></div>

@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/01/01/design-patterns/mediator/index.html">
 <meta property="og:site_name" content="4Thing&#39;Blog">
 <meta property="og:description" content="场景不同设备对象间通信 实现代码中介者接口123456789101112131415namespace DesignPatterns.Mediator&amp;#123;    /// &amp;lt;summary&amp;gt;    /// 中介者接口    /// &amp;lt;/summary&amp;gt;    public interface IMediator    &amp;#123;        /// &amp;lt;sum">
-<meta property="og:updated_time" content="2017-12-18T14:24:26.162Z">
+<meta property="og:updated_time" content="2017-12-23T13:36:07.761Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式实践-中介者模式">
 <meta name="twitter:description" content="场景不同设备对象间通信 实现代码中介者接口123456789101112131415namespace DesignPatterns.Mediator&amp;#123;    /// &amp;lt;summary&amp;gt;    /// 中介者接口    /// &amp;lt;/summary&amp;gt;    public interface IMediator    &amp;#123;        /// &amp;lt;sum">
@@ -200,11 +200,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/01/01/design-patterns/iterator/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/01/01/design-patterns/prototype/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          设计模式实践-迭代器模式
+          设计模式实践-原型模式
         
       </div>
     </a>
@@ -238,7 +238,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x573A;&#x666F;" class="headerlink" title="&#x573A;&#x666F;"></a>&#x573A;&#x666F;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现代码"><span class="toc-number">2.</span> <span class="toc-text"><a href="#&#x5B9E;&#x73B0;&#x4EE3;&#x7801;" class="headerlink" title="&#x5B9E;&#x73B0;&#x4EE3;&#x7801;"></a>&#x5B9E;&#x73B0;&#x4EE3;&#x7801;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#中介者接口"><span class="toc-number">2.1.</span> <span class="toc-text"><a href="#&#x4E2D;&#x4ECB;&#x8005;&#x63A5;&#x53E3;" class="headerlink" title="&#x4E2D;&#x4ECB;&#x8005;&#x63A5;&#x53E3;"></a>&#x4E2D;&#x4ECB;&#x8005;&#x63A5;&#x53E3;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#中介者实现"><span class="toc-number">2.2.</span> <span class="toc-text"><a href="#&#x4E2D;&#x4ECB;&#x8005;&#x5B9E;&#x73B0;" class="headerlink" title="&#x4E2D;&#x4ECB;&#x8005;&#x5B9E;&#x73B0;"></a>&#x4E2D;&#x4ECB;&#x8005;&#x5B9E;&#x73B0;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设备接口"><span class="toc-number">2.3.</span> <span class="toc-text"><a href="#&#x8BBE;&#x5907;&#x63A5;&#x53E3;" class="headerlink" title="&#x8BBE;&#x5907;&#x63A5;&#x53E3;"></a>&#x8BBE;&#x5907;&#x63A5;&#x53E3;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设备A实现"><span class="toc-number">2.4.</span> <span class="toc-text"><a href="#&#x8BBE;&#x5907;A&#x5B9E;&#x73B0;" class="headerlink" title="&#x8BBE;&#x5907;A&#x5B9E;&#x73B0;"></a>&#x8BBE;&#x5907;A&#x5B9E;&#x73B0;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设备B实现"><span class="toc-number">2.5.</span> <span class="toc-text"><a href="#&#x8BBE;&#x5907;B&#x5B9E;&#x73B0;" class="headerlink" title="&#x8BBE;&#x5907;B&#x5B9E;&#x73B0;"></a>&#x8BBE;&#x5907;B&#x5B9E;&#x73B0;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关调用"><span class="toc-number">3.</span> <span class="toc-text"><a href="#&#x76F8;&#x5173;&#x8C03;&#x7528;" class="headerlink" title="&#x76F8;&#x5173;&#x8C03;&#x7528;"></a>&#x76F8;&#x5173;&#x8C03;&#x7528;</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-number">1.</span> <span class="toc-text">场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现代码"><span class="toc-number">2.</span> <span class="toc-text">实现代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#中介者接口"><span class="toc-number">2.1.</span> <span class="toc-text">中介者接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#中介者实现"><span class="toc-number">2.2.</span> <span class="toc-text">中介者实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设备接口"><span class="toc-number">2.3.</span> <span class="toc-text">设备接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设备A实现"><span class="toc-number">2.4.</span> <span class="toc-text">设备A实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设备B实现"><span class="toc-number">2.5.</span> <span class="toc-text">设备B实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关调用"><span class="toc-number">3.</span> <span class="toc-text">相关调用</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -346,7 +346,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">读书</a>
+                <a href="javascript:void(0)" class="js-tag color3">摄影</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -354,15 +354,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">摄影</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">猫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">celery</a>
+                <a href="javascript:void(0)" class="js-tag color3">读书</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -382,19 +378,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Kibana4</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -403,6 +403,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">传感器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -418,15 +422,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
+                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
               </li>
             
             <div class="clearfix"></div>

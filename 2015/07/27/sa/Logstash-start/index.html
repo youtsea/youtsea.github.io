@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2015/07/27/sa/Logstash-start/index.html">
 <meta property="og:site_name" content="4Thing&#39;Blog">
 <meta property="og:description" content="参考  https://www.elastic.co/downloads/logstash http://kibana.logstash.es/content/    安装本次实验的安装环境为：ubuntu 15 jre安装运行 Logstash 需要Java环境，因此需要安装 jre ： 1sudo apt-get install openjdk-7-jre Logstash 安装从 参考 下载">
-<meta property="og:updated_time" content="2016-10-28T11:55:58.860Z">
+<meta property="og:updated_time" content="2017-12-23T13:36:07.765Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Logstash单机入门实验">
 <meta name="twitter:description" content="参考  https://www.elastic.co/downloads/logstash http://kibana.logstash.es/content/    安装本次实验的安装环境为：ubuntu 15 jre安装运行 Logstash 需要Java环境，因此需要安装 jre ： 1sudo apt-get install openjdk-7-jre Logstash 安装从 参考 下载">
@@ -304,7 +304,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x53C2;&#x8003;" class="headerlink" title="&#x53C2;&#x8003;"></a>&#x53C2;&#x8003;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text"><a href="#&#x5B89;&#x88C5;" class="headerlink" title="&#x5B89;&#x88C5;"></a>&#x5B89;&#x88C5;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#jre安装"><span class="toc-number">2.1.</span> <span class="toc-text"><a href="#jre&#x5B89;&#x88C5;" class="headerlink" title="jre&#x5B89;&#x88C5;"></a>jre&#x5B89;&#x88C5;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Logstash-安装"><span class="toc-number">2.2.</span> <span class="toc-text"><a href="#Logstash-&#x5B89;&#x88C5;" class="headerlink" title="Logstash &#x5B89;&#x88C5;"></a>Logstash &#x5B89;&#x88C5;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从文件中读取日志"><span class="toc-number">3.</span> <span class="toc-text"><a href="#&#x4ECE;&#x6587;&#x4EF6;&#x4E2D;&#x8BFB;&#x53D6;&#x65E5;&#x5FD7;" class="headerlink" title="&#x4ECE;&#x6587;&#x4EF6;&#x4E2D;&#x8BFB;&#x53D6;&#x65E5;&#x5FD7;"></a>&#x4ECE;&#x6587;&#x4EF6;&#x4E2D;&#x8BFB;&#x53D6;&#x65E5;&#x5FD7;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从TCP中读取日志"><span class="toc-number">4.</span> <span class="toc-text"><a href="#&#x4ECE;TCP&#x4E2D;&#x8BFB;&#x53D6;&#x65E5;&#x5FD7;" class="headerlink" title="&#x4ECE;TCP&#x4E2D;&#x8BFB;&#x53D6;&#x65E5;&#x5FD7;"></a>&#x4ECE;TCP&#x4E2D;&#x8BFB;&#x53D6;&#x65E5;&#x5FD7;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从Redis中读取日志"><span class="toc-number">5.</span> <span class="toc-text"><a href="#&#x4ECE;Redis&#x4E2D;&#x8BFB;&#x53D6;&#x65E5;&#x5FD7;" class="headerlink" title="&#x4ECE;Redis&#x4E2D;&#x8BFB;&#x53D6;&#x65E5;&#x5FD7;"></a>&#x4ECE;Redis&#x4E2D;&#x8BFB;&#x53D6;&#x65E5;&#x5FD7;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将日志输出到文件中"><span class="toc-number">6.</span> <span class="toc-text"><a href="#&#x5C06;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#x5230;&#x6587;&#x4EF6;&#x4E2D;" class="headerlink" title="&#x5C06;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#x5230;&#x6587;&#x4EF6;&#x4E2D;"></a>&#x5C06;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#x5230;&#x6587;&#x4EF6;&#x4E2D;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将日志输出到TCP中"><span class="toc-number">7.</span> <span class="toc-text"><a href="#&#x5C06;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#x5230;TCP&#x4E2D;" class="headerlink" title="&#x5C06;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#x5230;TCP&#x4E2D;"></a>&#x5C06;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#x5230;TCP&#x4E2D;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将日志输出到Redis中"><span class="toc-number">8.</span> <span class="toc-text"><a href="#&#x5C06;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#x5230;Redis&#x4E2D;" class="headerlink" title="&#x5C06;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#x5230;Redis&#x4E2D;"></a>&#x5C06;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#x5230;Redis&#x4E2D;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结论"><span class="toc-number">9.</span> <span class="toc-text"><a href="#&#x7ED3;&#x8BBA;" class="headerlink" title="&#x7ED3;&#x8BBA;"></a>&#x7ED3;&#x8BBA;</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.</span> <span class="toc-text">参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#jre安装"><span class="toc-number">2.1.</span> <span class="toc-text">jre安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Logstash-安装"><span class="toc-number">2.2.</span> <span class="toc-text">Logstash 安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从文件中读取日志"><span class="toc-number">3.</span> <span class="toc-text">从文件中读取日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从TCP中读取日志"><span class="toc-number">4.</span> <span class="toc-text">从TCP中读取日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从Redis中读取日志"><span class="toc-number">5.</span> <span class="toc-text">从Redis中读取日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将日志输出到文件中"><span class="toc-number">6.</span> <span class="toc-text">将日志输出到文件中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将日志输出到TCP中"><span class="toc-number">7.</span> <span class="toc-text">将日志输出到TCP中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将日志输出到Redis中"><span class="toc-number">8.</span> <span class="toc-text">将日志输出到Redis中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结论"><span class="toc-number">9.</span> <span class="toc-text">结论</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -412,7 +412,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">读书</a>
+                <a href="javascript:void(0)" class="js-tag color3">摄影</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -420,15 +420,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">摄影</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">猫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">celery</a>
+                <a href="javascript:void(0)" class="js-tag color3">读书</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -448,19 +444,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Kibana4</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -469,6 +469,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">传感器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -484,15 +488,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
+                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
               </li>
             
             <div class="clearfix"></div>

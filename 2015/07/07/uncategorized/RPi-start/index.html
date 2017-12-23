@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="4Thing&#39;Blog">
 <meta property="og:description" content="入手树莓派已有一段时间，做了一个基于采集串口设备的web应用后因为工作太忙没时间折腾，趁着这两天闲暇把手头几个模块测试了一遍。   DHT11温湿度模块 HC-SR04超声波模块 光敏电阻模块 PCF8591模块    图片来至 树莓派实验室 DHT11温湿度模块接线及代码vcc 接 BOARD 2 gnd 接 BOARD 6 data 接 BOARD 12 在GitHub上找到 pi-dht11">
 <meta property="og:image" content="http://shumeipai.nxez.com/wp-content/uploads/2015/03/rpi-pins-40-0.png">
-<meta property="og:updated_time" content="2016-10-28T11:53:20.477Z">
+<meta property="og:updated_time" content="2017-12-23T13:36:07.765Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树莓派入门">
 <meta name="twitter:description" content="入手树莓派已有一段时间，做了一个基于采集串口设备的web应用后因为工作太忙没时间折腾，趁着这两天闲暇把手头几个模块测试了一遍。   DHT11温湿度模块 HC-SR04超声波模块 光敏电阻模块 PCF8591模块    图片来至 树莓派实验室 DHT11温湿度模块接线及代码vcc 接 BOARD 2 gnd 接 BOARD 6 data 接 BOARD 12 在GitHub上找到 pi-dht11">
@@ -281,7 +281,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DHT11温湿度模块接线及代码"><span class="toc-number">1.</span> <span class="toc-text"><a href="#DHT11&#x6E29;&#x6E7F;&#x5EA6;&#x6A21;&#x5757;&#x63A5;&#x7EBF;&#x53CA;&#x4EE3;&#x7801;" class="headerlink" title="DHT11&#x6E29;&#x6E7F;&#x5EA6;&#x6A21;&#x5757;&#x63A5;&#x7EBF;&#x53CA;&#x4EE3;&#x7801;"></a>DHT11&#x6E29;&#x6E7F;&#x5EA6;&#x6A21;&#x5757;&#x63A5;&#x7EBF;&#x53CA;&#x4EE3;&#x7801;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HC-SR04超声波模块接线及代码"><span class="toc-number">2.</span> <span class="toc-text"><a href="#HC-SR04&#x8D85;&#x58F0;&#x6CE2;&#x6A21;&#x5757;&#x63A5;&#x7EBF;&#x53CA;&#x4EE3;&#x7801;" class="headerlink" title="HC-SR04&#x8D85;&#x58F0;&#x6CE2;&#x6A21;&#x5757;&#x63A5;&#x7EBF;&#x53CA;&#x4EE3;&#x7801;"></a>HC-SR04&#x8D85;&#x58F0;&#x6CE2;&#x6A21;&#x5757;&#x63A5;&#x7EBF;&#x53CA;&#x4EE3;&#x7801;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#光敏电阻模块接线及代码"><span class="toc-number">3.</span> <span class="toc-text"><a href="#&#x5149;&#x654F;&#x7535;&#x963B;&#x6A21;&#x5757;&#x63A5;&#x7EBF;&#x53CA;&#x4EE3;&#x7801;" class="headerlink" title="&#x5149;&#x654F;&#x7535;&#x963B;&#x6A21;&#x5757;&#x63A5;&#x7EBF;&#x53CA;&#x4EE3;&#x7801;"></a>&#x5149;&#x654F;&#x7535;&#x963B;&#x6A21;&#x5757;&#x63A5;&#x7EBF;&#x53CA;&#x4EE3;&#x7801;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PCF8591模块接线及代码"><span class="toc-number">4.</span> <span class="toc-text"><a href="#PCF8591&#x6A21;&#x5757;&#x63A5;&#x7EBF;&#x53CA;&#x4EE3;&#x7801;" class="headerlink" title="PCF8591&#x6A21;&#x5757;&#x63A5;&#x7EBF;&#x53CA;&#x4EE3;&#x7801;"></a>PCF8591&#x6A21;&#x5757;&#x63A5;&#x7EBF;&#x53CA;&#x4EE3;&#x7801;</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DHT11温湿度模块接线及代码"><span class="toc-number">1.</span> <span class="toc-text">DHT11温湿度模块接线及代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HC-SR04超声波模块接线及代码"><span class="toc-number">2.</span> <span class="toc-text">HC-SR04超声波模块接线及代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#光敏电阻模块接线及代码"><span class="toc-number">3.</span> <span class="toc-text">光敏电阻模块接线及代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PCF8591模块接线及代码"><span class="toc-number">4.</span> <span class="toc-text">PCF8591模块接线及代码</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -389,7 +389,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">读书</a>
+                <a href="javascript:void(0)" class="js-tag color3">摄影</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -397,15 +397,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">摄影</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">猫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">celery</a>
+                <a href="javascript:void(0)" class="js-tag color3">读书</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -425,19 +421,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Kibana4</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -446,6 +446,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">传感器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -461,15 +465,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
+                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
               </li>
             
             <div class="clearfix"></div>

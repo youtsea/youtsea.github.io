@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/01/01/design-patterns/iterator/index.html">
 <meta property="og:site_name" content="4Thing&#39;Blog">
 <meta property="og:description" content="场景实现迭代器模式，迭代仪表集合 实现代码迭代器接口1234567891011121314namespace DesignPatterns.Iterator&amp;#123;    /// &amp;lt;summary&amp;gt;    /// 迭代器接口    /// &amp;lt;/summary&amp;gt;    public interface IIterator    &amp;#123;        /// &amp;lt;">
-<meta property="og:updated_time" content="2017-12-18T14:24:18.749Z">
+<meta property="og:updated_time" content="2017-12-23T13:36:07.761Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式实践-迭代器模式">
 <meta name="twitter:description" content="场景实现迭代器模式，迭代仪表集合 实现代码迭代器接口1234567891011121314namespace DesignPatterns.Iterator&amp;#123;    /// &amp;lt;summary&amp;gt;    /// 迭代器接口    /// &amp;lt;/summary&amp;gt;    public interface IIterator    &amp;#123;        /// &amp;lt;">
@@ -200,18 +200,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/01/01/design-patterns/factory/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/01/01/design-patterns/observer/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          设计模式实践-工厂模式
+          设计模式实践-观察者模式
         
       </div>
     </a>
   
   
-    <a href="/2017/01/01/design-patterns/mediator/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">设计模式实践-中介者模式</div>
+    <a href="/2017/01/01/design-patterns/prototype/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">设计模式实践-原型模式</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -238,7 +238,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x573A;&#x666F;" class="headerlink" title="&#x573A;&#x666F;"></a>&#x573A;&#x666F;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现代码"><span class="toc-number">2.</span> <span class="toc-text"><a href="#&#x5B9E;&#x73B0;&#x4EE3;&#x7801;" class="headerlink" title="&#x5B9E;&#x73B0;&#x4EE3;&#x7801;"></a>&#x5B9E;&#x73B0;&#x4EE3;&#x7801;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#迭代器接口"><span class="toc-number">2.1.</span> <span class="toc-text"><a href="#&#x8FED;&#x4EE3;&#x5668;&#x63A5;&#x53E3;" class="headerlink" title="&#x8FED;&#x4EE3;&#x5668;&#x63A5;&#x53E3;"></a>&#x8FED;&#x4EE3;&#x5668;&#x63A5;&#x53E3;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仪表迭代器实现"><span class="toc-number">2.2.</span> <span class="toc-text"><a href="#&#x4EEA;&#x8868;&#x8FED;&#x4EE3;&#x5668;&#x5B9E;&#x73B0;" class="headerlink" title="&#x4EEA;&#x8868;&#x8FED;&#x4EE3;&#x5668;&#x5B9E;&#x73B0;"></a>&#x4EEA;&#x8868;&#x8FED;&#x4EE3;&#x5668;&#x5B9E;&#x73B0;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仪表聚合接口"><span class="toc-number">2.3.</span> <span class="toc-text"><a href="#&#x4EEA;&#x8868;&#x805A;&#x5408;&#x63A5;&#x53E3;" class="headerlink" title="&#x4EEA;&#x8868;&#x805A;&#x5408;&#x63A5;&#x53E3;"></a>&#x4EEA;&#x8868;&#x805A;&#x5408;&#x63A5;&#x53E3;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仪表聚合实现"><span class="toc-number">2.4.</span> <span class="toc-text"><a href="#&#x4EEA;&#x8868;&#x805A;&#x5408;&#x5B9E;&#x73B0;" class="headerlink" title="&#x4EEA;&#x8868;&#x805A;&#x5408;&#x5B9E;&#x73B0;"></a>&#x4EEA;&#x8868;&#x805A;&#x5408;&#x5B9E;&#x73B0;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仪表实现"><span class="toc-number">2.5.</span> <span class="toc-text"><a href="#&#x4EEA;&#x8868;&#x5B9E;&#x73B0;" class="headerlink" title="&#x4EEA;&#x8868;&#x5B9E;&#x73B0;"></a>&#x4EEA;&#x8868;&#x5B9E;&#x73B0;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关调用"><span class="toc-number">3.</span> <span class="toc-text"><a href="#&#x76F8;&#x5173;&#x8C03;&#x7528;" class="headerlink" title="&#x76F8;&#x5173;&#x8C03;&#x7528;"></a>&#x76F8;&#x5173;&#x8C03;&#x7528;</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-number">1.</span> <span class="toc-text">场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现代码"><span class="toc-number">2.</span> <span class="toc-text">实现代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#迭代器接口"><span class="toc-number">2.1.</span> <span class="toc-text">迭代器接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仪表迭代器实现"><span class="toc-number">2.2.</span> <span class="toc-text">仪表迭代器实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仪表聚合接口"><span class="toc-number">2.3.</span> <span class="toc-text">仪表聚合接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仪表聚合实现"><span class="toc-number">2.4.</span> <span class="toc-text">仪表聚合实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仪表实现"><span class="toc-number">2.5.</span> <span class="toc-text">仪表实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关调用"><span class="toc-number">3.</span> <span class="toc-text">相关调用</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -346,7 +346,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">读书</a>
+                <a href="javascript:void(0)" class="js-tag color3">摄影</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -354,15 +354,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">摄影</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">猫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">celery</a>
+                <a href="javascript:void(0)" class="js-tag color3">读书</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -382,19 +378,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Kibana4</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -403,6 +403,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">传感器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -418,15 +422,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
+                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
               </li>
             
             <div class="clearfix"></div>

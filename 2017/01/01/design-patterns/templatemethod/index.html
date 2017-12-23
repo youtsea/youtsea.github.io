@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/01/01/design-patterns/templatemethod/index.html">
 <meta property="og:site_name" content="4Thing&#39;Blog">
 <meta property="og:description" content="场景解析不同协议 实现代码协议解析抽象类1234567891011121314151617181920212223242526272829namespace DesignPatterns.TemplateMethod&amp;#123;    /// &amp;lt;summary&amp;gt;    /// 抽象解包类    /// &amp;lt;/summary&amp;gt;    public abstract class">
-<meta property="og:updated_time" content="2017-12-18T14:25:35.305Z">
+<meta property="og:updated_time" content="2017-12-23T13:36:07.761Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式实践-模版方法模式">
 <meta name="twitter:description" content="场景解析不同协议 实现代码协议解析抽象类1234567891011121314151617181920212223242526272829namespace DesignPatterns.TemplateMethod&amp;#123;    /// &amp;lt;summary&amp;gt;    /// 抽象解包类    /// &amp;lt;/summary&amp;gt;    public abstract class">
@@ -198,18 +198,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/01/01/design-patterns/strategy/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/01/01/design-patterns/abstarct_factory/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          设计模式实践-策略模式
+          设计模式实践-抽象工厂
         
       </div>
     </a>
   
   
-    <a href="/2017/01/01/design-patterns/visitor/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">设计模式实践-访问者模式</div>
+    <a href="/2017/01/01/design-patterns/decorator/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">设计模式实践-装饰器</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -236,7 +236,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x573A;&#x666F;" class="headerlink" title="&#x573A;&#x666F;"></a>&#x573A;&#x666F;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现代码"><span class="toc-number">2.</span> <span class="toc-text"><a href="#&#x5B9E;&#x73B0;&#x4EE3;&#x7801;" class="headerlink" title="&#x5B9E;&#x73B0;&#x4EE3;&#x7801;"></a>&#x5B9E;&#x73B0;&#x4EE3;&#x7801;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#协议解析抽象类"><span class="toc-number">2.1.</span> <span class="toc-text"><a href="#&#x534F;&#x8BAE;&#x89E3;&#x6790;&#x62BD;&#x8C61;&#x7C7B;" class="headerlink" title="&#x534F;&#x8BAE;&#x89E3;&#x6790;&#x62BD;&#x8C61;&#x7C7B;"></a>&#x534F;&#x8BAE;&#x89E3;&#x6790;&#x62BD;&#x8C61;&#x7C7B;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A协议解析类"><span class="toc-number">2.2.</span> <span class="toc-text"><a href="#A&#x534F;&#x8BAE;&#x89E3;&#x6790;&#x7C7B;" class="headerlink" title="A&#x534F;&#x8BAE;&#x89E3;&#x6790;&#x7C7B;"></a>A&#x534F;&#x8BAE;&#x89E3;&#x6790;&#x7C7B;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B协议解析类"><span class="toc-number">2.3.</span> <span class="toc-text"><a href="#B&#x534F;&#x8BAE;&#x89E3;&#x6790;&#x7C7B;" class="headerlink" title="B&#x534F;&#x8BAE;&#x89E3;&#x6790;&#x7C7B;"></a>B&#x534F;&#x8BAE;&#x89E3;&#x6790;&#x7C7B;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关调用"><span class="toc-number">3.</span> <span class="toc-text"><a href="#&#x76F8;&#x5173;&#x8C03;&#x7528;" class="headerlink" title="&#x76F8;&#x5173;&#x8C03;&#x7528;"></a>&#x76F8;&#x5173;&#x8C03;&#x7528;</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-number">1.</span> <span class="toc-text">场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现代码"><span class="toc-number">2.</span> <span class="toc-text">实现代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#协议解析抽象类"><span class="toc-number">2.1.</span> <span class="toc-text">协议解析抽象类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A协议解析类"><span class="toc-number">2.2.</span> <span class="toc-text">A协议解析类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B协议解析类"><span class="toc-number">2.3.</span> <span class="toc-text">B协议解析类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关调用"><span class="toc-number">3.</span> <span class="toc-text">相关调用</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -344,7 +344,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">读书</a>
+                <a href="javascript:void(0)" class="js-tag color3">摄影</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -352,15 +352,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">摄影</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">猫</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">celery</a>
+                <a href="javascript:void(0)" class="js-tag color3">读书</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -380,19 +376,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Kibana4</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -401,6 +401,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">传感器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -416,15 +420,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
+                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
               </li>
             
             <div class="clearfix"></div>
