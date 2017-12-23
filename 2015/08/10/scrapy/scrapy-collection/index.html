@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>4Thing&#39;Blog</title>
+  <title>scrapy系列 | 4Thing&#39;Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="无名码农，摄影咖啡爱好者">
-<meta property="og:type" content="website">
-<meta property="og:title" content="4Thing&#39;Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="索引  本地网站爬取 房产网站信息爬取 论坛信息爬取 爬虫ban策略和反ban策略 代理IP的验证 分布式爬虫 学习资料   1st起因研究 Apache Solr 和 Elasticsearch 时缺少内容，于是以爬虫的方式获取资源。未来有需要将会学习使用 Apache Solr 或 Elasticsearch 实现企业级搜索引擎 Scrapypython-scrapy是个快速实现爬虫的高层次框">
+<meta name="keywords" content="python,scrapy,爬虫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="scrapy系列">
+<meta property="og:url" content="http://yoursite.com/2015/08/10/scrapy/scrapy-collection/index.html">
 <meta property="og:site_name" content="4Thing&#39;Blog">
-<meta property="og:description" content="无名码农，摄影咖啡爱好者">
+<meta property="og:description" content="索引  本地网站爬取 房产网站信息爬取 论坛信息爬取 爬虫ban策略和反ban策略 代理IP的验证 分布式爬虫 学习资料   1st起因研究 Apache Solr 和 Elasticsearch 时缺少内容，于是以爬虫的方式获取资源。未来有需要将会学习使用 Apache Solr 或 Elasticsearch 实现企业级搜索引擎 Scrapypython-scrapy是个快速实现爬虫的高层次框">
+<meta property="og:updated_time" content="2016-10-28T11:56:39.486Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="4Thing&#39;Blog">
-<meta name="twitter:description" content="无名码农，摄影咖啡爱好者">
+<meta name="twitter:title" content="scrapy系列">
+<meta name="twitter:description" content="索引  本地网站爬取 房产网站信息爬取 论坛信息爬取 爬虫ban策略和反ban策略 代理IP的验证 分布式爬虫 学习资料   1st起因研究 Apache Solr 和 Elasticsearch 时缺少内容，于是以爬虫的方式获取资源。未来有需要将会学习使用 Apache Solr 或 Elasticsearch 实现企业级搜索引擎 Scrapypython-scrapy是个快速实现爬虫的高层次框">
   
     <link rel="alternative" href="/atom.xml" title="4Thing&#39;Blog" type="application/atom+xml">
   
@@ -138,699 +140,240 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-life/2017_book" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-scrapy/scrapy-collection" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/31/life/2017_book/">2017年阅读书单</a>
+    <h1 class="article-title" itemprop="name">
+      scrapy系列
     </h1>
   
 
         
-        <a href="/2017/12/31/life/2017_book/" class="archive-article-date">
-  	<time datetime="2017-12-31T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-31</time>
+        <a href="/2015/08/10/scrapy/scrapy-collection/" class="archive-article-date">
+  	<time datetime="2015-08-10T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="生活"><a href="#生活" class="headerlink" title="生活"></a>生活</h2><ol>
-<li>白夜行</li>
-<li>解忧杂货铺</li>
-<li>嫌疑人X的献身</li>
-<li>24个比利</li>
-<li>夜莺与玫瑰</li>
-<li>我不喜欢这个世界，我只喜欢你</li>
-<li>岛上书店</li>
-<li>一个叫欧维的男人决定去死</li>
-<li>了不起的盖茨比</li>
-<li>摆渡人</li>
-<li>挪威的森林</li>
-<li>海边的卡夫卡</li>
-<li>舞舞舞</li>
-<li>我不是潘金莲</li>
-<li>斯通纳</li>
-<li>时间简史</li>
-<li>最好的告别</li>
-<li>雪人</li>
-<li>猎豹</li>
-<li>降临</li>
-<li>灿烂千阳</li>
-<li>海风中失落的血色馈赠</li>
-<li>伊豆的舞女</li>
-<li><strong>三毛全集(弃作者，未看完)</strong></li>
-<li><strong>知乎周刊(部分)</strong></li>
-<li>罗曼蒂克消亡史</li>
-<li>极简宇宙史</li>
-<li>二手时间</li>
-<li>策略思维</li>
-<li>未来简史</li>
-<li>告诉狼们我回家了</li>
-<li>乌合之众</li>
-<li>无人生还</li>
-<li>动物农场</li>
-<li>The truth about cancer</li>
-<li>1984</li>
-<li>幻夜</li>
-<li>皮囊</li>
-<li>一个人的好天气</li>
-<li>月亮与六便士</li>
-<li>上帝掷骰子吗</li>
-<li>从你的世界路过</li>
-<li>智能时代</li>
-<li>人类简史</li>
-<li>单恋</li>
-<li>我是猫</li>
-<li>左手咖啡，右手世界</li>
-<li>那时的先生</li>
+        <h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><blockquote>
+<ul>
+<li><a href="#1st">本地网站爬取</a></li>
+<li><a href="#2nd">房产网站信息爬取</a></li>
+<li><a href="#3rd">论坛信息爬取</a></li>
+<li><a href="#4th">爬虫ban策略和反ban策略</a></li>
+<li><a href="#5th">代理IP的验证</a></li>
+<li><a href="#6th">分布式爬虫</a></li>
+<li><a href="#7th">学习资料</a></li>
+</ul>
+</blockquote>
+<h1 id="1st"><a href="#1st" class="headerlink" title="1st"></a>1st</h1><h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>研究 <code>Apache Solr</code> 和 <code>Elasticsearch</code> 时缺少内容，于是以爬虫的方式获取资源。未来有需要将会学习使用 <code>Apache Solr</code> 或 <code>Elasticsearch</code> 实现企业级搜索引擎</p>
+<h2 id="Scrapy"><a href="#Scrapy" class="headerlink" title="Scrapy"></a>Scrapy</h2><p>python-scrapy是个快速实现爬虫的高层次框架，感谢python带来的无限可能。关于Scrapy，有兴趣的可以点这里：<a href="http://scrapy.org/" target="_blank" rel="noopener">Scrapy</a></p>
+<h3 id="爬取目标"><a href="#爬取目标" class="headerlink" title="爬取目标"></a>爬取目标</h3><blockquote>
+<ul>
+<li>cnxw.com.cn     苍南新闻</li>
+<li>cncn.gov.cn     苍南政府</li>
+<li>cnjyw.net       苍南教育网</li>
+<li>cnlx.gov.cn     灵溪政务</li>
+<li>cnhrss.gov.cn   苍南人力资源</li>
+<li>0577cnw.com     苍南网</li>
+<li>cnlxw.cn        苍南灵溪网</li>
+<li>cnzgh.org       苍南总工会</li>
+<li>cnys.gov.cn     苍南宜山</li>
+<li>cnlg.cn         苍南龙港</li>
+<li>zjjx.gov.cn     金乡</li>
+<li>cngt.gov.cn     苍南国土资源</li>
+<li>cnkjj.gov.cn    苍南科技</li>
+<li>cnmz.gov.cn     苍南明政</li>
+<li>cnwmw.gov.cn    苍南文明网</li>
+<li>cangnan5.com    苍南在线</li>
+</ul>
+</blockquote>
+<h3 id="目标分析"><a href="#目标分析" class="headerlink" title="目标分析"></a>目标分析</h3><p>对于新闻类网站，例如 <code>cnxw.com.cn</code> ，使用以下代码即可获取整站新闻:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">regex_cncn = <span class="string">'.*cncn.gov.cn/art/.*html'</span></span><br></pre></td></tr></table></figure></p>
+<p>对于使用了动态页面的站点，例如 <code>cnjyw.net</code> ，使用以下代码即可:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">regex_cnjyw = <span class="string">'.*cnjyw.net/.*aspx?id=.*'</span></span><br></pre></td></tr></table></figure></p>
+<p>对于 <code>0577cnw.com、cangnan5.com和cnlg.cn</code> ，它们使用相同的Discuz系列，可以使用类似如下的代码:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">regex_0577cnw = <span class="string">'.*0577cnw.com/.*html'</span></span><br></pre></td></tr></table></figure></p>
+<p>由于这几个站点都使用BBS发布数据，所以在制定URL规则的时候需要过滤除第一页之外的其他页面，可以使用类似如下的代码:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">regex_0577cnw = <span class="string">'.*0577cnw.com/.*-1-1.html'</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><p>Scrapy默认使用了深度优先进行爬取，因此它会以<a href="#爬取目标"><code>目标</code></a>为顺序进行爬取。由于各个站点之间可能有重复的URL出现，需要使用指纹信息以避免重复采集。Redis是一个 <code>Key-Value</code> 数据库，并支持python。每次进行爬取页面之前会在Redis数据库查询该页面的URL是否存在，不存在则进行爬取。相关代码如下:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">r = getRedis()</span><br><span class="line">data = r.get(url)</span><br><span class="line"><span class="keyword">if</span>(data <span class="keyword">is</span> <span class="keyword">None</span>):</span><br><span class="line">    ...</span><br><span class="line">    r.set(key, response.url)</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>关于指纹信息，最终采用对URL做MD5计算生成。代码如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">m = hashlib.md5()</span><br><span class="line">m.update(url)</span><br><span class="line"><span class="keyword">return</span> m.hexdigest()</span><br></pre></td></tr></table></figure>
+<h3 id="Goose-Extractor"><a href="#Goose-Extractor" class="headerlink" title="Goose Extractor"></a>Goose Extractor</h3><p>到目前为止，爬虫部分的设计已经结束，只要执行，它就会爬遍<a href="#爬取目标"><code>目标</code></a>所有符合规则的页面，接下来还需要对页面进行解析。 <code>Goose
+Extractor</code> 是一个Python的开源文章提取库。可以用它提取文章的文本内容、图片、视频、元信息和标签，从GitHub可以获取源码和示例。正如GitHub所描述的，只要如下代码即可获取页面的标题和正文:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">url = <span class="string">"http://bbs.0577cnw.com/thread-43205-1-1.html"</span></span><br><span class="line">g = Goose(&#123;<span class="string">'stopwords_class'</span>: StopWordsChinese&#125;)</span><br><span class="line">article = g.extract(url=url)</span><br><span class="line">title = article.title</span><br><span class="line">content = article.cleaned_text</span><br></pre></td></tr></table></figure>
+<p>可以从这里获取 <code>Goose
+Extractor</code> 的相关信息：<a href="https://pypi.python.org/pypi/goose-extractor/" target="_blank" rel="noopener"><code>Goose</code></a></p>
+<h2 id="The-End"><a href="#The-End" class="headerlink" title="The End"></a>The End</h2><p>至此，基于scrapy框架的爬虫基本实现。单机运行了几天，爬取了几十万的页面并解析，没有防BAN处理</p>
+<h1 id="2nd"><a href="#2nd" class="headerlink" title="2nd"></a>2nd</h1><h2 id="房产网站信息爬取"><a href="#房产网站信息爬取" class="headerlink" title="房产网站信息爬取"></a>房产网站信息爬取</h2><p>几天前在微信朋友圈看到苍南房地产微站，想起之前写过一个关于房地产的爬虫。最开始以百度排行第一的www.cnfce.net作为目标，当作熟悉scrapy的作业</p>
+<h3 id="URL规则分析"><a href="#URL规则分析" class="headerlink" title="URL规则分析"></a>URL规则分析</h3><p>以<a href="http://www.cnfce.net/sale/为分析目标，简称为" target="_blank" rel="noopener">http://www.cnfce.net/sale/为分析目标，简称为</a> <code>目标</code></p>
+<p><code>目标</code> 以分页的方式展示出售房源，设置爬取页面为:</p>
+<pre><code>http://www.cnfce.net/sale/page\d*.html
+</code></pre><p>由于页面的有效范围为:[1,50]，可以通过设置start_urls指定爬取页面:</p>
+<pre><code>for i in range(1,51):
+    start_urls.append(&quot;http://www.cnfce.net/sale/page%s.html&quot; %i)
+</code></pre><p>到这里，爬虫已经可以爬遍 <code>目标</code> 的所有出售房源。由于房源的详细信息还未获取到，还需要对爬到的页面进行解析，获取类似如下的信息:</p>
+<blockquote>
+<ul>
+<li>区域 </li>
+<li>小区</li>
+<li>房型</li>
+<li>楼层 </li>
+<li>户型</li>
+<li>装修 </li>
+<li>面积 </li>
+<li>单价</li>
+<li>价格</li>
+<li>日期</li>
+</ul>
+</blockquote>
+<h3 id="chrome开发者工具和选择器"><a href="#chrome开发者工具和选择器" class="headerlink" title="chrome开发者工具和选择器"></a>chrome开发者工具和选择器</h3><p>scrapy通过选择器(seletors)提取数据，通过特定的 XPath 或者 CSS表达式来“选择”HTML文件中的某个部分。使用chrome开发者工具可以很方便的得到自己所需要的 <code>XPath</code> 。例如通过以下 <code>XPath</code> ，即可获取展示部分的div:<br>    //*[@id=”main”]<br>通过:</p>
+<pre><code>xpath(&apos;//*[@id=&quot;mainn&quot;]/ul[re:test(@class, &quot;ul[0-1]&quot;)]&apos;)
+</code></pre><p>获取展示部分中的所有记录的合集</p>
+<p>使用以下代码既可遍历当前页面的所有记录:</p>
+<pre><code>records = response.xpath(&apos;//*[@id=&quot;mainn&quot;]/ul[re:test(@class, &quot;ul[0-1]&quot;)]&apos;)
+for record in records:
+    ......
+</code></pre><p>通过下面代码，可以获取到各个字段的数值:</p>
+<pre><code>item[&apos;area&apos;] = record.xpath(&apos;li[re:test(@class, &quot;lifw[0-1]&quot;)]/a/text()&apos;).extract() 
+item[&apos;unitprice&apos;] = record.xpath(&apos;li[re:test(@class, &quot;lidj[0-1]&quot;)]/a/text()&apos;).extract() 
+item[&apos;price&apos;] = record.xpath(&apos;li[re:test(@class, &quot;lijg[0-1]&quot;)]/a/text()&apos;).extract() 
+item[&apos;date&apos;] = record.xpath(&apos;li[re:test(@class, &quot;lirq[0-1]&quot;)]/a/text()&apos;).extract()
+......
+</code></pre><h2 id="运行效果"><a href="#运行效果" class="headerlink" title="运行效果"></a>运行效果</h2><p>在硬件配置和网络条件尚可的情况下，1分钟内即可爬遍50个页面，获取2000+条记录，内容大志如下:</p>
+<pre><code>url,date,price,unitprice,area
+/sale/10024038.html,2015-02-24,102.00万,8500元,灵溪镇
+/sale/10023090.html,2015-02-22,116.00万,8854元,灵溪镇
+/sale/10022669.html,2015-02-22,70.00万,5468元,灵溪镇
+/sale/10019716.html,2015-02-14,243.00万,14294元,灵溪镇
+/sale/10023935.html,2015-02-14,188.50万,13876元,灵溪镇
+/sale/10023939.html,2015-02-14,105.00万,3750元,灵溪镇
+/sale/10024011.html,2015-02-14,215.00万,7166元,灵溪镇
+/sale/10022802.html,2015-02-14,158.00万,6076元,灵溪镇
+/sale/10022803.html,2015-02-14,90.00万,9782元,灵溪镇
+......
+</code></pre><h2 id="The-End-1"><a href="#The-End-1" class="headerlink" title="The End"></a>The End</h2><p>如果有需求，可以深入爬取，进入某条记录的详细页面，例如:</p>
+<pre><code>sale/10024038.html
+</code></pre><p>获取该房源的更详细的信息</p>
+<h1 id="3rd"><a href="#3rd" class="headerlink" title="3rd"></a>3rd</h1><h2 id="论坛信息爬取"><a href="#论坛信息爬取" class="headerlink" title="论坛信息爬取"></a>论坛信息爬取</h2><p><a href="http://www.0577cnw.com" target="_blank" rel="noopener">苍南网</a>，<a href="http://www.cangnan5.com" target="_blank" rel="noopener">苍南在线</a>，<a href="http://cnlg.cn" target="_blank" rel="noopener">龙港网</a>均使用了Discuz系统，因此只要设计出一种爬虫即可实现这三个站点论坛数据的爬取。在服务器未做设置的情况下，可以轻易实现整站的爬取</p>
+<h3 id="URL规则分析-1"><a href="#URL规则分析-1" class="headerlink" title="URL规则分析"></a>URL规则分析</h3><p>以 <code>http://www.cangnan5.com/forum-143-1.html</code> 为分析目标，简称为 <code>目标</code> 。</p>
+<p><code>目标</code> 为今日苍南板块，每个帖子分为主题、标题、作者等几个部分。本篇仅研究标题和帖子URL的获取，目标页面的url规则为:</p>
+<pre><code>http://www.cangnan5.com/forum-143-d*.html
+</code></pre><p>截至本篇，页面的有效范围为:[1,206]，因此可以通过设置start_urls指定爬取页面:</p>
+<pre><code>for i in range(1,206):
+    start_urls.append(&quot;http://www.cangnan5.com/forum-143-%s.html&quot; %i)
+</code></pre><p>到这里，爬虫可以爬遍今日苍南板块的所有页面了。接下来还需要对爬到的页面进行解析，获取类似如下的信息:</p>
+<blockquote>
+<ul>
+<li>标题 </li>
+<li>帖子   </li>
+<li>URL</li>
+</ul>
+</blockquote>
+<h3 id="chrome开发者工具和选择器-1"><a href="#chrome开发者工具和选择器-1" class="headerlink" title="chrome开发者工具和选择器"></a>chrome开发者工具和选择器</h3><p>scrapy通过选择器(seletors)提取数据，使用特定的 XPath 或者 CSS<br>表达式来“选择”<br>HTML文件中的某个部分。使用chrome开发者工具可以很方便的得到自己所需要的XPath。例如通过以下XPath，即可获取每个页面所有帖子的集合:</p>
+<pre><code>//tbody[re:test(@id, &quot;normalthread_\d+&quot;)]/tr/th/a[3]
+</code></pre><p>使用以下代码既可遍历当前页面的所有记录:</p>
+<pre><code>records = response.xpath(&apos;//tbody[re:test(@id, &quot;normalthread_\d+&quot;)]/tr/th/a[3]&apos;)
+for record in records:
+    ......
+</code></pre><p>通过下面代码，可以获取到标题和帖子URL字段:</p>
+<pre><code>item[&apos;title&apos;] = record.xpath(&apos;text()&apos;).extract()
+item[&apos;url&apos;] = record.xpath(&apos;@href&apos;).extract()
+</code></pre><h3 id="运行效果-1"><a href="#运行效果-1" class="headerlink" title="运行效果"></a>运行效果</h3><p>为了避免不必要的流量，只最一个页面进行爬取，获得类似如下数据:</p>
+<pre><code>url,title
+http://www.cangnan5.com/thread-38492-1-1.html,震惊！苍南渔民废弃的“老船木”卖出天价！
+http://www.cangnan5.com/thread-38490-1-1.html,&quot;苍南环卫工讨红包被拒,商家门前垃圾成堆!&quot;
+http://www.cangnan5.com/thread-38489-1-1.html,&quot;苍南有个奇葩姓,姓＂操＂&quot;
+http://www.cangnan5.com/thread-38487-1-1.html,&quot;苍南小偷潜伏15小时,刀逼女主人破密码&quot;
+http://www.cangnan5.com/thread-38486-1-1.html,瑞安酒驾女汉子被查后当众脱裤子？
+......
+</code></pre><h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>本地论坛的内容确实有点low</p>
+<p>⊙﹏⊙‖∣°</p>
+<h1 id="4th"><a href="#4th" class="headerlink" title="4th"></a>4th</h1><h2 id="爬虫ban策略和反ban策略"><a href="#爬虫ban策略和反ban策略" class="headerlink" title="爬虫ban策略和反ban策略"></a>爬虫ban策略和反ban策略</h2><p>关于为什么要有爬虫ban策略，可以参考此文：<a href="http://www.iteye.com/topic/718874" target="_blank" rel="noopener">关于网络爬虫</a></p>
+<p>之前分布爬取的时候因为设计的爬虫比较弱智，一天内爬取某站上百万次。反省了一下，出于道德考虑，我把爬虫运行的时间集中在深夜。</p>
+<p>关于为什么别人把你的爬虫ban了之后需要有反ban策略，当然是因为需要获取有价值的信息</p>
+<p>(#‵′)</p>
+<h2 id="关于robots协议"><a href="#关于robots协议" class="headerlink" title="关于robots协议"></a>关于robots协议</h2><p>robots协议，请参考百度百科：<a href="http://baike.baidu.com/link?url=M0asQts72ScQB9KoC_EzlGzZzTK-WDksviho7Tj7pk4Y7OyPWApWz0De65FIhKvi-px-lxxcr2fvMp4Jim24u_dUgEfNXhgslD8Zly8HULFy36qbz2nSSlGypzayU14r" target="_blank" rel="noopener">robots协议</a></p>
+<p>制定robots.txt可以阻止有道德的爬虫，例如google、百度…</p>
+<p>而对于无品的爬虫，根本不遵循robots.txt的内容，就好像直接把别人家门踢开一样。</p>
+<h2 id="爬虫的防范"><a href="#爬虫的防范" class="headerlink" title="爬虫的防范"></a>爬虫的防范</h2><p>本篇所涉及的爬虫防范主要针对无品爬虫，毕竟对于google、百度等爬虫，简单robots.txt就可以将他们拒之门外</p>
+<h3 id="IP封锁"><a href="#IP封锁" class="headerlink" title="IP封锁"></a>IP封锁</h3><p>简单的说是将你的IP甚至IP段拉入黑名单，以此达到防范目的</p>
+<h3 id="IP访问频率限制"><a href="#IP访问频率限制" class="headerlink" title="IP访问频率限制"></a>IP访问频率限制</h3><p>部分爬虫对网站的利益会大于其毙，通过爬虫身后的产品可以宣传自己，例如搜索引擎。此时，在保证允许爬虫爬取，可以通过IP访问频率限制来防止高并发下导致网站无法正常运行的情况。</p>
+<h3 id="User-Agent"><a href="#User-Agent" class="headerlink" title="User-Agent"></a>User-Agent</h3><p>用户代理<br>User-Agent，是指浏览器,它的信息包括硬件平台、系统软件、应用软件和用户个人偏好。服务器端可以通过分析User-Agent来获取爬虫行为。例如出现 <code>baiduspider</code> 的 <code>User-Agent</code> 代表百度爬虫曾经来访过。在对IP未做限制的情况下，可以通过分析 <code>User-Agent</code> 来判断哪些爬虫耍了流氓。</p>
+<h2 id="爬虫反ban策略"><a href="#爬虫反ban策略" class="headerlink" title="爬虫反ban策略"></a>爬虫反ban策略</h2><p>一般来说，对于一个网站，除非关闭服务，否则是没有完美的策略来防范爬虫的。Scrapy官方文档提到了集中防Ban的策略：<a href="http://doc.scrapy.org/en/0.24/topics/practices.html#bans" target="_blank" rel="noopener">Scrapy文档</a></p>
+<p>除去费用来说，使用高度分布式的下载器是最理想的反ban策略</p>
+<h3 id="IP池"><a href="#IP池" class="headerlink" title="IP池"></a>IP池</h3><p>一般的服务器，会将比较频繁访问的IP拉入黑名单，导致爬虫无法正常访问该站点。通过IP池可以一定程度上解决该问题。</p>
+<p>打个比方，IP池可以想象成一个拥有很多IP的池子。当你爬取某个站点时，随机从池子中获取一个IP作为代理，以达到防止被服务器认出的效果。</p>
+<h3 id="DOWNLOAD-DELAY设置"><a href="#DOWNLOAD-DELAY设置" class="headerlink" title="DOWNLOAD_DELAY设置"></a>DOWNLOAD_DELAY设置</h3><p>某些服务器会以每秒的访问量来识别爬虫，通过 <code>DOWNLOAD\_DELAY</code> ，可以设置爬虫延时</p>
+<h3 id="User-Agent池"><a href="#User-Agent池" class="headerlink" title="User-Agent池"></a>User-Agent池</h3><p>使用 <code>User-Agent</code> 池，轮流选择之一来作为 <code>User-Agent</code> 。池中包含常见的浏览器的 <code>User-Agent</code> ，以达到骗过浏览器伪装自己的目的</p>
+<h2 id="The-End-2"><a href="#The-End-2" class="headerlink" title="The End"></a>The End</h2><p>本篇纯属于搬砖文，ban和反ban的内容均来之网络</p>
+<p>对于ban，目前 <code>apache</code> 和 <code>nginx</code> 均可实现相关功能</p>
+<h1 id="5th"><a href="#5th" class="headerlink" title="5th"></a>5th</h1><h2 id="代理IP的验证"><a href="#代理IP的验证" class="headerlink" title="代理IP的验证"></a>代理IP的验证</h2><p>进行反ban策略时，我们通过某种途径获取了一批代理IP，简称 <code>IPs</code> 。此时，还需要对 <code>IPs</code> 进行筛选，获取其中可用的IP集合作为爬虫的IP池。</p>
+<h3 id="IPs的获取"><a href="#IPs的获取" class="headerlink" title="IPs的获取"></a>IPs的获取</h3><p>反ban的策略中，类似Crawlera的产品是很好的方案，但是通常需要付费授权，本篇主要讨论以免费的方式获取 <code>IPs</code> 。目前可以通过网络爬虫的方式对各个代理IP发布站进行抓取以获取 <code>IPs</code> ，或者通过商业软件的试用版获取 <code>IPs</code> </p>
+<h4 id="代理IP发布站"><a href="#代理IP发布站" class="headerlink" title="代理IP发布站"></a>代理IP发布站</h4><p>例如 <a href="http://www.xici.net.co/" target="_blank" rel="noopener">http://www.xici.net.co/</a><br>等站点，对于编写爬虫获取代理IP，可以参考 <a href="#1st">1st</a></p>
+<p><code>要修改部分</code></p>
+<h4 id="商业软件"><a href="#商业软件" class="headerlink" title="商业软件"></a>商业软件</h4><p>No Hands Proxies 是一个很好的选择</p>
+<h2 id="IPs的筛选"><a href="#IPs的筛选" class="headerlink" title="IPs的筛选"></a>IPs的筛选</h2><p>遍历 <code>IPs</code> ，并设置代理访问百度，通过返回信息判断该IP是否有效。通过下面的代码可以轻松遍历 <code>IPs</code>:</p>
+<pre><code>for line in file:
+    ip_queue.put(line.rstrip())
+</code></pre><p>通过下面的代码可以设置代理:</p>
+<pre><code>opener = urllib2.build_opener(urllib2.ProxyHandler({&apos;http&apos;:&apos;http://%s/&apos;%ip}))
+</code></pre><p>通过下面的代码访问百度:</p>
+<pre><code>request = urllib2.Request(&apos;http://www.baidu.com/&apos;)
+response = opener.open(request, timeout=30)
+</code></pre><p>可以使用response的url来判断代理是否有效:</p>
+<pre><code>response.geturl().find(&quot;baidu&quot;)
+</code></pre><p>最终效果如下:</p>
+<pre><code>183.207.228.123:80: is valid!
+111.13.12.216:80: is valid!
+116.236.216.116:8080: is valid!
+221.176.14.72:80: is valid!
+218.5.74.174:80: is valid!
+</code></pre><h1 id="6th"><a href="#6th" class="headerlink" title="6th"></a>6th</h1><h2 id="分布式爬虫"><a href="#分布式爬虫" class="headerlink" title="分布式爬虫"></a>分布式爬虫</h2><p>在单机运行爬虫的时候，已经充分利用硬件资源，无法提高爬虫的效率，此时可以考虑分布式爬虫。可以这么理解，在打扫一间很大很大的房间时，已经双手甚至双脚都用了，此时可以叫其他人帮忙打扫以增加打扫速度。换做分布式爬虫而言，就是N台主机协同合作一个爬虫项目</p>
+<h2 id="分布式爬虫的实现方式"><a href="#分布式爬虫的实现方式" class="headerlink" title="分布式爬虫的实现方式"></a>分布式爬虫的实现方式</h2><p>分布式爬虫首先要实现一个任务队列，该任务队列可以理解成对某个页面的访问。然后每个主机通过访问任务队列并执行相关任务，同时向任务队列添加新任务，即任务调度的过程。添加任务的时候会通过指纹信息来判断该任务是否已经被执行过。最后，当任务队列的长度为0时，结束爬虫。</p>
+<h3 id="Scrapy-redis"><a href="#Scrapy-redis" class="headerlink" title="Scrapy-redis"></a>Scrapy-redis</h3><p><code>scrapy-redis</code> 是一个实现Scrapy分布式的框架，可以从<a href="https://github.com/darkrho/scrapy-redis" target="_blank" rel="noopener">这里</a>获取关于 <code>scrapy-redis</code> 的介绍。根据文档，安装 <code>scrapy-redis</code> 后，只要在原有Scrapy爬虫的基础上添加如下代码即可实现分布式:</p>
+<pre><code>SCHEDULER = &quot;scrapy_redis.scheduler.Scheduler&quot;
+SCHEDULER_PERSIST = True
+</code></pre><p>同时我们需要通过如下代码指定Redis服务器的地址:</p>
+<pre><code>REDIS_HOST = &apos;192.168.1.132&apos;
+REDIS_PORT = 6379
+</code></pre><h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>本段取自<a href="https://github.com/darkrho/scrapy-redis" target="_blank" rel="noopener"><code>scrapy-redis</code></a>中的README</p>
+<ol>
+<li>安装scrapy-redis</li>
+<li>第一次运行爬虫并停止它:</li>
 </ol>
-<h2 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h2><ul>
-<li>redis实战</li>
-<li>Microsoft.NET企业级应用架构设计</li>
-<li>CLR via C#</li>
-<li>ECMAScript6入门</li>
-<li>Spring Cloud微服务实战</li>
-<li>架构师</li>
-<li>微服务设计</li>
-<li>微服务架构与实践</li>
-<li>Spring Cloud与Docker微服务架构实战</li>
-<li>WCF服务编程</li>
-<li>创业者手册</li>
-<li><del>经营战略全史</del></li>
-<li><del>招聘、面试、录用及员工离职管理实操从新手到高手</del></li>
-<li><del>一看就懂的新公司财务管理全图解</del></li>
-<li>如何定义孵化器</li>
-<li>一本书读懂24种互联网创业模式</li>
-<li>第四次工业革命</li>
-<li>第四次金融浪潮</li>
-<li>从互联网到新工业革命</li>
-<li><del>共享经济</del></li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">读书</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/31/life/2017_book/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-life/cat-02" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/27/life/cat-02/">第二次摄猫</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/27/life/cat-02/" class="archive-article-date">
-  	<time datetime="2017-12-27T08:11:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="P1"><a href="#P1" class="headerlink" title="P1"></a>P1</h2><p><img src="/img/cat-photo/p5.jpg" alt="photo1.jpg"></p>
-<h2 id="P2"><a href="#P2" class="headerlink" title="P2"></a>P2</h2><p><img src="/img/cat-photo/p6.jpg" alt="photo2.jpg"></p>
-<h2 id="P3"><a href="#P3" class="headerlink" title="P3"></a>P3</h2><p><img src="/img/cat-photo/p7.jpg" alt="photo3.jpg"></p>
-<h2 id="P4"><a href="#P4" class="headerlink" title="P4"></a>P4</h2><p><img src="/img/cat-photo/p8.jpg" alt="photo4.jpg"></p>
-<h2 id="P5"><a href="#P5" class="headerlink" title="P5"></a>P5</h2><p><img src="/img/cat-photo/p9.jpg" alt="photo5.jpg"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">摄影</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">猫</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/27/life/cat-02/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-life/this-is-us" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/22/life/this-is-us/">关于柠檬</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/22/life/this-is-us/" class="archive-article-date">
-  	<time datetime="2017-12-22T10:31:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/img/1dbd2232-b3dc-ccdd-3534-1055113fe39d.webp" alt="tet"></p>
-<h3 id="柠檬汽水"><a href="#柠檬汽水" class="headerlink" title="柠檬汽水"></a>柠檬汽水</h3><blockquote>
-<p>我认为有一天，在你像我一样苍老的时候，你也会和一个年轻人这样喋喋不休，告诉他，如何把生活赠与你最酸涩的一颗柠檬酿成一杯甜美的柠檬汁。</p>
-</blockquote>
-<h3 id="死亡"><a href="#死亡" class="headerlink" title="死亡"></a>死亡</h3><blockquote>
-<p>知道自己快死了是什么感觉？就好像生活中的美好瞬间像碎片一样在我周围翻飞而我在努力地去抓。当我孙女靠在我的腿上熟睡时,我想努力抓住她的呼吸触碰在我身上的感觉。当我逗得我儿子发笑时,我想努力抓住他的笑声。记住他放声大笑的样子。但现在这些片段飞得越来越快，快得我难以抓住。我能感觉到它们正在从我指尖溜走。存在我记忆中：孙女的呼吸和儿子的笑声很快就将消失了。我知道你觉得现在自己还有大把的时间，但并非如此。所以别再装得那么冷漠，把握生活中的美好瞬间，趁着你还年轻利落，把握机会。因为在不经意间，你就老了，变得步履蹒跚。那时候再想重来也没机会了。</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/22/life/this-is-us/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-life/cat-01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/26/life/cat-01/">第一次摄猫</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/26/life/cat-01/" class="archive-article-date">
-  	<time datetime="2017-11-26T12:27:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="P1"><a href="#P1" class="headerlink" title="P1"></a>P1</h2><p><img src="/img/cat-photo/p1.jpg" alt="photo1.jpg"></p>
-<h2 id="P2"><a href="#P2" class="headerlink" title="P2"></a>P2</h2><p><img src="/img/cat-photo/p2.jpg" alt="photo2.jpg"></p>
-<h2 id="P3"><a href="#P3" class="headerlink" title="P3"></a>P3</h2><p><img src="/img/cat-photo/p3.jpg" alt="photo3.jpg"></p>
-<h2 id="P4"><a href="#P4" class="headerlink" title="P4"></a>P4</h2><p><img src="/img/cat-photo/p4.jpg" alt="photo4.jpg"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">摄影</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">猫</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/26/life/cat-01/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-work/work-in-windows" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/20/work/work-in-windows/">在windows下高效工作</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/20/work/work-in-windows/" class="archive-article-date">
-  	<time datetime="2017-10-20T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>几个月前为了提高在windows下的工作效率，特地上网找各种软件，目前以下几个是每天工作中频繁用到的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> example-project</span><br><span class="line">$ scrapy crawl dmoz</span><br><span class="line">... [dmoz] ...</span><br><span class="line">^C</span><br></pre></td></tr></table></figure>
+<ol>
+<li>再次运行恢复停止的爬虫:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ scrapy crawl dmoz</span><br><span class="line">... [dmoz] DEBUG: Resuming crawl (9019 requests scheduled)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>启动一个或多个其他主机上的爬虫:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ scrapy crawl dmoz</span><br><span class="line">... [dmoz] DEBUG: Resuming crawl (8712 requests scheduled)</span><br></pre></td></tr></table></figure>
+<h1 id="7th"><a href="#7th" class="headerlink" title="7th"></a>7th</h1><h2 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h2><p>在 <a href="https://realpython.com" target="_blank" rel="noopener">https://realpython.com</a> 看到两篇关于Scrapy入门的文章写的很好</p>
+<blockquote>
 <ul>
-<li>Total commander</li>
-<li>Launchy</li>
-<li>Ditto</li>
-<li>EveryThing</li>
-<li>快捷键</li>
-<li>脚本</li>
-</ul>
-<h2 id="Total-commander"><a href="#Total-commander" class="headerlink" title="Total commander"></a>Total commander</h2><p>功能强大的全能文件管理器，有了TC之后任务栏上最多只出现一个资源管理器，大多文件操作都在TC中执行。</p>
-<h2 id="Launchy"><a href="#Launchy" class="headerlink" title="Launchy"></a>Launchy</h2><p>键盘快速启动工具，自己有很多绿色小工具维护在<code>tools</code>目录里，以前启动的时候都需要通过鼠标进到目录启动，有了Launchy之后直接把<code>tools</code>目录加入Launchy目录中，现在启动程序再也不用鼠标了。</p>
-<h2 id="Cmder"><a href="#Cmder" class="headerlink" title="Cmder"></a>Cmder</h2><p>windows下cmd的替换工具，由于工作的时候需要开很多cmd，任务栏显得很拥挤，使用cmder之后基本上只开两个cmder，一个用来执行<code>web server</code>, <code>file watch</code>之类的任务，另一个做常规操作。当然，使用cmder原因不仅仅如此，他还提供了大量的 linux命令和工具,比如 grep, curl, vim, grep, tar, unzip, ssh, ls, bash</p>
-<h2 id="Ditto"><a href="#Ditto" class="headerlink" title="Ditto"></a>Ditto</h2><p>开源、免费、强大的剪贴板增强工具。可以把复制过的所有内容保存起来（可以设定保存日期或条目总数），快捷地供后续调用。</p>
-<h2 id="EveryThing"><a href="#EveryThing" class="headerlink" title="EveryThing"></a>EveryThing</h2><p>文件快速搜索工具，也是在电脑中常驻的绿色软件，在有索引的情况下搜索文件非常快，有了EveryThing后，基本不用系统自带的文件搜索了。</p>
-<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>其实快捷键应该是列在第一位的，掌握常用快捷键才是提供工作效率的基础，有些快捷键大多数人不知道，比如：</p>
-<ul>
-<li>创建新的虚拟桌面：Win + Ctrl + D</li>
-<li>Win + ←：最大化窗口到左侧的屏幕上（与开始屏幕应用无关）</li>
-<li>Win + →：最大化窗口到右侧的屏幕上（与开始屏幕应用无关）</li>
-<li>Win+ ↑：最大化窗口（与开始屏幕应用无关）</li>
-<li>Win+ ↓：最小化窗口（与开始屏幕应用无关）</li>
-<li>Win+ SHIFT +↑：垂直拉伸窗口，宽度不变（与开始屏幕应用无关）</li>
-<li>Win+ SHIFT +↓：垂直缩小窗口，宽度不变（与开始屏幕应用无关）</li>
-<li>Win+SHIFT+←：将活动窗口移至左侧显示器 （与开始屏幕应用无关）</li>
-<li>Win+SHIFT+→：将活动窗口移至右侧显示器（与开始屏幕应用无关）</li>
-<li>……</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/20/work/work-in-windows/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-work/jetbrains-ide-deployment" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/15/work/jetbrains-ide-deployment/">使用Deployment功能快速部署</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/15/work/jetbrains-ide-deployment/" class="archive-article-date">
-  	<time datetime="2017-10-15T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Issues-1"><a href="#Issues-1" class="headerlink" title="Issues 1"></a>Issues 1</h2><p>新功能上线经常有小bug需要调整，很多时候只需要同步远程服务器上的一个文件，使用<code>Total commander</code>同步代码并不是很方便。</p>
-<h2 id="Issues-2"><a href="#Issues-2" class="headerlink" title="Issues 2"></a>Issues 2</h2><p>用python将公司的<code>api</code>和<code>util</code>以包的形式开发，其他项目需要导入该包。起初，写了个<code>gulp</code>的<code>watch</code>脚本，开发该包时，文件发生变化会同步到指定目录。但是<code>gulp</code>的<code>watch</code>用久了，会因为内存问题自己挂掉，没有深入研究。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h3><p><code>jetbrains</code>系列的IDE均提供了Deployment的功能，十分方便</p>
-<h3 id="Deployment设置"><a href="#Deployment设置" class="headerlink" title="Deployment设置"></a>Deployment设置</h3><p>对需要远程同步的项目，在Deployment中做了如下设置：</p>
-<p><img src="/img/jetbrains-ide-deployment/p3.png" alt="p3.png"><br><img src="/img/jetbrains-ide-deployment/p4.png" alt="p4.png"></p>
-<p>对需要本地同步的项目，在Deployment中做了如下设置：</p>
-<p><img src="/img/jetbrains-ide-deployment/p1.png" alt="p1.png"><br><img src="/img/jetbrains-ide-deployment/p2.png" alt="p2.png"></p>
-<h3 id="Deployment使用"><a href="#Deployment使用" class="headerlink" title="Deployment使用"></a>Deployment使用</h3><p>需要同步整个文时，右键项目并选择<code>Upload to xxx</code>，如果只是修改了某个文件，只需右键该文件并选择<code>Upload to xxx</code>,就像这样：</p>
-<p><img src="/img/jetbrains-ide-deployment/p5.png" alt="p5.png"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/15/work/jetbrains-ide-deployment/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-work/jetbrains-ide-todo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/11/work/jetbrains-ide-todo/">在工作中使用TODO功能</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/11/work/jetbrains-ide-todo/" class="archive-article-date">
-  	<time datetime="2017-10-11T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>开始忙了，所以杂事会越来越多，有的时候被业务部门的同事打断之后就想不起来之前代码写到哪里。</p>
-<h2 id="sublime-text"><a href="#sublime-text" class="headerlink" title="sublime text"></a>sublime text</h2><p>最开始只是在sublime text中添加注释行，代表回来要接着做什么，但作用不是很明显。还是怀念ReSharper带的TODO tool，于是下载了<code>Pycharm</code>和<code>Webstorm</code>。</p>
-<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><p>使用<code>Pycharm</code>后，当有业务部门同事打断我，我都会让他们等半分钟，马上写个TODO，像这样：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># TODO 修改了u8id，需要判断是否有重复id</span></span><br></pre></td></tr></table></figure>
-<p>处理完业务部门的事情后，打开TODO tool，一目了然：</p>
-<p><img src="/img/jetbrains-ide-todo/p1.png" alt="p1.png"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/11/work/jetbrains-ide-todo/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python/pylint-apply-and-plugin" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/18/python/pylint-apply-and-plugin/">使用pylint规范Python代码风格</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/18/python/pylint-apply-and-plugin/" class="archive-article-date">
-  	<time datetime="2017-09-18T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>为了保证协同开发和代码交接时的风格统一，使用Pylint来规范目前的Python项目</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
-<ul>
-<li><a href="http://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_language_rules/" target="_blank" rel="noopener">http://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_language_rules/</a></li>
-<li><a href="http://www.ibm.com/developerworks/cn/linux/l-cn-pylint/" target="_blank" rel="noopener">http://www.ibm.com/developerworks/cn/linux/l-cn-pylint/</a></li>
+<li><a href="https://realpython.com/blog/python/web-scraping-with-scrapy-and-mongodb/" target="_blank" rel="noopener">Web Scraping With Scrapy and MongoDB</a></li>
+<li><a href="https://realpython.com/blog/python/web-scraping-and-crawling-with-scrapy-and-mongodb/" target="_blank" rel="noopener">Web Scraping and Crawling With Scrapy and MongoDB</a></li>
 </ul>
 </blockquote>
-<h2 id="检查单个文件"><a href="#检查单个文件" class="headerlink" title="检查单个文件"></a>检查单个文件</h2><p>输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pylint qst\api\zcy\factory.py --reports=no</span><br></pre></td></tr></table></figure></p>
-<p>输出：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">No config file found, using default configuration</span><br><span class="line">************* Module qst.api.zcy.factory</span><br><span class="line">I: 15, 0: Locally disabling unused-argument (W0613) (locally-disabled)</span><br><span class="line">I:118, 0: Locally disabling invalid-name (C0103) (locally-disabled)</span><br><span class="line">I:189, 0: Locally disabling invalid-name (C0103) (locally-disabled)</span><br><span class="line">I:196, 0: Locally disabling invalid-name (C0103) (locally-disabled)</span><br><span class="line">I:203, 0: Locally disabling invalid-name (C0103) (locally-disabled)</span><br><span class="line">I:212, 0: Locally disabling too-few-public-methods (R0903) (locally-disabled)</span><br><span class="line">C:175, 4: Invalid method name <span class="string">"create_query_confirm_waybill_api"</span> (invalid-name)</span><br><span class="line">C:218, 4: Invalid method name <span class="string">"create_get_logistics_companies_api"</span> (invalid-name)</span><br></pre></td></tr></table></figure>
-<h2 id="检查Python包"><a href="#检查Python包" class="headerlink" title="检查Python包"></a>检查Python包</h2><p>输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pylint qst\api\gw\</span><br></pre></td></tr></table></figure></p>
-<p>输出：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line">No config file found, using default configuration                                                 </span><br><span class="line">************* Module qst.api.gw.authz                                                             </span><br><span class="line">I: 48, 0: Locally disabling bare-except (W0702) (locally-disabled)                                </span><br><span class="line">                                                                                                  </span><br><span class="line">                                                                                                  </span><br><span class="line">Report                                                                                            </span><br><span class="line">======                                                                                            </span><br><span class="line">42 statements analysed.                                                                           </span><br><span class="line">                                                                                                  </span><br><span class="line">Statistics by <span class="built_in">type</span>                                                                                </span><br><span class="line">------------------                                                                                </span><br><span class="line">                                                                                                  </span><br><span class="line">+---------+-------+-----------+-----------+------------+---------+                                </span><br><span class="line">|<span class="built_in">type</span>     |number |old number |difference |%documented |%badname |                                </span><br><span class="line">+=========+=======+===========+===========+============+=========+                                </span><br><span class="line">|module   |4      |4          |=          |100.00      |0.00     |                                </span><br><span class="line">+---------+-------+-----------+-----------+------------+---------+                                </span><br><span class="line">|class    |0      |0          |=          |0           |0        |                                </span><br><span class="line">+---------+-------+-----------+-----------+------------+---------+                                </span><br><span class="line">|method   |0      |0          |=          |0           |0        |                                </span><br><span class="line">+---------+-------+-----------+-----------+------------+---------+                                </span><br><span class="line">|<span class="keyword">function</span> |5      |5          |=          |100.00      |0.00     |                                </span><br><span class="line">+---------+-------+-----------+-----------+------------+---------+                                </span><br><span class="line">                                                                                                  </span><br><span class="line">                                                                                                  </span><br><span class="line">                                                                                                  </span><br><span class="line">External dependencies                                                                             </span><br><span class="line">---------------------                                                                             </span><br><span class="line">::                                                                                                </span><br><span class="line">                                                                                                  </span><br><span class="line">    qst                                                                                           </span><br><span class="line">      \-api                                                                                       </span><br><span class="line">        \-gw                                                                                      </span><br><span class="line">          \-api_config (qst.api.gw.authz,qst.api.gw.factory)                                      </span><br><span class="line">    requests (qst.api.gw.authz,qst.api.gw.factory)                                                </span><br><span class="line">                                                                                                  </span><br><span class="line">                                                                                                  </span><br><span class="line">                                                                                                  </span><br><span class="line">Raw metrics                                                                                       </span><br><span class="line">-----------                                                                                       </span><br><span class="line">                                                                                                  </span><br><span class="line">+----------+-------+------+---------+-----------+                                                 </span><br><span class="line">|<span class="built_in">type</span>      |number |%     |previous |difference |                                                 </span><br><span class="line">+==========+=======+======+=========+===========+                                                 </span><br><span class="line">|code      |45     |46.88 |NC       |NC         |                                                 </span><br><span class="line">+----------+-------+------+---------+-----------+                                                 </span><br><span class="line">|docstring |19     |19.79 |NC       |NC         |                                                 </span><br><span class="line">+----------+-------+------+---------+-----------+                                                 </span><br><span class="line">|comment   |15     |15.62 |NC       |NC         |                                                 </span><br><span class="line">+----------+-------+------+---------+-----------+                                                 </span><br><span class="line">|empty     |17     |17.71 |NC       |NC         |                                                 </span><br><span class="line">+----------+-------+------+---------+-----------+                                                 </span><br><span class="line">                                                                                                  </span><br><span class="line">                                                                                                  </span><br><span class="line">                                                                                                  </span><br><span class="line">Duplication                                                                                       </span><br><span class="line">-----------                                                                                       </span><br><span class="line">                                                                                                  </span><br><span class="line">+-------------------------+------+---------+-----------+                                          </span><br><span class="line">|                         |now   |previous |difference |                                          </span><br><span class="line">+=========================+======+=========+===========+                                          </span><br><span class="line">|nb duplicated lines      |0     |0        |=          |                                          </span><br><span class="line">+-------------------------+------+---------+-----------+                                          </span><br><span class="line">|percent duplicated lines |0.000 |0.000    |=          |                                          </span><br><span class="line">+-------------------------+------+---------+-----------+                                          </span><br><span class="line">                                                                                                  </span><br><span class="line">                                                                                                  </span><br><span class="line">                                                                                                  </span><br><span class="line">Messages by category                                                                              </span><br><span class="line">--------------------                                                                              </span><br><span class="line">                                                                                                  </span><br><span class="line">+-----------+-------+---------+-----------+                                                       </span><br><span class="line">|<span class="built_in">type</span>       |number |previous |difference |                                                       </span><br><span class="line">+===========+=======+=========+===========+                                                       </span><br><span class="line">|convention |0      |0        |=          |                                                       </span><br><span class="line">+-----------+-------+---------+-----------+                                                       </span><br><span class="line">|refactor   |0      |0        |=          |                                                       </span><br><span class="line">+-----------+-------+---------+-----------+                                                       </span><br><span class="line">|warning    |0      |0        |=          |                                                       </span><br><span class="line">+-----------+-------+---------+-----------+                                                       </span><br><span class="line">|error      |0      |0        |=          |                                                       </span><br><span class="line">+-----------+-------+---------+-----------+                                                       </span><br><span class="line">                                                                                                  </span><br><span class="line">                                                                                                  </span><br><span class="line">                                                                                                  </span><br><span class="line">Messages                                                                                          </span><br><span class="line">--------                                                                                          </span><br><span class="line">                                                                                                  </span><br><span class="line">+-----------------+------------+                                                                  </span><br><span class="line">|message id       |occurrences |                                                                  </span><br><span class="line">+=================+============+                                                                  </span><br><span class="line">|locally-disabled |1           |                                                                  </span><br><span class="line">+-----------------+------------+                                                                  </span><br><span class="line">                                                                                                  </span><br><span class="line">                                                                                                  </span><br><span class="line">                                                                                                  </span><br><span class="line">Global evaluation                                                                                 </span><br><span class="line">-----------------                                                                                 </span><br><span class="line">Your code has been rated at 10.00/10</span><br></pre></td></tr></table></figure>
-<h2 id="常用参数"><a href="#常用参数" class="headerlink" title="常用参数"></a>常用参数</h2><ul>
-<li>简化输出：<code>--reports=no</code></li>
-<li>将结果导出html：<code>pylint qst\ --files-output=y --output-format=html</code></li>
-<li>忽略警告：<code># pylint:disable</code></li>
+<p>尝试翻译这两篇文章，鉴于语言水平的问题，字面意思和原文出入比较大，所以决定私藏</p>
+<p><code>readthedocs</code> 上提供了官方文档的中文版，感谢翻译者</p>
+<blockquote>
+<ul>
+<li><a href="http://scrapy-chs.readthedocs.org/zh_CN/latest/index.html" target="_blank" rel="noopener">http://scrapy-chs.readthedocs.org/zh_CN/latest/index.html</a></li>
 </ul>
+</blockquote>
+<p>提供几个较好的scrapy系列</p>
+<blockquote>
+<ul>
+<li><a href="http://www.52ml.net/4318.html" target="_blank" rel="noopener">我爱机器学习</a></li>
+<li><a href="http://blog.csdn.net/u012150179/article/details/32343635" target="_blank" rel="noopener">Scrapy研究探索系列</a></li>
+<li><a href="http://www.cnblogs.com/txw1958/archive/2012/07/12/scrapy_installation_introduce.html" target="_blank" rel="noopener">方倍工作室</a></li>
+</ul>
+</blockquote>
 
       
 
@@ -846,168 +389,9 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
         		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/18/python/pylint-apply-and-plugin/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python/pytest-apply-and-plugin" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/13/python/pytest-apply-and-plugin/">使用pytest进行Python的单元测试</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/13/python/pytest-apply-and-plugin/" class="archive-article-date">
-  	<time datetime="2017-09-13T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>之前一直使用<code>unittest</code>进行<code>Python</code>的单元测试，最近接触<code>pytest</code>文档并使用它进行目前<code>Python</code>项目的单元测试</p>
-<h2 id="编写用例"><a href="#编写用例" class="headerlink" title="编写用例"></a>编写用例</h2><p>使用<code>pytest</code>可以方便的编写出测试用例，只需要在函数用例或者类用例前加<code>test_</code>或<code>Test</code>前缀即可</p>
-<h3 id="函数用例"><a href="#函数用例" class="headerlink" title="函数用例"></a>函数用例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_create_get_category_api</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""test create_get_category_api</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
-<h3 id="类用例"><a href="#类用例" class="headerlink" title="类用例"></a>类用例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestGw</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""the TestCase of xxx</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setup_class</span><span class="params">(cls)</span>:</span></span><br><span class="line">        <span class="string">""" mock collection to test collection</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_create_goods</span><span class="params">(self)</span>:</span>  </span><br><span class="line">        <span class="string">"""test create goods</span></span><br><span class="line"><span class="string">        ...</span></span><br></pre></td></tr></table></figure>
-<h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><h3 id="测试单个函数"><a href="#测试单个函数" class="headerlink" title="测试单个函数"></a>测试单个函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest .\qst\tests\api\zcy\test_factory_category.py::test_create_get_category_attrs_api</span><br></pre></td></tr></table></figure>
-<h3 id="测试单个类"><a href="#测试单个类" class="headerlink" title="测试单个类"></a>测试单个类</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest .\qst\tests\business\test_gw.py::TestGw</span><br></pre></td></tr></table></figure>
-<h3 id="测试单个类的某个方法"><a href="#测试单个类的某个方法" class="headerlink" title="测试单个类的某个方法"></a>测试单个类的某个方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest .\qst\tests\business\test_gw.py::TestGw::test_create_goods</span><br></pre></td></tr></table></figure>
-<h3 id="测试文件所有用例"><a href="#测试文件所有用例" class="headerlink" title="测试文件所有用例"></a>测试文件所有用例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest .\qst\tests\api\zcy\test_factory_category.py</span><br></pre></td></tr></table></figure>
-<h3 id="测试文件夹下所有用例"><a href="#测试文件夹下所有用例" class="headerlink" title="测试文件夹下所有用例"></a>测试文件夹下所有用例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest .\qst\tests</span><br></pre></td></tr></table></figure>
-<h2 id="mock的使用"><a href="#mock的使用" class="headerlink" title="mock的使用"></a>mock的使用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_create_goods</span><span class="params">(self, mocker)</span>:</span>  </span><br><span class="line">    <span class="string">"""test create goods</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    ...</span><br><span class="line">    mocker.patch.object(gw._goods_collection, <span class="string">'find_one'</span>)</span><br><span class="line">    gw._goods_collection.find_one.return_value = goods</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
+      		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/13/python/pytest-apply-and-plugin/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-scrapy/scrapy-sn-jd" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/09/scrapy/scrapy-sn-jd/">抓取苏宁和京东价格</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/09/scrapy/scrapy-sn-jd/" class="archive-article-date">
-  	<time datetime="2017-09-09T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近业务部门需要对比平台上几个竞争对手的在售商品价格，因此编写了苏宁和京东的价格抓取脚本。</p>
-<h2 id="苏宁"><a href="#苏宁" class="headerlink" title="苏宁"></a>苏宁</h2><p>业务部门会将需要抓取的商品的信息和<code>url</code>以Excel方式提交，因此我只需要遍历Excel并抓取指定<code>url</code>即可。由于苏宁商品页面的价格是动态生成的，因此使用<code>selenium</code>抓取。代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">price_els = driver.find_elements_by_xpath(<span class="string">"//*[@id='mainPrice']"</span>)</span><br><span class="line"><span class="keyword">if</span> len(price_els) == <span class="number">1</span>:</span><br><span class="line">    small_price_els = price_els[<span class="number">0</span>].find_elements_by_xpath(<span class="string">".//*[@class='small-price']"</span>)</span><br><span class="line">    main_price_els = price_els[<span class="number">0</span>].find_elements_by_xpath(<span class="string">".//*[@class='small-price']"</span>)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
-<p>在这里之所以使用<code>find_elements_by_xpath</code>而不是<code>find_element_by_xpath</code>是因为<code>find_element_by_xpath</code>在定位不到元素时会发生异常，而我在有限的时间里并不保证所有的页面都包含<code>id=&#39;mainPrice&#39;</code>。</p>
-<h2 id="京东"><a href="#京东" class="headerlink" title="京东"></a>京东</h2><p>相对于苏宁，京东的有一个<code>api</code>接口可以查询价格，只要业务部门提供京东商品的<code>sku</code>代码即可。以<code>1816417</code>为例，访问<code>http://p.3.cn/prices/mgets?skuIds=J_1816417</code>，返回：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">"id"</span>: <span class="string">"J_1816417"</span>,</span><br><span class="line">    <span class="attr">"p"</span>: <span class="string">"1439.00"</span>,</span><br><span class="line">    <span class="attr">"m"</span>: <span class="string">"1699.00"</span>,</span><br><span class="line">    <span class="attr">"op"</span>: <span class="string">"1439.00"</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>因此只要使用<code>requests</code>即可抓取京东价格数据：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">response = requests.get(goods_url, headers=HEADERS)</span><br><span class="line">price = json.loads(response.text)[<span class="number">0</span>][<span class="string">'p'</span>]</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">scrapy</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -1020,16 +404,33 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/09/scrapy/scrapy-sn-jd/">展开全文 >></a>
-        </p>
-      
 
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/10/07/life/ant-photo/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          和XP拍摄拍摄
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/08/03/sa/elk-start/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ELK实践</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -1044,17 +445,32 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#索引"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x7D22;&#x5F15;" class="headerlink" title="&#x7D22;&#x5F15;"></a>&#x7D22;&#x5F15;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1st"><span class="toc-number">2.</span> <span class="toc-text"><a href="#1st" class="headerlink" title="1st"></a>1st</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#起因"><span class="toc-number">2.1.</span> <span class="toc-text"><a href="#&#x8D77;&#x56E0;" class="headerlink" title="&#x8D77;&#x56E0;"></a>&#x8D77;&#x56E0;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scrapy"><span class="toc-number">2.2.</span> <span class="toc-text"><a href="#Scrapy" class="headerlink" title="Scrapy"></a>Scrapy</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#爬取目标"><span class="toc-number">2.2.1.</span> <span class="toc-text"><a href="#&#x722C;&#x53D6;&#x76EE;&#x6807;" class="headerlink" title="&#x722C;&#x53D6;&#x76EE;&#x6807;"></a>&#x722C;&#x53D6;&#x76EE;&#x6807;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#目标分析"><span class="toc-number">2.2.2.</span> <span class="toc-text"><a href="#&#x76EE;&#x6807;&#x5206;&#x6790;" class="headerlink" title="&#x76EE;&#x6807;&#x5206;&#x6790;"></a>&#x76EE;&#x6807;&#x5206;&#x6790;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis"><span class="toc-number">2.2.3.</span> <span class="toc-text"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Goose-Extractor"><span class="toc-number">2.2.4.</span> <span class="toc-text"><a href="#Goose-Extractor" class="headerlink" title="Goose Extractor"></a>Goose Extractor</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-End"><span class="toc-number">2.3.</span> <span class="toc-text"><a href="#The-End" class="headerlink" title="The End"></a>The End</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2nd"><span class="toc-number">3.</span> <span class="toc-text"><a href="#2nd" class="headerlink" title="2nd"></a>2nd</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#房产网站信息爬取"><span class="toc-number">3.1.</span> <span class="toc-text"><a href="#&#x623F;&#x4EA7;&#x7F51;&#x7AD9;&#x4FE1;&#x606F;&#x722C;&#x53D6;" class="headerlink" title="&#x623F;&#x4EA7;&#x7F51;&#x7AD9;&#x4FE1;&#x606F;&#x722C;&#x53D6;"></a>&#x623F;&#x4EA7;&#x7F51;&#x7AD9;&#x4FE1;&#x606F;&#x722C;&#x53D6;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#URL规则分析"><span class="toc-number">3.1.1.</span> <span class="toc-text"><a href="#URL&#x89C4;&#x5219;&#x5206;&#x6790;" class="headerlink" title="URL&#x89C4;&#x5219;&#x5206;&#x6790;"></a>URL&#x89C4;&#x5219;&#x5206;&#x6790;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chrome开发者工具和选择器"><span class="toc-number">3.1.2.</span> <span class="toc-text"><a href="#chrome&#x5F00;&#x53D1;&#x8005;&#x5DE5;&#x5177;&#x548C;&#x9009;&#x62E9;&#x5668;" class="headerlink" title="chrome&#x5F00;&#x53D1;&#x8005;&#x5DE5;&#x5177;&#x548C;&#x9009;&#x62E9;&#x5668;"></a>chrome&#x5F00;&#x53D1;&#x8005;&#x5DE5;&#x5177;&#x548C;&#x9009;&#x62E9;&#x5668;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行效果"><span class="toc-number">3.2.</span> <span class="toc-text"><a href="#&#x8FD0;&#x884C;&#x6548;&#x679C;" class="headerlink" title="&#x8FD0;&#x884C;&#x6548;&#x679C;"></a>&#x8FD0;&#x884C;&#x6548;&#x679C;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-End-1"><span class="toc-number">3.3.</span> <span class="toc-text"><a href="#The-End-1" class="headerlink" title="The End"></a>The End</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3rd"><span class="toc-number">4.</span> <span class="toc-text"><a href="#3rd" class="headerlink" title="3rd"></a>3rd</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#论坛信息爬取"><span class="toc-number">4.1.</span> <span class="toc-text"><a href="#&#x8BBA;&#x575B;&#x4FE1;&#x606F;&#x722C;&#x53D6;" class="headerlink" title="&#x8BBA;&#x575B;&#x4FE1;&#x606F;&#x722C;&#x53D6;"></a>&#x8BBA;&#x575B;&#x4FE1;&#x606F;&#x722C;&#x53D6;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#URL规则分析-1"><span class="toc-number">4.1.1.</span> <span class="toc-text"><a href="#URL&#x89C4;&#x5219;&#x5206;&#x6790;-1" class="headerlink" title="URL&#x89C4;&#x5219;&#x5206;&#x6790;"></a>URL&#x89C4;&#x5219;&#x5206;&#x6790;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chrome开发者工具和选择器-1"><span class="toc-number">4.1.2.</span> <span class="toc-text"><a href="#chrome&#x5F00;&#x53D1;&#x8005;&#x5DE5;&#x5177;&#x548C;&#x9009;&#x62E9;&#x5668;-1" class="headerlink" title="chrome&#x5F00;&#x53D1;&#x8005;&#x5DE5;&#x5177;&#x548C;&#x9009;&#x62E9;&#x5668;"></a>chrome&#x5F00;&#x53D1;&#x8005;&#x5DE5;&#x5177;&#x548C;&#x9009;&#x62E9;&#x5668;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行效果-1"><span class="toc-number">4.1.3.</span> <span class="toc-text"><a href="#&#x8FD0;&#x884C;&#x6548;&#x679C;-1" class="headerlink" title="&#x8FD0;&#x884C;&#x6548;&#x679C;"></a>&#x8FD0;&#x884C;&#x6548;&#x679C;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题外话"><span class="toc-number">4.2.</span> <span class="toc-text"><a href="#&#x9898;&#x5916;&#x8BDD;" class="headerlink" title="&#x9898;&#x5916;&#x8BDD;"></a>&#x9898;&#x5916;&#x8BDD;</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4th"><span class="toc-number">5.</span> <span class="toc-text"><a href="#4th" class="headerlink" title="4th"></a>4th</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#爬虫ban策略和反ban策略"><span class="toc-number">5.1.</span> <span class="toc-text"><a href="#&#x722C;&#x866B;ban&#x7B56;&#x7565;&#x548C;&#x53CD;ban&#x7B56;&#x7565;" class="headerlink" title="&#x722C;&#x866B;ban&#x7B56;&#x7565;&#x548C;&#x53CD;ban&#x7B56;&#x7565;"></a>&#x722C;&#x866B;ban&#x7B56;&#x7565;&#x548C;&#x53CD;ban&#x7B56;&#x7565;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于robots协议"><span class="toc-number">5.2.</span> <span class="toc-text"><a href="#&#x5173;&#x4E8E;robots&#x534F;&#x8BAE;" class="headerlink" title="&#x5173;&#x4E8E;robots&#x534F;&#x8BAE;"></a>&#x5173;&#x4E8E;robots&#x534F;&#x8BAE;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#爬虫的防范"><span class="toc-number">5.3.</span> <span class="toc-text"><a href="#&#x722C;&#x866B;&#x7684;&#x9632;&#x8303;" class="headerlink" title="&#x722C;&#x866B;&#x7684;&#x9632;&#x8303;"></a>&#x722C;&#x866B;&#x7684;&#x9632;&#x8303;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IP封锁"><span class="toc-number">5.3.1.</span> <span class="toc-text"><a href="#IP&#x5C01;&#x9501;" class="headerlink" title="IP&#x5C01;&#x9501;"></a>IP&#x5C01;&#x9501;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IP访问频率限制"><span class="toc-number">5.3.2.</span> <span class="toc-text"><a href="#IP&#x8BBF;&#x95EE;&#x9891;&#x7387;&#x9650;&#x5236;" class="headerlink" title="IP&#x8BBF;&#x95EE;&#x9891;&#x7387;&#x9650;&#x5236;"></a>IP&#x8BBF;&#x95EE;&#x9891;&#x7387;&#x9650;&#x5236;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#User-Agent"><span class="toc-number">5.3.3.</span> <span class="toc-text"><a href="#User-Agent" class="headerlink" title="User-Agent"></a>User-Agent</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#爬虫反ban策略"><span class="toc-number">5.4.</span> <span class="toc-text"><a href="#&#x722C;&#x866B;&#x53CD;ban&#x7B56;&#x7565;" class="headerlink" title="&#x722C;&#x866B;&#x53CD;ban&#x7B56;&#x7565;"></a>&#x722C;&#x866B;&#x53CD;ban&#x7B56;&#x7565;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IP池"><span class="toc-number">5.4.1.</span> <span class="toc-text"><a href="#IP&#x6C60;" class="headerlink" title="IP&#x6C60;"></a>IP&#x6C60;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DOWNLOAD-DELAY设置"><span class="toc-number">5.4.2.</span> <span class="toc-text"><a href="#DOWNLOAD-DELAY&#x8BBE;&#x7F6E;" class="headerlink" title="DOWNLOAD_DELAY&#x8BBE;&#x7F6E;"></a>DOWNLOAD_DELAY&#x8BBE;&#x7F6E;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#User-Agent池"><span class="toc-number">5.4.3.</span> <span class="toc-text"><a href="#User-Agent&#x6C60;" class="headerlink" title="User-Agent&#x6C60;"></a>User-Agent&#x6C60;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-End-2"><span class="toc-number">5.5.</span> <span class="toc-text"><a href="#The-End-2" class="headerlink" title="The End"></a>The End</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5th"><span class="toc-number">6.</span> <span class="toc-text"><a href="#5th" class="headerlink" title="5th"></a>5th</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#代理IP的验证"><span class="toc-number">6.1.</span> <span class="toc-text"><a href="#&#x4EE3;&#x7406;IP&#x7684;&#x9A8C;&#x8BC1;" class="headerlink" title="&#x4EE3;&#x7406;IP&#x7684;&#x9A8C;&#x8BC1;"></a>&#x4EE3;&#x7406;IP&#x7684;&#x9A8C;&#x8BC1;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IPs的获取"><span class="toc-number">6.1.1.</span> <span class="toc-text"><a href="#IPs&#x7684;&#x83B7;&#x53D6;" class="headerlink" title="IPs&#x7684;&#x83B7;&#x53D6;"></a>IPs&#x7684;&#x83B7;&#x53D6;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代理IP发布站"><span class="toc-number">6.1.1.1.</span> <span class="toc-text"><a href="#&#x4EE3;&#x7406;IP&#x53D1;&#x5E03;&#x7AD9;" class="headerlink" title="&#x4EE3;&#x7406;IP&#x53D1;&#x5E03;&#x7AD9;"></a>&#x4EE3;&#x7406;IP&#x53D1;&#x5E03;&#x7AD9;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#商业软件"><span class="toc-number">6.1.1.2.</span> <span class="toc-text"><a href="#&#x5546;&#x4E1A;&#x8F6F;&#x4EF6;" class="headerlink" title="&#x5546;&#x4E1A;&#x8F6F;&#x4EF6;"></a>&#x5546;&#x4E1A;&#x8F6F;&#x4EF6;</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPs的筛选"><span class="toc-number">6.2.</span> <span class="toc-text"><a href="#IPs&#x7684;&#x7B5B;&#x9009;" class="headerlink" title="IPs&#x7684;&#x7B5B;&#x9009;"></a>IPs&#x7684;&#x7B5B;&#x9009;</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6th"><span class="toc-number">7.</span> <span class="toc-text"><a href="#6th" class="headerlink" title="6th"></a>6th</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#分布式爬虫"><span class="toc-number">7.1.</span> <span class="toc-text"><a href="#&#x5206;&#x5E03;&#x5F0F;&#x722C;&#x866B;" class="headerlink" title="&#x5206;&#x5E03;&#x5F0F;&#x722C;&#x866B;"></a>&#x5206;&#x5E03;&#x5F0F;&#x722C;&#x866B;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分布式爬虫的实现方式"><span class="toc-number">7.2.</span> <span class="toc-text"><a href="#&#x5206;&#x5E03;&#x5F0F;&#x722C;&#x866B;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;" class="headerlink" title="&#x5206;&#x5E03;&#x5F0F;&#x722C;&#x866B;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;"></a>&#x5206;&#x5E03;&#x5F0F;&#x722C;&#x866B;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Scrapy-redis"><span class="toc-number">7.2.1.</span> <span class="toc-text"><a href="#Scrapy-redis" class="headerlink" title="Scrapy-redis"></a>Scrapy-redis</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例"><span class="toc-number">7.3.</span> <span class="toc-text"><a href="#&#x5B9E;&#x4F8B;" class="headerlink" title="&#x5B9E;&#x4F8B;"></a>&#x5B9E;&#x4F8B;</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7th"><span class="toc-number">8.</span> <span class="toc-text"><a href="#7th" class="headerlink" title="7th"></a>7th</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#学习资料"><span class="toc-number">8.1.</span> <span class="toc-text"><a href="#&#x5B66;&#x4E60;&#x8D44;&#x6599;" class="headerlink" title="&#x5B66;&#x4E60;&#x8D44;&#x6599;"></a>&#x5B66;&#x4E60;&#x8D44;&#x6599;</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
 
 
+  
+  
+  
 
   
+
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+
   
 
 
@@ -1077,8 +493,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
