@@ -6,19 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>设计模式实践-桥接模式 | 4Thing&#39;Blog</title>
+  <title>Archives: 2017/5 | 4Thing&#39;Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="场景M每种仪表可选N种通信方式 实现代码通信器接口1234567891011121314namespace DesignPatterns.Bridge&amp;#123;    /// &amp;lt;summary&amp;gt;    /// 通信器接口    /// &amp;lt;/summary&amp;gt;    public interface ICommunicator    &amp;#123;        /// &amp;lt">
-<meta name="keywords" content="设计模式">
-<meta property="og:type" content="article">
-<meta property="og:title" content="设计模式实践-桥接模式">
-<meta property="og:url" content="http://yoursite.com/2017/01/01/design-patterns/bridge/index.html">
+  <meta name="description" content="无名码农，摄影咖啡爱好者">
+<meta property="og:type" content="website">
+<meta property="og:title" content="4Thing&#39;Blog">
+<meta property="og:url" content="http://yoursite.com/archives/2017/05/index.html">
 <meta property="og:site_name" content="4Thing&#39;Blog">
-<meta property="og:description" content="场景M每种仪表可选N种通信方式 实现代码通信器接口1234567891011121314namespace DesignPatterns.Bridge&amp;#123;    /// &amp;lt;summary&amp;gt;    /// 通信器接口    /// &amp;lt;/summary&amp;gt;    public interface ICommunicator    &amp;#123;        /// &amp;lt">
-<meta property="og:updated_time" content="2017-12-23T13:36:07.761Z">
+<meta property="og:description" content="无名码农，摄影咖啡爱好者">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式实践-桥接模式">
-<meta name="twitter:description" content="场景M每种仪表可选N种通信方式 实现代码通信器接口1234567891011121314namespace DesignPatterns.Bridge&amp;#123;    /// &amp;lt;summary&amp;gt;    /// 通信器接口    /// &amp;lt;/summary&amp;gt;    public interface ICommunicator    &amp;#123;        /// &amp;lt">
+<meta name="twitter:title" content="4Thing&#39;Blog">
+<meta name="twitter:description" content="无名码农，摄影咖啡爱好者">
   
     <link rel="alternative" href="/atom.xml" title="4Thing&#39;Blog" type="application/atom+xml">
   
@@ -140,124 +138,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-design-patterns/bridge" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      设计模式实践-桥接模式
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/05/13/life/allen-512/" class="archive-article-date">
+  	<time datetime="2017-05-13T10:33:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-13</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/05/13/life/allen-512/">关于柠檬</a>
     </h1>
   
 
-        
-        <a href="/2017/01/01/design-patterns/bridge/" class="archive-article-date">
-  	<time datetime="2017-01-01T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>M每种仪表可选N种通信方式</p>
-<h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><h3 id="通信器接口"><a href="#通信器接口" class="headerlink" title="通信器接口"></a>通信器接口</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns.Bridge</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 通信器接口</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">ICommunicator</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 发送信息</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="message"&gt;</span>信息内容<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">Communicate</span>(<span class="params"><span class="keyword">string</span> message</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="串口通信实现"><a href="#串口通信实现" class="headerlink" title="串口通信实现"></a>串口通信实现</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns.Bridge</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 串口通信器</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">internal</span> <span class="keyword">class</span> <span class="title">SerialCommunicator</span> : <span class="title">ICommunicator</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 向串口发送信息</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="message"&gt;</span>信息内容<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Communicate</span>(<span class="params"><span class="keyword">string</span> message</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            Console.WriteLine(<span class="string">$"使用串口通信，通信内容为：<span class="subst">&#123;message&#125;</span>"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="TCP通信实现"><a href="#TCP通信实现" class="headerlink" title="TCP通信实现"></a>TCP通信实现</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns.Bridge</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> TCP通信器</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">internal</span> <span class="keyword">class</span> <span class="title">TcpCommunicator</span> : <span class="title">ICommunicator</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 向TCP发送信息</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="message"&gt;</span>信息内容<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Communicate</span>(<span class="params"><span class="keyword">string</span> message</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            Console.WriteLine(<span class="string">$"使用TCP通信，通信内容为：<span class="subst">&#123;message&#125;</span>"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="仪表接口"><a href="#仪表接口" class="headerlink" title="仪表接口"></a>仪表接口</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns.Bridge</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 仪表接口</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">internal</span> <span class="keyword">interface</span> <span class="title">IMeter</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 仪表通信函数</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="communicator"&gt;</span>通信器<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">UseCommunicator</span>(<span class="params">ICommunicator communicator</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="仪表A实现"><a href="#仪表A实现" class="headerlink" title="仪表A实现"></a>仪表A实现</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns.Bridge</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 仪表A实现</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">internal</span> <span class="keyword">class</span> <span class="title">MeterA</span> : <span class="title">IMeter</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 仪表A通信实现</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="communicator"&gt;</span>通信器<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">UseCommunicator</span>(<span class="params">ICommunicator communicator</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            communicator.Communicate(<span class="string">"A类仪表数据"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="仪表B实现"><a href="#仪表B实现" class="headerlink" title="仪表B实现"></a>仪表B实现</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns.Bridge</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 仪表B接口</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">internal</span> <span class="keyword">class</span> <span class="title">MeterB</span> : <span class="title">IMeter</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 仪表B通信实现</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="communicator"&gt;</span>通信器<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">UseCommunicator</span>(<span class="params">ICommunicator communicator</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            communicator.Communicate(<span class="string">"B类仪表数据"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="相关调用"><a href="#相关调用" class="headerlink" title="相关调用"></a>相关调用</h2><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">IMeter meterA = <span class="keyword">new</span> MeterA();</span><br><span class="line">IMeter meterB = <span class="keyword">new</span> MeterB();</span><br><span class="line">ICommunicator tcpSender = <span class="keyword">new</span> TcpCommunicator();</span><br><span class="line">ICommunicator serialSender = <span class="keyword">new</span> SerialCommunicator();</span><br><span class="line"></span><br><span class="line">meterA.UseCommunicator(tcpSender);</span><br><span class="line">meterA.UseCommunicator(serialSender);</span><br><span class="line"></span><br><span class="line">meterB.UseCommunicator(tcpSender);</span><br><span class="line">meterB.UseCommunicator(serialSender);</span><br></pre></td></tr></table></figure>
-<h3 id="Out"><a href="#Out" class="headerlink" title="Out"></a>Out</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">使用TCP通信，通信内容为：A类仪表数据</span><br><span class="line">使用串口通信，通信内容为：A类仪表数据</span><br><span class="line">使用TCP通信，通信内容为：B类仪表数据</span><br><span class="line">使用串口通信，通信内容为：B类仪表数据</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/01/01/design-patterns/templatemethod/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          设计模式实践-模版方法模式
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/01/01/design-patterns/chainResponsibility/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">设计模式实践-责任链模式</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x573A;&#x666F;" class="headerlink" title="&#x573A;&#x666F;"></a>&#x573A;&#x666F;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现代码"><span class="toc-number">2.</span> <span class="toc-text"><a href="#&#x5B9E;&#x73B0;&#x4EE3;&#x7801;" class="headerlink" title="&#x5B9E;&#x73B0;&#x4EE3;&#x7801;"></a>&#x5B9E;&#x73B0;&#x4EE3;&#x7801;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#通信器接口"><span class="toc-number">2.1.</span> <span class="toc-text"><a href="#&#x901A;&#x4FE1;&#x5668;&#x63A5;&#x53E3;" class="headerlink" title="&#x901A;&#x4FE1;&#x5668;&#x63A5;&#x53E3;"></a>&#x901A;&#x4FE1;&#x5668;&#x63A5;&#x53E3;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#串口通信实现"><span class="toc-number">2.2.</span> <span class="toc-text"><a href="#&#x4E32;&#x53E3;&#x901A;&#x4FE1;&#x5B9E;&#x73B0;" class="headerlink" title="&#x4E32;&#x53E3;&#x901A;&#x4FE1;&#x5B9E;&#x73B0;"></a>&#x4E32;&#x53E3;&#x901A;&#x4FE1;&#x5B9E;&#x73B0;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP通信实现"><span class="toc-number">2.3.</span> <span class="toc-text"><a href="#TCP&#x901A;&#x4FE1;&#x5B9E;&#x73B0;" class="headerlink" title="TCP&#x901A;&#x4FE1;&#x5B9E;&#x73B0;"></a>TCP&#x901A;&#x4FE1;&#x5B9E;&#x73B0;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仪表接口"><span class="toc-number">2.4.</span> <span class="toc-text"><a href="#&#x4EEA;&#x8868;&#x63A5;&#x53E3;" class="headerlink" title="&#x4EEA;&#x8868;&#x63A5;&#x53E3;"></a>&#x4EEA;&#x8868;&#x63A5;&#x53E3;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仪表A实现"><span class="toc-number">2.5.</span> <span class="toc-text"><a href="#&#x4EEA;&#x8868;A&#x5B9E;&#x73B0;" class="headerlink" title="&#x4EEA;&#x8868;A&#x5B9E;&#x73B0;"></a>&#x4EEA;&#x8868;A&#x5B9E;&#x73B0;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#仪表B实现"><span class="toc-number">2.6.</span> <span class="toc-text"><a href="#&#x4EEA;&#x8868;B&#x5B9E;&#x73B0;" class="headerlink" title="&#x4EEA;&#x8868;B&#x5B9E;&#x73B0;"></a>&#x4EEA;&#x8868;B&#x5B9E;&#x73B0;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关调用"><span class="toc-number">3.</span> <span class="toc-text"><a href="#&#x76F8;&#x5173;&#x8C03;&#x7528;" class="headerlink" title="&#x76F8;&#x5173;&#x8C03;&#x7528;"></a>&#x76F8;&#x5173;&#x8C03;&#x7528;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Out"><span class="toc-number">3.1.</span> <span class="toc-text"><a href="#Out" class="headerlink" title="Out"></a>Out</span></a></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -280,8 +214,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

@@ -140,6 +140,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-python/docopt" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/17/python/docopt/">docopt</a>
+    </h1>
+  
+
+        
+        <a href="/2016/07/17/python/docopt/" class="archive-article-date">
+  	<time datetime="2016-07-17T14:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="ex-01"><a href="#ex-01" class="headerlink" title="ex.01"></a>ex.01</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""Usage:</span></span><br><span class="line"><span class="string">  quick_example.py tcp &lt;host&gt; &lt;port&gt; [--timeout=&lt;seconds&gt;]</span></span><br><span class="line"><span class="string">  quick_example.py serial &lt;port&gt; [--baud=9600] [--timeout=&lt;seconds&gt;]</span></span><br><span class="line"><span class="string">  quick_example.py -h | --help | --version</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">from</span> docopt <span class="keyword">import</span> docopt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    arguments = docopt(__doc__, version=<span class="string">'0.1.1rc'</span>)</span><br><span class="line">    print(arguments)</span><br></pre></td></tr></table></figure>
+<h3 id="test-01"><a href="#test-01" class="headerlink" title="test.01"></a>test.01</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;python quick_example.py tcp 192.168.1.1 8000 --timeout=100</span><br><span class="line">&#123;<span class="string">'--baud'</span>: None,</span><br><span class="line"> <span class="string">'--help'</span>: False,</span><br><span class="line"> <span class="string">'--timeout'</span>: <span class="string">'100'</span>,</span><br><span class="line"> <span class="string">'--version'</span>: False,</span><br><span class="line"> <span class="string">'-h'</span>: False,</span><br><span class="line"> <span class="string">'&lt;host&gt;'</span>: <span class="string">'192.168.1.1'</span>,</span><br><span class="line"> <span class="string">'&lt;port&gt;'</span>: <span class="string">'8000'</span>,</span><br><span class="line"> <span class="string">'serial'</span>: False,</span><br><span class="line"> <span class="string">'tcp'</span>: True&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="test-02"><a href="#test-02" class="headerlink" title="test.02"></a>test.02</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;python quick_example.py serial com1 --baud=9600 --timeout=100</span><br><span class="line">&#123;<span class="string">'--baud'</span>: <span class="string">'9600'</span>,</span><br><span class="line"> <span class="string">'--help'</span>: False,</span><br><span class="line"> <span class="string">'--timeout'</span>: <span class="string">'100'</span>,</span><br><span class="line"> <span class="string">'--version'</span>: False,</span><br><span class="line"> <span class="string">'-h'</span>: False,</span><br><span class="line"> <span class="string">'&lt;host&gt;'</span>: None,</span><br><span class="line"> <span class="string">'&lt;port&gt;'</span>: <span class="string">'com1'</span>,</span><br><span class="line"> <span class="string">'serial'</span>: True,</span><br><span class="line"> <span class="string">'tcp'</span>: False&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ex-02"><a href="#ex-02" class="headerlink" title="ex.02"></a>ex.02</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""Usage: odd_even_example.py [-h | --help] (ODD EVEN)...</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Example, try:</span></span><br><span class="line"><span class="string">  odd_even_example.py 1 2 3 4</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Options:</span></span><br><span class="line"><span class="string">  -h, --help</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">from</span> docopt <span class="keyword">import</span> docopt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    arguments = docopt(__doc__)</span><br><span class="line">    print(arguments)</span><br></pre></td></tr></table></figure>
+<h3 id="test-01-1"><a href="#test-01-1" class="headerlink" title="test.01"></a>test.01</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;python odd_even_example.py 1 2 3 4 4 5</span><br><span class="line">&#123;<span class="string">'--help'</span>: False,</span><br><span class="line"> <span class="string">'EVEN'</span>: [<span class="string">'2'</span>, <span class="string">'4'</span>, <span class="string">'5'</span>],</span><br><span class="line"> <span class="string">'ODD'</span>: [<span class="string">'1'</span>, <span class="string">'3'</span>, <span class="string">'4'</span>]&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="test-02-1"><a href="#test-02-1" class="headerlink" title="test.02"></a>test.02</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;python odd_even_example.py 1 2 3 4 4 5</span><br><span class="line">&#123;<span class="string">'--help'</span>: False,</span><br><span class="line"> <span class="string">'EVEN'</span>: [<span class="string">'2'</span>, <span class="string">'4'</span>, <span class="string">'5'</span>],</span><br><span class="line"> <span class="string">'ODD'</span>: [<span class="string">'1'</span>, <span class="string">'3'</span>, <span class="string">'4'</span>]&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/07/17/python/docopt/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-python/arrow-apply" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1332,97 +1410,6 @@ REDIS_PORT = 6379
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2015/07/13/uncategorized/RPi-PM2-5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-uncategorized/RPi-yeelink" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/10/uncategorized/RPi-yeelink/">向yeelink上传树莓派数据</a>
-    </h1>
-  
-
-        
-        <a href="/2015/07/10/uncategorized/RPi-yeelink/" class="archive-article-date">
-  	<time datetime="2015-07-10T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>查找IoT资料的时候发现了yeelink，通过知乎了解到这是个有趣的产品，顺便写两个小程序测试yeelink的功能。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
-<ul>
-<li><a href="http://www.yeelink.net/developer/api" target="_blank" rel="noopener">yeelink API文档</a></li>
-</ul>
-</blockquote>
-<h1 id="树莓派CPU温度代码"><a href="#树莓派CPU温度代码" class="headerlink" title="树莓派CPU温度代码"></a>树莓派CPU温度代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-  </span></span><br><span class="line"><span class="keyword">import</span> requests  </span><br><span class="line"><span class="keyword">import</span> json  </span><br><span class="line"><span class="keyword">import</span> time  </span><br><span class="line">file = open(<span class="string">"/sys/class/thermal/thermal_zone0/temp"</span>)  </span><br><span class="line">temp = float(file.read()) / <span class="number">1000.0</span>  </span><br><span class="line">file.close()</span><br><span class="line">url = <span class="string">'http://api.yeelink.net/v1.0/device/60679/sensor/78055/datapoints'</span></span><br><span class="line">headers = &#123;<span class="string">'U-ApiKey'</span>: <span class="string">'6c00d62391a626df5232a00b7287292f'</span>, <span class="string">'content-type'</span>: <span class="string">'application/json'</span>&#125;</span><br><span class="line">data = &#123;<span class="string">'value'</span>: temp&#125;</span><br><span class="line">requests.post(url, headers=headers, data=json.dumps(data))</span><br></pre></td></tr></table></figure>
-<h1 id="树莓派CPU使用率代码"><a href="#树莓派CPU使用率代码" class="headerlink" title="树莓派CPU使用率代码"></a>树莓派CPU使用率代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-  </span></span><br><span class="line"><span class="keyword">import</span> requests  </span><br><span class="line"><span class="keyword">import</span> json  </span><br><span class="line"><span class="keyword">import</span> time  </span><br><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line">percent = psutil.cpu_percent(interval=<span class="number">30</span>)  </span><br><span class="line">url = <span class="string">'http://api.yeelink.net/v1.0/device/60679/sensor/78206/datapoints'</span>  </span><br><span class="line">headers = &#123;<span class="string">'U-ApiKey'</span>: <span class="string">'6c00d62391a626df5232a00b7287292f'</span>, <span class="string">'content-type'</span>: <span class="string">'application/json'</span>&#125;</span><br><span class="line">data = &#123;<span class="string">'value'</span>: percent&#125;</span><br><span class="line">requests.post(url, headers=headers, data=json.dumps(data))</span><br></pre></td></tr></table></figure>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>通过yeelink还可以实现很多功能，例如让树莓派访问yeelink上的开关量并执行相关动作。</p>
-<p>yeelink——&gt;<a href="http://www.yeelink.net/devices/60679" target="_blank" rel="noopener">设备地址</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">树莓派</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">传感器</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">yeelink</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/07/10/uncategorized/RPi-yeelink/">展开全文 >></a>
         </p>
       
 
