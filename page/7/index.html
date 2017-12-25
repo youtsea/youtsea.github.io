@@ -140,6 +140,128 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-uncategorized/RPi-start" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/07/uncategorized/RPi-start/">树莓派入门</a>
+    </h1>
+  
+
+        
+        <a href="/2015/07/07/uncategorized/RPi-start/" class="archive-article-date">
+  	<time datetime="2015-07-07T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>入手树莓派已有一段时间，做了一个基于采集串口设备的web应用后因为工作太忙没时间折腾，趁着这两天闲暇把手头几个模块测试了一遍。</p>
+<blockquote>
+<ul>
+<li>DHT11温湿度模块</li>
+<li>HC-SR04超声波模块</li>
+<li>光敏电阻模块</li>
+<li>PCF8591模块</li>
+</ul>
+</blockquote>
+<p><img src="http://shumeipai.nxez.com/wp-content/uploads/2015/03/rpi-pins-40-0.png" alt="针脚对照"></p>
+<p>图片来至 <a href="http://shumeipai.nxez.com/raspberry-pi-pins-version-40" target="_blank" rel="noopener">树莓派实验室</a></p>
+<h1 id="DHT11温湿度模块接线及代码"><a href="#DHT11温湿度模块接线及代码" class="headerlink" title="DHT11温湿度模块接线及代码"></a>DHT11温湿度模块接线及代码</h1><p><code>vcc</code> 接 <code>BOARD 2</code></p>
+<p><code>gnd</code> 接 <code>BOARD 6</code></p>
+<p><code>data</code> 接 <code>BOARD 12</code></p>
+<p>在GitHub上找到 <a href="https://github.com/LeStarch/pi-dht11" target="_blank" rel="noopener">pi-dht11</a> ,作者对读取DHT11做了封装，设置 <code>BOARD</code> 编码即可实现读取DHT11的湿度。</p>
+<p>获取代码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/LeStarch/pi-dht11.git</span><br></pre></td></tr></table></figure>
+<p>修改test-sensor.py代码:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> sensor.dht11 <span class="keyword">import</span> HTSensor,ReadError</span><br><span class="line">yolo = HTSensor(<span class="number">12</span>)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    humidity, temperature = yolo.read()</span><br><span class="line">    print(<span class="string">"Humidity:"</span>,humidity,<span class="string">"Temperature:"</span>,temperature)</span><br><span class="line"><span class="keyword">except</span> ReadError <span class="keyword">as</span> err:</span><br><span class="line">    print(<span class="string">"Read failed:"</span>)</span><br><span class="line">    print(err)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    yolo.cleanup()</span><br></pre></td></tr></table></figure>
+<p>执行:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./<span class="built_in">test</span>-sensor.py</span><br></pre></td></tr></table></figure>
+<p>报错：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NameError: name <span class="string">'sys'</span> is not defined</span><br></pre></td></tr></table></figure></p>
+<p>查看源码，貌似作者忘了导入sys库，在dht11.py首行加入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br></pre></td></tr></table></figure>
+<p>因为对 <code>python2</code> 比较熟悉，fork了一份改成 <code>python2</code> 版本，<a href="www.google.com">传送门</a></p>
+<h1 id="HC-SR04超声波模块接线及代码"><a href="#HC-SR04超声波模块接线及代码" class="headerlink" title="HC-SR04超声波模块接线及代码"></a>HC-SR04超声波模块接线及代码</h1><p><code>vcc</code> 接 <code>BOARD 2</code></p>
+<p><code>gnd</code> 接 <code>BOARD 6</code></p>
+<p><code>data</code> 接 <code>BOARD 12</code></p>
+<h1 id="光敏电阻模块接线及代码"><a href="#光敏电阻模块接线及代码" class="headerlink" title="光敏电阻模块接线及代码"></a>光敏电阻模块接线及代码</h1><p><code>vcc</code> 接 <code>BOARD 2</code></p>
+<p><code>gnd</code> 接 <code>BOARD 6</code></p>
+<p><code>data</code> 接 <code>BOARD 16</code></p>
+<p>测试代码如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> RPi.GPIO <span class="keyword">as</span> gpio</span><br><span class="line">gpio.setmode(gpio.BCM)<span class="comment">#注意，这里设置为BCM模式</span></span><br><span class="line">gpio.setup(<span class="number">23</span>,gpio.IN)</span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">print</span> gpio.input(<span class="number">23</span>)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>光敏电阻模块同时提供了 <code>DO</code> 和 <code>AO</code> 两种输出方式，在 <a href="#PCF8591模块接线及代码"><code>这里</code></a> 提供了以 <code>AO</code> 方式的操作方法。</p>
+<h1 id="PCF8591模块接线及代码"><a href="#PCF8591模块接线及代码" class="headerlink" title="PCF8591模块接线及代码"></a>PCF8591模块接线及代码</h1><p>PCF8591实现了AD/DA转换，但是需要树莓派开启I2C功能，关于I2C功能的开启，参考 <a href="http://www.raspberrypi-spy.co.uk/2014/11/enabling-the-i2c-interface-on-the-raspberry-pi/" target="_blank" rel="noopener"><code>Enabling The I2C Interface On The Raspberry Pi</code></a>。由于手头没有更多模块，将就拿光敏电阻模块的 <code>AO</code> 作为信号源。</p>
+<p><code>vcc</code> 接 <code>BOARD 2</code></p>
+<p><code>gnd</code> 接 <code>BOARD 6</code></p>
+<p><code>SCL</code> 接 <code>BOARD 5</code></p>
+<p><code>SDA</code> 接 <code>BOARD 3</code></p>
+<p><code>AINO</code> 接 光敏电阻模块的 <code>AO</code></p>
+<p>参考 <a href="http://blog.csdn.net/xukai871105/article/details/15029843" target="_blank" rel="noopener"><code>树莓派学习笔记——I2C Tools 学习笔记</code></a>   测试I2C:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">i2cdetect -l</span><br><span class="line">...</span><br><span class="line">i2cdetect -y 1 </span><br><span class="line">...</span><br><span class="line">i2cdump -y 1 0x48</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>由于对I2C一窍不通，又涉及到电子部分，只好硬着头皮google。找到GitHub上的一个项目:<a href="https://github.com/jchuang1977/pcf8591" target="_blank" rel="noopener">pcf8591</a>，该项目使用python的smbus库获取 <code>PCF8591</code> 4路 <code>AO</code> 的值并通过 <code>Tkinter</code> 框架实现数值显示。根据该项目，编写测试代码如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> smbus</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line">bus = smbus.SMBus(<span class="number">1</span>)</span><br><span class="line">address = <span class="number">0x48</span></span><br><span class="line">bus.write_byte(address,<span class="number">0x40</span>)</span><br><span class="line">bus.read_byte(address)</span><br><span class="line"><span class="keyword">print</span> bus.read_byte(address)</span><br></pre></td></tr></table></figure>
+<p>对于树莓派并不需要界面部分，因此fork一份并做了修改，<a href="www.google.com">传送门</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">树莓派</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">传感器</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/07/07/uncategorized/RPi-start/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-scrapy/Local-network- media-Wordcount2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -603,6 +725,38 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">运维</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">psutil</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工作</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Kibana4</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">读书</a>
               </li>
              
@@ -623,35 +777,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Kibana4</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">运维</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">psutil</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工作</a>
+                <a href="javascript:void(0)" class="js-tag color5">安全技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -667,10 +793,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">搜索引擎</a>
               </li>
              
@@ -683,11 +805,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">yeelink</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">VPS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">yeelink</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
             
             <div class="clearfix"></div>
