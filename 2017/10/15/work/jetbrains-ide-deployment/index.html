@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://yoursite.com/img/jetbrains-ide-deployment/p1.png">
 <meta property="og:image" content="http://yoursite.com/img/jetbrains-ide-deployment/p2.png">
 <meta property="og:image" content="http://yoursite.com/img/jetbrains-ide-deployment/p5.png">
-<meta property="og:updated_time" content="2017-12-23T13:36:07.765Z">
+<meta property="og:updated_time" content="2017-12-23T14:33:00.106Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Deployment功能快速部署">
 <meta name="twitter:description" content="Issues 1新功能上线经常有小bug需要调整，很多时候只需要同步远程服务器上的一个文件，使用Total commander同步代码并不是很方便。 Issues 2用python将公司的api和util以包的形式开发，其他项目需要导入该包。起初，写了个gulp的watch脚本，开发该包时，文件发生变化会同步到指定目录。但是gulp的watch用久了，会因为内存问题自己挂掉，没有深入研究。 Sol">
@@ -245,7 +245,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Issues-1"><span class="toc-number">1.</span> <span class="toc-text">Issues 1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Issues-2"><span class="toc-number">2.</span> <span class="toc-text">Issues 2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Solution"><span class="toc-number">3.</span> <span class="toc-text">Solution</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Deployment"><span class="toc-number">3.1.</span> <span class="toc-text">Deployment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deployment设置"><span class="toc-number">3.2.</span> <span class="toc-text">Deployment设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deployment使用"><span class="toc-number">3.3.</span> <span class="toc-text">Deployment使用</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Issues-1"><span class="toc-number">1.</span> <span class="toc-text"><a href="#Issues-1" class="headerlink" title="Issues 1"></a>Issues 1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Issues-2"><span class="toc-number">2.</span> <span class="toc-text"><a href="#Issues-2" class="headerlink" title="Issues 2"></a>Issues 2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Solution"><span class="toc-number">3.</span> <span class="toc-text"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Deployment"><span class="toc-number">3.1.</span> <span class="toc-text"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deployment设置"><span class="toc-number">3.2.</span> <span class="toc-text"><a href="#Deployment&#x8BBE;&#x7F6E;" class="headerlink" title="Deployment&#x8BBE;&#x7F6E;"></a>Deployment&#x8BBE;&#x7F6E;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deployment使用"><span class="toc-number">3.3.</span> <span class="toc-text"><a href="#Deployment&#x4F7F;&#x7528;" class="headerlink" title="Deployment&#x4F7F;&#x7528;"></a>Deployment&#x4F7F;&#x7528;</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -373,11 +373,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Kibana4</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">运维</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -389,10 +405,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
               </li>
              
@@ -401,19 +413,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Kibana4</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -429,11 +433,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">yeelink</a>
+                <a href="javascript:void(0)" class="js-tag color4">VPS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">VPS</a>
+                <a href="javascript:void(0)" class="js-tag color3">yeelink</a>
               </li>
             
             <div class="clearfix"></div>

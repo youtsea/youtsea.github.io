@@ -160,8 +160,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>元旦的时候机缘巧合买了<code>挂耳咖啡</code>然后不小心入了咖啡的坑。</p>
-<p>因为挂耳太贵，打算买豆子自己磨，顺便用生日打掩护黑了一个手磨。</p>
+        <p>元旦的时候机缘巧合买了<code>挂耳咖啡</code>，结果一不小心入了咖啡的坑。</p>
+<p>喝了一段时间挂耳，因为太贵，打算买豆子自己磨，顺便用生日打掩护黑了一个手磨。</p>
 <h3 id="Mark"><a href="#Mark" class="headerlink" title="Mark"></a>Mark</h3><ol>
 <li>埃塞俄比亚-水洗-耶加雪啡</li>
 <li>埃塞俄比亚-日晒-耶加雪啡</li>
@@ -487,7 +487,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="比较目录"><a href="#比较目录" class="headerlink" title="比较目录"></a>比较目录</h3><p>在工具栏上右键单击，选择【更改】，找到<strong>Beyond Compare</strong>所在的路径下的可执行文件，例如：<code>D:\tools\Beyond Compare\BCompare.exe</code>，在参数一栏中输入<code>%T %P</code> 。其中，<code>%T</code>代表目标路径，<code>%P</code>代表来源路径，<code>%T</code>和<code>%P</code>中间有空格。</p>
-<p><img src="/img/TC-BCompare-p2.png" alt="TC-BCompare-p1"></p>
+<p><img src="/img/TC-BCompare-p1.png" alt="TC-BCompare-p1"></p>
 <h3 id="比较文件"><a href="#比较文件" class="headerlink" title="比较文件"></a>比较文件</h3><p>在工具栏上右键单击，选择【更改】，找到<strong>Beyond Compare</strong>所在的路径下的可执行文件，例如：<code>D:\tools\Beyond Compare\BCompare.exe</code>，在参数一栏中输入<code>%T%M  %P%N</code> 。其中，<code>%T</code>代表目标路径，<code>%P</code>代表来源路径，<code>%M</code>代表目标文件夹中的当前文件名，<code>%N</code>代表光标所在处的文件名，<code>%T%M</code>和<code>%P%N</code>中间有空格。</p>
 <p><img src="/img/TC-BCompare-p2.png" alt="TC-BCompare-p2"></p>
 
@@ -785,6 +785,167 @@
 
 
   
+    <article id="post-python/feedparser-rss-mongodb" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/19/python/feedparser-rss-mongodb/">使用feedparser解析rss</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/19/python/feedparser-rss-mongodb/" class="archive-article-date">
+  	<time datetime="2017-11-19T13:44:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> feedparser</span><br><span class="line"><span class="keyword">from</span> apscheduler.schedulers.blocking <span class="keyword">import</span> BlockingScheduler</span><br><span class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_rss</span><span class="params">(url)</span>:</span></span><br><span class="line">    client = MongoClient(<span class="string">'192.168.6.240'</span>, <span class="number">27017</span>)</span><br><span class="line">    db = client.new.rss</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        feed = feedparser.parse(url)</span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> feed.entries:</span><br><span class="line">            md5 = hashlib.md5()</span><br><span class="line">            md5.update(item.link)</span><br><span class="line">            url_md5 = md5.hexdigest()</span><br><span class="line">            <span class="keyword">if</span> db.find_one(&#123;<span class="string">'urlMd5'</span>: url_md5&#125;) <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">                db.insert(&#123;</span><br><span class="line">                    <span class="string">'urlMd5'</span>: url_md5,</span><br><span class="line">                    <span class="string">'link'</span>: item.link,</span><br><span class="line">                    <span class="string">'title'</span>: item.title,</span><br><span class="line">                    <span class="string">'desc'</span>: item.description,</span><br><span class="line">                    <span class="string">'date'</span>: datetime.datetime.now()</span><br><span class="line">                &#125;)</span><br><span class="line">            print(item.link, datetime.datetime.now())</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(e)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rss_job</span><span class="params">()</span>:</span></span><br><span class="line">    parse_rss(<span class="string">'http://songshuhui.net/feed'</span>)</span><br><span class="line">    parse_rss(<span class="string">'http://www.iresearch.cn/common/rss/index.xml'</span>)</span><br><span class="line">    parse_rss(<span class="string">'http://rss.cnbeta.com/'</span>)</span><br><span class="line">    parse_rss(<span class="string">'http://feeds.geekpark.net'</span>)</span><br><span class="line">    parse_rss(<span class="string">'http://www.ifanr.com/feed'</span>)</span><br><span class="line">    parse_rss(<span class="string">'http://36kr.com/feed'</span>)</span><br><span class="line">    parse_rss(<span class="string">'http://www.infoq.com/cn/feed'</span>)</span><br><span class="line">    parse_rss(<span class="string">'http://blog.jobbole.com/feed/'</span>)</span><br><span class="line">    parse_rss(<span class="string">'http://www.juzicy.com/blog/feed'</span>)</span><br><span class="line">    parse_rss(<span class="string">'http://feeds.appinn.com/appinns/'</span>)</span><br><span class="line">    parse_rss(<span class="string">'https://www.zhihu.com/rss'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    sched = BlockingScheduler()</span><br><span class="line">    rss_job()</span><br><span class="line">    sched.add_job(rss_job, <span class="string">'interval'</span>, seconds=<span class="number">7200</span>, id=<span class="string">'rss-job'</span>)</span><br><span class="line">    sched.start()</span><br></pre></td></tr></table></figure>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p><img src="/img/python/Clipboard - 2017-12-25 15.55.46.png" alt="mongodb-view"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/19/python/feedparser-rss-mongodb/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-work/linux-rdesktop" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/15/work/linux-rdesktop/">使用rdesktop连接远程windows</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/15/work/linux-rdesktop/" class="archive-article-date">
+  	<time datetime="2017-11-15T11:11:23.033Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install rdesktop</span><br></pre></td></tr></table></figure>
+<h3 id="连接windows远程桌面："><a href="#连接windows远程桌面：" class="headerlink" title="连接windows远程桌面："></a>连接windows远程桌面：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rdesktop -f -a 16 -u administrator -p passwrod xxxxx ip:port</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>-u 用户名<br>-p 指定和密码<br>-f 全屏<br>-a 颜色，可选，不过最高就是16位</p>
+</blockquote>
+<h3 id="其他参数"><a href="#其他参数" class="headerlink" title="其他参数"></a>其他参数</h3><blockquote>
+<p>-g 1024x768 分辨率，可选，缺省是一种比当前本地桌面低的分辨率<br>-P 缓冲，可选<br>-r clipboard:PRIMARYCLIPBOARD 剪贴板可以与远程桌面交互<br>-r sound:off 关闭声音<br>-r disk:xxx=/home/xxx 指定主机Linux上的一个目录映射到远程Windows上的硬盘，传送文件</p>
+</blockquote>
+<h3 id="退出全屏模式"><a href="#退出全屏模式" class="headerlink" title="退出全屏模式"></a>退出全屏模式</h3><p>使用组合键ctrl+alt+enter进行切换</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/15/work/linux-rdesktop/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-work/work-in-windows" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -889,170 +1050,9 @@
 
 
   
-    <article id="post-work/jetbrains-ide-deployment" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/15/work/jetbrains-ide-deployment/">使用Deployment功能快速部署</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/15/work/jetbrains-ide-deployment/" class="archive-article-date">
-  	<time datetime="2017-10-15T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Issues-1"><a href="#Issues-1" class="headerlink" title="Issues 1"></a>Issues 1</h2><p>新功能上线经常有小bug需要调整，很多时候只需要同步远程服务器上的一个文件，使用<code>Total commander</code>同步代码并不是很方便。</p>
-<h2 id="Issues-2"><a href="#Issues-2" class="headerlink" title="Issues 2"></a>Issues 2</h2><p>用python将公司的<code>api</code>和<code>util</code>以包的形式开发，其他项目需要导入该包。起初，写了个<code>gulp</code>的<code>watch</code>脚本，开发该包时，文件发生变化会同步到指定目录。但是<code>gulp</code>的<code>watch</code>用久了，会因为内存问题自己挂掉，没有深入研究。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h3><p><code>jetbrains</code>系列的IDE均提供了Deployment的功能，十分方便</p>
-<h3 id="Deployment设置"><a href="#Deployment设置" class="headerlink" title="Deployment设置"></a>Deployment设置</h3><p>对需要远程同步的项目，在Deployment中做了如下设置：</p>
-<p><img src="/img/jetbrains-ide-deployment/p3.png" alt="p3.png"><br><img src="/img/jetbrains-ide-deployment/p4.png" alt="p4.png"></p>
-<p>对需要本地同步的项目，在Deployment中做了如下设置：</p>
-<p><img src="/img/jetbrains-ide-deployment/p1.png" alt="p1.png"><br><img src="/img/jetbrains-ide-deployment/p2.png" alt="p2.png"></p>
-<h3 id="Deployment使用"><a href="#Deployment使用" class="headerlink" title="Deployment使用"></a>Deployment使用</h3><p>需要同步整个文时，右键项目并选择<code>Upload to xxx</code>，如果只是修改了某个文件，只需右键该文件并选择<code>Upload to xxx</code>,就像这样：</p>
-<p><img src="/img/jetbrains-ide-deployment/p5.png" alt="p5.png"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/15/work/jetbrains-ide-deployment/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-work/jetbrains-ide-todo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/11/work/jetbrains-ide-todo/">在工作中使用TODO功能</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/11/work/jetbrains-ide-todo/" class="archive-article-date">
-  	<time datetime="2017-10-11T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>开始忙了，所以杂事会越来越多，有的时候被业务部门的同事打断之后就想不起来之前代码写到哪里。</p>
-<h2 id="sublime-text"><a href="#sublime-text" class="headerlink" title="sublime text"></a>sublime text</h2><p>最开始只是在sublime text中添加注释行，代表回来要接着做什么，但作用不是很明显。还是怀念ReSharper带的TODO tool，于是下载了<code>Pycharm</code>和<code>Webstorm</code>。</p>
-<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><p>使用<code>Pycharm</code>后，当有业务部门同事打断我，我都会让他们等半分钟，马上写个TODO，像这样：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># TODO 修改了u8id，需要判断是否有重复id</span></span><br></pre></td></tr></table></figure>
-<p>处理完业务部门的事情后，打开TODO tool，一目了然：</p>
-<p><img src="/img/jetbrains-ide-todo/p1.png" alt="p1.png"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/11/work/jetbrains-ide-todo/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1163,11 +1163,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Kibana4</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">运维</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1179,10 +1195,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
               </li>
              
@@ -1191,19 +1203,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Kibana4</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1219,11 +1223,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">yeelink</a>
+                <a href="javascript:void(0)" class="js-tag color4">VPS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">VPS</a>
+                <a href="javascript:void(0)" class="js-tag color3">yeelink</a>
               </li>
             
             <div class="clearfix"></div>

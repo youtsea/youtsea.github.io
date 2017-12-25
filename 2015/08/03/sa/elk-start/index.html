@@ -9,7 +9,7 @@
   <title>ELK实践 | 4Thing&#39;Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="参考  https://www.elastic.co/downloads/kibana http://kibana.logstash.es/content/    安装本次实验的安装环境为：ubuntu 15。 ELK的组成包括 ElasticSearch、 Logstash和Kibana。根据 ElasticSearch单机入门实验 和 Logstash单机入门实验安装 ElasticSearc">
-<meta name="keywords" content="运维,Logstash,ElasticSearch,Kibana4">
+<meta name="keywords" content="ElasticSearch,Logstash,Kibana4,运维">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ELK实践">
 <meta property="og:url" content="http://yoursite.com/2015/08/03/sa/elk-start/index.html">
@@ -216,7 +216,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">运维</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ElasticSearch</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -224,11 +224,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ElasticSearch</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Kibana4</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Kibana4</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">运维</a>
         		</li>
       		
 		</ul>
@@ -285,7 +285,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.</span> <span class="toc-text">参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Kibana的安装"><span class="toc-number">2.1.</span> <span class="toc-text">Kibana的安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ELK测试"><span class="toc-number">3.</span> <span class="toc-text">ELK测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置Logstash"><span class="toc-number">3.1.</span> <span class="toc-text">配置Logstash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kibana的配置"><span class="toc-number">3.2.</span> <span class="toc-text">Kibana的配置</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x53C2;&#x8003;" class="headerlink" title="&#x53C2;&#x8003;"></a>&#x53C2;&#x8003;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text"><a href="#&#x5B89;&#x88C5;" class="headerlink" title="&#x5B89;&#x88C5;"></a>&#x5B89;&#x88C5;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Kibana的安装"><span class="toc-number">2.1.</span> <span class="toc-text"><a href="#Kibana&#x7684;&#x5B89;&#x88C5;" class="headerlink" title="Kibana&#x7684;&#x5B89;&#x88C5;"></a>Kibana&#x7684;&#x5B89;&#x88C5;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ELK测试"><span class="toc-number">3.</span> <span class="toc-text"><a href="#ELK&#x6D4B;&#x8BD5;" class="headerlink" title="ELK&#x6D4B;&#x8BD5;"></a>ELK&#x6D4B;&#x8BD5;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置Logstash"><span class="toc-number">3.1.</span> <span class="toc-text"><a href="#&#x914D;&#x7F6E;Logstash" class="headerlink" title="&#x914D;&#x7F6E;Logstash"></a>&#x914D;&#x7F6E;Logstash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kibana的配置"><span class="toc-number">3.2.</span> <span class="toc-text"><a href="#Kibana&#x7684;&#x914D;&#x7F6E;" class="headerlink" title="Kibana&#x7684;&#x914D;&#x7F6E;"></a>Kibana&#x7684;&#x914D;&#x7F6E;</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -413,11 +413,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Kibana4</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">运维</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -429,10 +445,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
               </li>
              
@@ -441,19 +453,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Kibana4</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -469,11 +473,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">yeelink</a>
+                <a href="javascript:void(0)" class="js-tag color4">VPS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">VPS</a>
+                <a href="javascript:void(0)" class="js-tag color3">yeelink</a>
               </li>
             
             <div class="clearfix"></div>

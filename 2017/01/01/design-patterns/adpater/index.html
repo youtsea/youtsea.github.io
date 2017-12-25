@@ -199,18 +199,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/01/01/design-patterns/command/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/01/01/design-patterns/observer/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          设计模式实践-命令模式
+          设计模式实践-观察者模式
         
       </div>
     </a>
   
   
-    <a href="/2017/01/01/design-patterns/facade/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">设计模式实践-外观模式</div>
+    <a href="/2017/01/01/design-patterns/command/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">设计模式实践-命令模式</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -237,7 +237,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-number">1.</span> <span class="toc-text">场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现代码"><span class="toc-number">2.</span> <span class="toc-text">实现代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#标准读卡器接口："><span class="toc-number">2.1.</span> <span class="toc-text">标准读卡器接口：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他读卡器接口："><span class="toc-number">2.2.</span> <span class="toc-text">其他读卡器接口：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他读卡器实现："><span class="toc-number">2.3.</span> <span class="toc-text">其他读卡器实现：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他读卡器适配器："><span class="toc-number">2.4.</span> <span class="toc-text">其他读卡器适配器：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关调用"><span class="toc-number">3.</span> <span class="toc-text">相关调用</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x573A;&#x666F;" class="headerlink" title="&#x573A;&#x666F;"></a>&#x573A;&#x666F;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现代码"><span class="toc-number">2.</span> <span class="toc-text"><a href="#&#x5B9E;&#x73B0;&#x4EE3;&#x7801;" class="headerlink" title="&#x5B9E;&#x73B0;&#x4EE3;&#x7801;"></a>&#x5B9E;&#x73B0;&#x4EE3;&#x7801;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#标准读卡器接口："><span class="toc-number">2.1.</span> <span class="toc-text"><a href="#&#x6807;&#x51C6;&#x8BFB;&#x5361;&#x5668;&#x63A5;&#x53E3;&#xFF1A;" class="headerlink" title="&#x6807;&#x51C6;&#x8BFB;&#x5361;&#x5668;&#x63A5;&#x53E3;&#xFF1A;"></a>&#x6807;&#x51C6;&#x8BFB;&#x5361;&#x5668;&#x63A5;&#x53E3;&#xFF1A;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他读卡器接口："><span class="toc-number">2.2.</span> <span class="toc-text"><a href="#&#x5176;&#x4ED6;&#x8BFB;&#x5361;&#x5668;&#x63A5;&#x53E3;&#xFF1A;" class="headerlink" title="&#x5176;&#x4ED6;&#x8BFB;&#x5361;&#x5668;&#x63A5;&#x53E3;&#xFF1A;"></a>&#x5176;&#x4ED6;&#x8BFB;&#x5361;&#x5668;&#x63A5;&#x53E3;&#xFF1A;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他读卡器实现："><span class="toc-number">2.3.</span> <span class="toc-text"><a href="#&#x5176;&#x4ED6;&#x8BFB;&#x5361;&#x5668;&#x5B9E;&#x73B0;&#xFF1A;" class="headerlink" title="&#x5176;&#x4ED6;&#x8BFB;&#x5361;&#x5668;&#x5B9E;&#x73B0;&#xFF1A;"></a>&#x5176;&#x4ED6;&#x8BFB;&#x5361;&#x5668;&#x5B9E;&#x73B0;&#xFF1A;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他读卡器适配器："><span class="toc-number">2.4.</span> <span class="toc-text"><a href="#&#x5176;&#x4ED6;&#x8BFB;&#x5361;&#x5668;&#x9002;&#x914D;&#x5668;&#xFF1A;" class="headerlink" title="&#x5176;&#x4ED6;&#x8BFB;&#x5361;&#x5668;&#x9002;&#x914D;&#x5668;&#xFF1A;"></a>&#x5176;&#x4ED6;&#x8BFB;&#x5361;&#x5668;&#x9002;&#x914D;&#x5668;&#xFF1A;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关调用"><span class="toc-number">3.</span> <span class="toc-text"><a href="#&#x76F8;&#x5173;&#x8C03;&#x7528;" class="headerlink" title="&#x76F8;&#x5173;&#x8C03;&#x7528;"></a>&#x76F8;&#x5173;&#x8C03;&#x7528;</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -365,11 +365,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Kibana4</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">运维</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -381,10 +397,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
               </li>
              
@@ -393,19 +405,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Kibana4</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -421,11 +425,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">yeelink</a>
+                <a href="javascript:void(0)" class="js-tag color4">VPS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">VPS</a>
+                <a href="javascript:void(0)" class="js-tag color3">yeelink</a>
               </li>
             
             <div class="clearfix"></div>
