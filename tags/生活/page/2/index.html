@@ -6,19 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>设计模式实践-备忘录模式 | 4Thing&#39;Blog</title>
+  <title>Tag: 生活 | 4Thing&#39;Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="场景备忘配置文件，实现配置文件的撤销和重做操作 实现代码配置文件类型123456789101112131415161718192021222324252627namespace DesignPatterns.Memento&amp;#123;    /// &amp;lt;summary&amp;gt;    ///     配置文件类型    /// &amp;lt;/summary&amp;gt;    public class S">
-<meta name="keywords" content="设计模式">
-<meta property="og:type" content="article">
-<meta property="og:title" content="设计模式实践-备忘录模式">
-<meta property="og:url" content="http://yoursite.com/2017/01/01/design-patterns/memento/index.html">
+  <meta name="description" content="无名码农，摄影咖啡爱好者">
+<meta property="og:type" content="website">
+<meta property="og:title" content="4Thing&#39;Blog">
+<meta property="og:url" content="http://yoursite.com/tags/生活/page/2/index.html">
 <meta property="og:site_name" content="4Thing&#39;Blog">
-<meta property="og:description" content="场景备忘配置文件，实现配置文件的撤销和重做操作 实现代码配置文件类型123456789101112131415161718192021222324252627namespace DesignPatterns.Memento&amp;#123;    /// &amp;lt;summary&amp;gt;    ///     配置文件类型    /// &amp;lt;/summary&amp;gt;    public class S">
-<meta property="og:updated_time" content="2017-12-23T13:36:07.761Z">
+<meta property="og:description" content="无名码农，摄影咖啡爱好者">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式实践-备忘录模式">
-<meta name="twitter:description" content="场景备忘配置文件，实现配置文件的撤销和重做操作 实现代码配置文件类型123456789101112131415161718192021222324252627namespace DesignPatterns.Memento&amp;#123;    /// &amp;lt;summary&amp;gt;    ///     配置文件类型    /// &amp;lt;/summary&amp;gt;    public class S">
+<meta name="twitter:title" content="4Thing&#39;Blog">
+<meta name="twitter:description" content="无名码农，摄影咖啡爱好者">
   
     <link rel="alternative" href="/atom.xml" title="4Thing&#39;Blog" type="application/atom+xml">
   
@@ -140,122 +138,67 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-design-patterns/memento" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      设计模式实践-备忘录模式
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2016/10/07/life/ant-photo/" class="archive-article-date">
+  	<time datetime="2016-10-07T00:31:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-07</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/10/07/life/ant-photo/">和XP拍摄拍摄</a>
     </h1>
   
 
-        
-        <a href="/2017/01/01/design-patterns/memento/" class="archive-article-date">
-  	<time datetime="2017-01-01T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>备忘配置文件，实现配置文件的撤销和重做操作</p>
-<h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><h3 id="配置文件类型"><a href="#配置文件类型" class="headerlink" title="配置文件类型"></a>配置文件类型</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns.Memento</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span>     配置文件类型</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ServerConfig</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span>     Gets or sets IP</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">string</span> Ip &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span>     Gets or sets Port</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">uint</span> Port &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 重写ToString函数</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span>输出字符串<span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">string</span> <span class="title">ToString</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">string</span>.Format(<span class="string">$"Ip: <span class="subst">&#123;<span class="keyword">this</span>.Ip&#125;</span>, Port: <span class="subst">&#123;<span class="keyword">this</span>.Port&#125;</span>"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="配置拥有者类"><a href="#配置拥有者类" class="headerlink" title="配置拥有者类"></a>配置拥有者类</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns.Memento</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 需要做备忘的类</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Original</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> Gets or sets 服务器配置</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">public</span> ServerConfig ServerConfig &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 创建配置备忘</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span>配置备忘<span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> ConfigMemento <span class="title">CreateMemento</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> ConfigMemento(<span class="keyword">this</span>.ServerConfig);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="配置备忘类"><a href="#配置备忘类" class="headerlink" title="配置备忘类"></a>配置备忘类</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns.Memento</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 配置备忘</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ConfigMemento</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> Initializes a new instance of the <span class="doctag">&lt;see cref="ConfigMemento" /&gt;</span> class.</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="serverConfig"&gt;</span>配置文件对象<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ConfigMemento</span>(<span class="params">ServerConfig serverConfig</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.ServerConfig = serverConfig;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> Gets or sets 配置文件</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">public</span> ServerConfig ServerConfig &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="配置管理者"><a href="#配置管理者" class="headerlink" title="配置管理者"></a>配置管理者</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">DesignPatterns.Memento</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 配置残酷</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ConfigStorage</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 配置列表</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">readonly</span> List&lt;ConfigMemento&gt; _configMementoes = <span class="keyword">new</span> List&lt;ConfigMemento&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 当前索引</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> _current = <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 设置配置项</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="config"&gt;</span>配置备忘<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SetMemento</span>(<span class="params">ConfigMemento config</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>._current ++;</span><br><span class="line">            <span class="keyword">this</span>._configMementoes.Add(config);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 重做</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span>配置项<span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> ConfigMemento <span class="title">Do</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>._configMementoes.Count &lt; <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>._current &lt; <span class="number">0</span> || <span class="keyword">this</span>._current &gt;= (<span class="keyword">this</span>._configMementoes.Count - <span class="number">1</span>)) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            <span class="keyword">this</span>._current ++;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>._configMementoes[<span class="keyword">this</span>._current];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 撤销</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span>配置项<span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> ConfigMemento <span class="title">Undo</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>._configMementoes.Count &lt; <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>._current &lt;= <span class="number">0</span> || <span class="keyword">this</span>._current &gt; (<span class="keyword">this</span>._configMementoes.Count - <span class="number">1</span>)) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            <span class="keyword">this</span>._current--;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>._configMementoes[<span class="keyword">this</span>._current];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="相关调用"><a href="#相关调用" class="headerlink" title="相关调用"></a>相关调用</h2><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">Original original = <span class="keyword">new</span> Original();</span><br><span class="line">original.ServerConfig = <span class="keyword">new</span> ServerConfig</span><br><span class="line">&#123;</span><br><span class="line">    Ip = <span class="string">"192.168.1.1"</span>,</span><br><span class="line">    Port = <span class="number">5000</span></span><br><span class="line">&#125;; ;</span><br><span class="line">ConfigStorage configStorage = <span class="keyword">new</span> ConfigStorage();</span><br><span class="line">configStorage.SetMemento(original.CreateMemento());</span><br><span class="line">original.ServerConfig = <span class="keyword">new</span> ServerConfig</span><br><span class="line">&#123;</span><br><span class="line">    Ip = <span class="string">"192.168.1.2"</span>,</span><br><span class="line">    Port = <span class="number">6000</span></span><br><span class="line">&#125;; </span><br><span class="line">configStorage.SetMemento(original.CreateMemento());</span><br><span class="line">original.ServerConfig = <span class="keyword">new</span> ServerConfig</span><br><span class="line">&#123;</span><br><span class="line">    Ip = <span class="string">"192.168.2.1"</span>,</span><br><span class="line">    Port = <span class="number">1000</span></span><br><span class="line">&#125;;</span><br><span class="line">configStorage.SetMemento(original.CreateMemento());</span><br><span class="line">original.ServerConfig = <span class="keyword">new</span> ServerConfig</span><br><span class="line">&#123;</span><br><span class="line">    Ip = <span class="string">"192.168.1.1"</span>,</span><br><span class="line">    Port = <span class="number">3000</span></span><br><span class="line">&#125;; </span><br><span class="line">configStorage.SetMemento(original.CreateMemento());</span><br><span class="line">original.ServerConfig = <span class="keyword">new</span> ServerConfig</span><br><span class="line">&#123;</span><br><span class="line">    Ip = <span class="string">"192.168.1.127"</span>,</span><br><span class="line">    Port = <span class="number">5000</span></span><br><span class="line">&#125;;</span><br><span class="line">configStorage.SetMemento(original.CreateMemento());</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> memento = configStorage.Undo();</span><br><span class="line">Console.WriteLine(memento.ServerConfig.ToString());</span><br><span class="line">memento = configStorage.Undo();</span><br><span class="line">Console.WriteLine(memento.ServerConfig.ToString());</span><br><span class="line">memento = configStorage.Undo();</span><br><span class="line">Console.WriteLine(memento.ServerConfig.ToString());</span><br><span class="line">memento = configStorage.Undo();</span><br><span class="line">Console.WriteLine(memento.ServerConfig.ToString());</span><br><span class="line">Console.WriteLine(<span class="string">"---------------------"</span>);</span><br><span class="line">memento = configStorage.Do();</span><br><span class="line">Console.WriteLine(memento.ServerConfig.ToString());</span><br><span class="line">memento = configStorage.Do();</span><br><span class="line">Console.WriteLine(memento.ServerConfig.ToString());</span><br><span class="line">memento = configStorage.Do();</span><br><span class="line">Console.WriteLine(memento.ServerConfig.ToString());</span><br><span class="line">memento = configStorage.Do();</span><br><span class="line">Console.WriteLine(memento.ServerConfig.ToString());</span><br><span class="line"></span><br><span class="line">Console.WriteLine(<span class="string">"----------------"</span>);</span><br><span class="line">memento = configStorage.Undo();</span><br><span class="line">Console.WriteLine(memento.ServerConfig.ToString());</span><br><span class="line">memento = configStorage.Undo();</span><br><span class="line">Console.WriteLine(memento.ServerConfig.ToString());</span><br><span class="line">memento = configStorage.Undo();</span><br><span class="line">Console.WriteLine(memento.ServerConfig.ToString());</span><br><span class="line">memento = configStorage.Undo();</span><br><span class="line">Console.WriteLine(memento.ServerConfig.ToString());</span><br></pre></td></tr></table></figure>
-<p>Out：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Ip: 192.168.1.1, Port: 3000</span><br><span class="line">Ip: 192.168.2.1, Port: 1000</span><br><span class="line">Ip: 192.168.1.2, Port: 6000</span><br><span class="line">Ip: 192.168.1.1, Port: 5000</span><br><span class="line">---------------------</span><br><span class="line">Ip: 192.168.1.2, Port: 6000</span><br><span class="line">Ip: 192.168.2.1, Port: 1000</span><br><span class="line">Ip: 192.168.1.1, Port: 3000</span><br><span class="line">Ip: 192.168.1.127, Port: 5000</span><br><span class="line">----------------</span><br><span class="line">Ip: 192.168.1.1, Port: 3000</span><br><span class="line">Ip: 192.168.2.1, Port: 1000</span><br><span class="line">Ip: 192.168.1.2, Port: 6000</span><br><span class="line">Ip: 192.168.1.1, Port: 5000</span><br></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">摄影</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/01/01/design-patterns/simple_factory/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          设计模式实践-简单工厂
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/01/01/design-patterns/bridge/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">设计模式实践-桥接模式</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x573A;&#x666F;" class="headerlink" title="&#x573A;&#x666F;"></a>&#x573A;&#x666F;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现代码"><span class="toc-number">2.</span> <span class="toc-text"><a href="#&#x5B9E;&#x73B0;&#x4EE3;&#x7801;" class="headerlink" title="&#x5B9E;&#x73B0;&#x4EE3;&#x7801;"></a>&#x5B9E;&#x73B0;&#x4EE3;&#x7801;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置文件类型"><span class="toc-number">2.1.</span> <span class="toc-text"><a href="#&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7C7B;&#x578B;" class="headerlink" title="&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7C7B;&#x578B;"></a>&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7C7B;&#x578B;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置拥有者类"><span class="toc-number">2.2.</span> <span class="toc-text"><a href="#&#x914D;&#x7F6E;&#x62E5;&#x6709;&#x8005;&#x7C7B;" class="headerlink" title="&#x914D;&#x7F6E;&#x62E5;&#x6709;&#x8005;&#x7C7B;"></a>&#x914D;&#x7F6E;&#x62E5;&#x6709;&#x8005;&#x7C7B;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置备忘类"><span class="toc-number">2.3.</span> <span class="toc-text"><a href="#&#x914D;&#x7F6E;&#x5907;&#x5FD8;&#x7C7B;" class="headerlink" title="&#x914D;&#x7F6E;&#x5907;&#x5FD8;&#x7C7B;"></a>&#x914D;&#x7F6E;&#x5907;&#x5FD8;&#x7C7B;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置管理者"><span class="toc-number">2.4.</span> <span class="toc-text"><a href="#&#x914D;&#x7F6E;&#x7BA1;&#x7406;&#x8005;" class="headerlink" title="&#x914D;&#x7F6E;&#x7BA1;&#x7406;&#x8005;"></a>&#x914D;&#x7F6E;&#x7BA1;&#x7406;&#x8005;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关调用"><span class="toc-number">3.</span> <span class="toc-text"><a href="#&#x76F8;&#x5173;&#x8C03;&#x7528;" class="headerlink" title="&#x76F8;&#x5173;&#x8C03;&#x7528;"></a>&#x76F8;&#x5173;&#x8C03;&#x7528;</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/tags/生活/">&laquo; Prev</a><a class="page-number" href="/tags/生活/">1</a><span class="page-number current">2</span>
+    </nav>
   
 
 
@@ -279,9 +222,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,

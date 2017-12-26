@@ -140,6 +140,139 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-python/psutil-start-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/17/python/psutil-start-1/">psutil库介绍(一)</a>
+    </h1>
+  
+
+        
+        <a href="/2015/07/17/python/psutil-start-1/" class="archive-article-date">
+  	<time datetime="2015-07-17T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<ul>
+<li><a href="https://pypi.python.org/pypi/psutil/" target="_blank" rel="noopener">https://pypi.python.org/pypi/psutil/</a></li>
+<li><a href="http://www.jb51.net/LINUXjishu/34604.html" target="_blank" rel="noopener">Linux Top 命令解析</a></li>
+<li><a href="http://blog.csdn.net/slowlaris/article/details/6301949" target="_blank" rel="noopener">一日一省linux：swap</a></li>
+</ul>
+</blockquote>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install psutil</span><br></pre></td></tr></table></figure>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line">psutil.test()</span><br></pre></td></tr></table></figure>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">USER         PID %CPU %MEM     VSZ     RSS TTY           START    TIME  COMMAND</span><br><span class="line">root           1  0.0  0.2  182700    3140 ?             Jul03   00:04  systemd</span><br><span class="line">root           2  0.0    ?       ?       ? ?             Jul03   00:00  kthreadd</span><br><span class="line">root           3  0.0    ?       ?       ? ?             Jul03   00:07  ksoftirqd/0</span><br><span class="line">root           5  0.0    ?       ?       ? ?             Jul03   00:00  kworker/0:0H</span><br><span class="line">root           7  0.0    ?       ?       ? ?             Jul03   06:43  rcu_sched</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<h2 id="cpu部分"><a href="#cpu部分" class="headerlink" title="cpu部分"></a>cpu部分</h2><p>测试代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line">cts = psutil.cpu_times()</span><br><span class="line">cputime = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> cts:</span><br><span class="line">    <span class="keyword">if</span> item != <span class="number">0</span>:</span><br><span class="line">        cputime = cputime + item</span><br><span class="line">        </span><br><span class="line"><span class="keyword">print</span> <span class="string">'用户时间：%f%%'</span> % (cts.user/cputime * <span class="number">100</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'内核时间：%f%%'</span> % (cts.system/cputime * <span class="number">100</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'空闲时间：%f%%'</span> % (cts.idle/cputime * <span class="number">100</span>)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">scputimes(user=8888.84, nice=358.84, system=9442.12, idle=287258.54, iowait=171.63, irq=0.1, softirq=207.79, steal=0.0, guest=0.0, guest_nice=0.0)</span><br><span class="line">用户时间：2.901741%</span><br><span class="line">内核时间：3.082358%</span><br><span class="line">空闲时间：93.774866%</span><br></pre></td></tr></table></figure>
+<p>相关的名词解释：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&gt; user：CPU执行用户进程所花费的时间</span><br><span class="line"></span><br><span class="line">&gt; nice：系统调整进程优先级所花费的时间</span><br><span class="line"></span><br><span class="line">&gt; system：CPU在内核运行时间，包括IRQ和softirq时间</span><br><span class="line"></span><br><span class="line">&gt; idle：系统处于空闲期，等待进程运行所花费的时间</span><br><span class="line"></span><br><span class="line">&gt; iowait：CPI在等待I/O操作完成所花费的时间</span><br><span class="line"></span><br><span class="line">&gt; irq：系统处理硬中断所花费的时间</span><br><span class="line"></span><br><span class="line">&gt; softirq：系统处理软中断中断所花费的时间</span><br><span class="line"></span><br><span class="line">&gt; steal：被强制等待（involuntary wait）虚拟CPU的时间，此时hypervisor在为另一个虚拟处理器服务</span><br><span class="line"></span><br><span class="line">&gt; guest：虚拟CPU上所花费的时间</span><br><span class="line"></span><br><span class="line">&gt; guest_nice：虚拟机调整进程优先级所花费的时间</span><br></pre></td></tr></table></figure></p>
+<p>测试代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line"><span class="comment">#逻辑CPU为物理个数*核数</span></span><br><span class="line"><span class="keyword">print</span> psutil.cpu_count()<span class="comment">#逻辑CPU个数，</span></span><br><span class="line"><span class="keyword">print</span> psutil.cpu_count(logical=<span class="keyword">False</span>)<span class="comment">#物理cpu数量，</span></span><br></pre></td></tr></table></figure>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">2</span><br></pre></td></tr></table></figure></p>
+<p>测试代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line"><span class="comment">#3秒内CPU使用率</span></span><br><span class="line">psutil.cpu_percent(interval=<span class="number">3</span>)</span><br><span class="line"><span class="comment">#3秒内CPU时间</span></span><br><span class="line">psutil.cpu_times_percent(interval=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0.2</span><br><span class="line">scputimes(user=0.1, nice=0.0, system=0.1, idle=99.8, iowait=0.0, irq=0.0, softirq=0.0, steal=0.0, guest=0.0, guest_nice=0.0)</span><br></pre></td></tr></table></figure>
+<p>测试代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line"><span class="comment">#获取每个每个逻辑cpu的cpu时间</span></span><br><span class="line">cts = psutil.cpu_times(percpu=<span class="keyword">True</span>)</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> cts:</span><br><span class="line">    <span class="keyword">print</span> item</span><br></pre></td></tr></table></figure></p>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">scputimes(user=2238.06, nice=93.16, system=2428.54, idle=72457.66, iowait=42.92, irq=0.08, softirq=97.32, steal=0.0, guest=0.0, guest_nice=0.0)</span><br><span class="line">scputimes(user=2252.32, nice=91.35, system=2422.54, idle=72640.16, iowait=41.35, irq=0.0, softirq=26.46, steal=0.0, guest=0.0, guest_nice=0.0)</span><br><span class="line">scputimes(user=2259.44, nice=87.5, system=2302.4, idle=72809.27, iowait=43.23, irq=0.02, softirq=68.16, steal=0.0, guest=0.0, guest_nice=0.0)</span><br><span class="line">scputimes(user=2165.43, nice=90.67, system=2300.54, idle=72947.44, iowait=44.75, irq=0.0, softirq=16.87, steal=0.0, guest=0.0, guest_nice=0.0)</span><br></pre></td></tr></table></figure>
+<h2 id="内存部分"><a href="#内存部分" class="headerlink" title="内存部分"></a>内存部分</h2><p>测试代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line">mem = psutil.virtual_memory()</span><br><span class="line"><span class="keyword">print</span> mem</span><br><span class="line"><span class="keyword">print</span> (mem.total-mem.available)/float(mem.total) * <span class="number">100</span></span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">svmem(total=2081054720L, available=424890368L, percent=79.6, used=1977294848L, free=103759872L, active=731291648, inactive=692670464, buffers=25604096L, cached=295526400)</span><br><span class="line">79.5829314858</span><br></pre></td></tr></table></figure>
+<p>相关的名词解释：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&gt;total：可识别的内存总数，不含页面文件，有时候会略微少于物理内存，是因为被硬件保留。</span><br><span class="line"></span><br><span class="line">&gt;available：空闲的内存数量，已经被操作系统控制但未被具体分配的内存，这实际是的空闲内存。</span><br><span class="line"></span><br><span class="line">&gt;percent：使用内存占用的百分比。</span><br><span class="line"></span><br><span class="line">&gt;used：使用的物理内存总量。</span><br><span class="line"></span><br><span class="line">&gt;free：没有被系统所使用的内存，这部分内存暂时不会被任何应用或者内核所使用，可以说这部分内存实际上是被浪费掉了</span><br><span class="line"></span><br><span class="line">&gt;active：活跃内存。</span><br><span class="line"></span><br><span class="line">&gt;inactive：非活跃内存。</span><br><span class="line"></span><br><span class="line">&gt;buffers：用作内核缓存的内存量。</span><br><span class="line"></span><br><span class="line">&gt;cached:缓冲的交换区总量。 内存中的内容被换出到交换区，而后又被换入到内存，但使用过的交换区尚未被覆盖， 该数值即为这些内容已存在于内存中的交换区的大小。相应的内存再次被换出时可不必再对交换区写入。</span><br></pre></td></tr></table></figure></p>
+<p>测试代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line"><span class="keyword">print</span> psutil.swap_memory()</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sswap(total=1071640576L, used=664248320L, free=407392256L, percent=62.0, sin=1829502976, sout=2796204032)</span><br></pre></td></tr></table></figure>
+<p>相关的名词解释：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;sin：每秒交换回内存（Swap in）的总量。</span><br><span class="line"></span><br><span class="line">&gt;sout：每秒交换出内存（Swap out）的总量。</span><br></pre></td></tr></table></figure></p>
+<h2 id="硬盘分区部分"><a href="#硬盘分区部分" class="headerlink" title="硬盘分区部分"></a>硬盘分区部分</h2><p>测试代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line">devs = psutil.disk_partitions()</span><br><span class="line"><span class="keyword">for</span> dev <span class="keyword">in</span> devs:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'挂在设备：%s，挂载点：%s'</span> % (dev.device,dev.mountpoint)</span><br></pre></td></tr></table></figure>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sdiskpart(device=&apos;/dev/disk/by-uuid/1690f26d-4893-4c2f-8e0e-3ef22b1f4d14&apos;, mountpoint=&apos;/&apos;, fstype=&apos;ext4&apos;, opts=&apos;rw,relatime,errors=remount-ro,data=ordered&apos;)</span><br><span class="line">挂在设备：/dev/disk/by-uuid/1690f26d-4893-4c2f-8e0e-3ef22b1f4d14，挂载点：/</span><br><span class="line">sdiskpart(device=&apos;/dev/sr0&apos;, mountpoint=&apos;/media/shixin/CDROM&apos;, fstype=&apos;iso9660&apos;, opts=&apos;ro,nosuid,nodev,relatime,uid=1000,gid=1000,iocharset=utf8,mode=0400,dmode=0500&apos;)</span><br><span class="line">挂在设备：/dev/sr0，挂载点：/media/shixin/CDROM</span><br><span class="line">sdiskpart(device=&apos;/dev/sr1&apos;, mountpoint=&apos;/media/shixin/Ubuntu-Kylin 15.04 amd64&apos;, fstype=&apos;iso9660&apos;, opts=&apos;ro,nosuid,nodev,relatime,uid=1000,gid=1000,iocharset=utf8,mode=0400,dmode=0500&apos;)</span><br><span class="line">挂在设备：/dev/sr1，挂载点：/media/shixin/Ubuntu-Kylin 15.04 amd64</span><br><span class="line">sdiskpart(device=&apos;/dev/fd0&apos;, mountpoint=&apos;/media/floppy0&apos;, fstype=&apos;vfat&apos;, opts=&apos;rw,nosuid,nodev,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,utf8,errors=remount-ro&apos;)</span><br><span class="line">挂在设备：/dev/fd0，挂载点：/media/floppy0</span><br></pre></td></tr></table></figure></p>
+<p>相关的名词解释：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;mountpoint：文件卷在目录层次内存在的位置</span><br><span class="line"></span><br><span class="line">&gt;fstype：指定挂载设备的文件系统类型</span><br><span class="line"></span><br><span class="line">&gt;device：挂载设备</span><br><span class="line"></span><br><span class="line">&gt;opts：挂载参数</span><br></pre></td></tr></table></figure></p>
+<h2 id="网络部分"><a href="#网络部分" class="headerlink" title="网络部分"></a>网络部分</h2><p>测试代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line">nets = psutil.net_io_counters(pernic=<span class="keyword">True</span>)</span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> nets:</span><br><span class="line">    <span class="keyword">print</span> nets[k]</span><br></pre></td></tr></table></figure>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">snetio(bytes_sent=363926917, bytes_recv=363926917, packets_sent=390824, packets_recv=390824, errin=0, errout=0, dropin=0, dropout=0)</span><br><span class="line">snetio(bytes_sent=219786003, bytes_recv=537915337, packets_sent=540269, packets_recv=1044552, errin=0, errout=0, dropin=6491, dropout=0)</span><br></pre></td></tr></table></figure></p>
+<p>相关的名词解释：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt; bytes_sent：发送总量</span><br><span class="line"></span><br><span class="line">&gt; bytes_recv：接收总量</span><br><span class="line"></span><br><span class="line">&gt; packets_sent：发送包总量</span><br><span class="line"></span><br><span class="line">&gt; packets_recv：接收包总量</span><br><span class="line"></span><br><span class="line">&gt; errin：接收错误次数</span><br><span class="line"></span><br><span class="line">&gt; errout：发送错误次数</span><br><span class="line"></span><br><span class="line">&gt; dropin：接收丢包次数</span><br><span class="line"></span><br><span class="line">&gt; dropout：发送丢包次数</span><br></pre></td></tr></table></figure></p>
+<p>测试代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line">conns = psutil.net_connections()</span><br><span class="line"><span class="keyword">for</span> conn <span class="keyword">in</span> conns:</span><br><span class="line">    <span class="keyword">print</span> conn</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sconn(fd=37, family=2, type=1, laddr=(&apos;127.0.0.1&apos;, 38280), raddr=(), status=&apos;LISTEN&apos;, pid=88102)</span><br><span class="line">sconn(fd=41, family=2, type=1, laddr=(&apos;127.0.0.1&apos;, 35145), raddr=(), status=&apos;LISTEN&apos;, pid=88102)</span><br><span class="line">sconn(fd=26, family=2, type=1, laddr=(&apos;127.0.0.1&apos;, 55499), raddr=(), status=&apos;LISTEN&apos;, pid=88102)</span><br><span class="line">sconn(fd=5, family=2, type=1, laddr=(&apos;0.0.0.0&apos;, 6379), raddr=(), status=&apos;LISTEN&apos;, pid=808)</span><br><span class="line">sconn(fd=24, family=2, type=1, laddr=(&apos;127.0.0.1&apos;, 33292), raddr=(), status=&apos;LISTEN&apos;, pid=88102)</span><br><span class="line">sconn(fd=8, family=2, type=1, laddr=(&apos;0.0.0.0&apos;, 111), raddr=(), status=&apos;LISTEN&apos;, pid=531)</span><br><span class="line">sconn(fd=28, family=2, type=1, laddr=(&apos;127.0.0.1&apos;, 48689), raddr=(), status=&apos;LISTEN&apos;, pid=88102)</span><br><span class="line">sconn(fd=5, family=2, type=1, laddr=(&apos;127.0.1.1&apos;, 53), raddr=(), status=&apos;LISTEN&apos;, pid=817)</span><br><span class="line">sconn(fd=39, family=2, type=1, laddr=(&apos;127.0.0.1&apos;, 55286), raddr=(), status=&apos;LISTEN&apos;, pid=88102)</span><br><span class="line">sconn(fd=30, family=2, type=1, laddr=(&apos;127.0.0.1&apos;, 49398), raddr=(), status=&apos;LISTEN&apos;, pid=88102)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>相关的名词解释：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt; fd：文件描述</span><br><span class="line"></span><br><span class="line">&gt; family：参数代表地址家族，可为AF_INET或AF_UNIX。AF_INET家族包括Internet地址，AF_UNIX家族用于同一台机器上的进程间通信</span><br><span class="line"></span><br><span class="line">&gt; type：参数代表套接字类型，可为SOCK_STREAM(流套接字)和SOCK_DGRAM(数据报套接字)</span><br><span class="line"></span><br><span class="line">&gt; laddr：laddr表示本机地址</span><br><span class="line"></span><br><span class="line">&gt; raddr：raddr表示远程地址</span><br><span class="line"></span><br><span class="line">&gt; status：套接字状态</span><br><span class="line"></span><br><span class="line">&gt; pid：进程识别号</span><br></pre></td></tr></table></figure></p>
+<h2 id="用户部分"><a href="#用户部分" class="headerlink" title="用户部分"></a>用户部分</h2><p>测试代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line">users = psutil.users()</span><br><span class="line"><span class="keyword">for</span> user <span class="keyword">in</span> users:</span><br><span class="line">    <span class="keyword">print</span> user</span><br></pre></td></tr></table></figure>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">suser(name=&apos;shixin&apos;, terminal=&apos;:0&apos;, host=&apos;:0&apos;, started=1435191680.0)</span><br><span class="line">suser(name=&apos;shixin&apos;, terminal=&apos;pts/5&apos;, host=&apos;:0&apos;, started=1435904768.0)</span><br><span class="line">suser(name=&apos;shixin&apos;, terminal=&apos;pts/7&apos;, host=&apos;:0&apos;, started=1435977216.0)</span><br></pre></td></tr></table></figure></p>
+<p>相关的名词解释：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; pts：为用户打开的伪终端或虚拟终端</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">运维</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">psutil</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/07/17/python/psutil-start-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-uncategorized/RPi-PM2-5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

