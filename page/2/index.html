@@ -140,6 +140,92 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-work/linux-rdesktop" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/15/work/linux-rdesktop/">使用rdesktop连接远程windows</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/15/work/linux-rdesktop/" class="archive-article-date">
+  	<time datetime="2017-11-15T11:11:23.033Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install rdesktop</span><br></pre></td></tr></table></figure>
+<h3 id="连接windows远程桌面："><a href="#连接windows远程桌面：" class="headerlink" title="连接windows远程桌面："></a>连接windows远程桌面：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rdesktop -f -a 16 -u administrator -p passwrod xxxxx ip:port</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>-u 用户名<br>-p 指定和密码<br>-f 全屏<br>-a 颜色，可选，不过最高就是16位</p>
+</blockquote>
+<h3 id="其他参数"><a href="#其他参数" class="headerlink" title="其他参数"></a>其他参数</h3><blockquote>
+<p>-g 1024x768 分辨率，可选，缺省是一种比当前本地桌面低的分辨率<br>-P 缓冲，可选<br>-r clipboard:PRIMARYCLIPBOARD 剪贴板可以与远程桌面交互<br>-r sound:off 关闭声音<br>-r disk:xxx=/home/xxx 指定主机Linux上的一个目录映射到远程Windows上的硬盘，传送文件</p>
+</blockquote>
+<h3 id="退出全屏模式"><a href="#退出全屏模式" class="headerlink" title="退出全屏模式"></a>退出全屏模式</h3><p>使用组合键ctrl+alt+enter进行切换</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/15/work/linux-rdesktop/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-life/hack-veil" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -968,83 +1054,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/09/09/scrapy/scrapy-sn-jd/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python/selenium-apply" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/05/python/selenium-apply/">selenium的使用</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/05/python/selenium-apply/" class="archive-article-date">
-  	<time datetime="2017-09-05T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="selenium"><a href="#selenium" class="headerlink" title="selenium"></a>selenium</h2><p>Selenium是一个用于Web应用程序测试的工具。Selenium测试直接运行在浏览器中，就像真正的用户在操作一样。</p>
-<h2 id="模拟登陆"><a href="#模拟登陆" class="headerlink" title="模拟登陆"></a>模拟登陆</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">LOGIN_URI = <span class="string">'https://*'</span></span><br><span class="line"></span><br><span class="line">driver.get(LOGIN_URI)</span><br><span class="line">driver.implicitly_wait(<span class="number">20</span>)</span><br><span class="line">driver.find_element_by_id(<span class="string">'username'</span>).send_keys(<span class="string">'13811275860'</span>)</span><br><span class="line">driver.find_element_by_id(<span class="string">'password'</span>).send_keys(<span class="string">'prgc123456'</span>)</span><br><span class="line">driver.find_element_by_class_name(<span class="string">'login_btn'</span>).click()</span><br><span class="line">userid_els = driver.find_elements_by_id(<span class="string">'hiddenUserIdInTopBar'</span>)</span><br><span class="line"></span><br><span class="line">page = start_page</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> len(userid_els) == <span class="number">1</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-<h2 id="抓取数据"><a href="#抓取数据" class="headerlink" title="抓取数据"></a>抓取数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">url = <span class="string">'http://*'</span></span><br><span class="line">driver.get(url)</span><br><span class="line"><span class="keyword">if</span> driver.current_url != url:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    li_eles = driver.find_elements_by_xpath(</span><br><span class="line">        <span class="string">"/html/body/div[7]/div/div/ul/li"</span>)</span><br><span class="line">    <span class="keyword">if</span> len(li_eles) == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">for</span> li <span class="keyword">in</span> li_eles:</span><br><span class="line">        date = li.find_element_by_xpath(<span class="string">".//span"</span>).text</span><br><span class="line">        title = li.find_element_by_xpath(<span class="string">".//a"</span>).text</span><br><span class="line">        order_url = li.find_element_by_xpath(</span><br><span class="line">            <span class="string">".//a"</span>).get_attribute(<span class="string">"href"</span>)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<h2 id="cookie和requests"><a href="#cookie和requests" class="headerlink" title="cookie和requests"></a>cookie和requests</h2><p>cookies = None<br>if len(userid_els) == 1:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">url = <span class="string">'http://*'</span></span><br><span class="line">cookies = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> cookie <span class="keyword">in</span> driver.get_cookies():</span><br><span class="line">    cookies[cookie[<span class="string">'name'</span>]] = cookie[<span class="string">'value'</span>]</span><br><span class="line">r = requests.get(url, cookies=cookies)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/05/python/selenium-apply/">展开全文 >></a>
         </p>
       
 
