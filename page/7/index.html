@@ -140,6 +140,127 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-python/psutil-start-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/19/python/psutil-start-2/">psutil库介绍(二)</a>
+    </h1>
+  
+
+        
+        <a href="/2015/07/19/python/psutil-start-2/" class="archive-article-date">
+  	<time datetime="2015-07-19T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<ul>
+<li><a href="https://pypi.python.org/pypi/psutil/" target="_blank" rel="noopener">https://pypi.python.org/pypi/psutil/</a></li>
+<li><a href="http://www.cnblogs.com/dongzhiquan/archive/2012/02/15/2353274.html" target="_blank" rel="noopener">CPU Affinity (CPU亲合力)</a></li>
+<li><a href="http://www.361way.com/whereis-the-memory/4036.html" target="_blank" rel="noopener">也看linux内存去哪儿了</a></li>
+<li><a href="http://blog.163.com/zhangliye_2009/blog/static/12231202820137724941218/" target="_blank" rel="noopener">Real UID,Effective UID,Saved UID</a></li>
+<li><a href="http://blog.csdn.net/majieyue/article/details/8306885" target="_blank" rel="noopener">top显示的内存各项参数解析</a></li>
+<li><a href="http://www.cnblogs.com/zdwillie/p/3259395.html" target="_blank" rel="noopener">Android内存分析和调优（上）</a></li>
+<li><a href="http://blog.chinaunix.net/uid-20940095-id-3064131.html" target="_blank" rel="noopener">由匿名内存看swap分区</a></li>
+</ul>
+</blockquote>
+<p>部分名词解释可以参考 <a href="/2015/07/08/psutil-start-1/"><code>psutil库介绍(一)</code></a></p>
+<h2 id="进程部分"><a href="#进程部分" class="headerlink" title="进程部分"></a>进程部分</h2><p>测试代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line">pids = psutil.process_iter()</span><br><span class="line"><span class="keyword">for</span> pid <span class="keyword">in</span> pids:</span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"进程名：%s，进程ID：%d"</span>) % (pid.name(),pid.pid)</span><br></pre></td></tr></table></figure>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">进程名：systemd，进程ID：1</span><br><span class="line">进程名：kthreadd，进程ID：2</span><br><span class="line">进程名：ksoftirqd/0，进程ID：3</span><br><span class="line">进程名：kworker/0:0H，进程ID：5</span><br><span class="line">进程名：rcu_sched，进程ID：7</span><br><span class="line">进程名：rcu_bh，进程ID：8</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>测试代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line">p = psutil.Process(<span class="number">88102</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'进程名：'</span>, p.name()</span><br><span class="line"><span class="keyword">print</span> <span class="string">'执行文件位置：'</span>, p.exe()</span><br><span class="line"><span class="keyword">print</span> <span class="string">'进程的工作目录：'</span>, p.cwd()</span><br><span class="line"><span class="keyword">print</span> <span class="string">'进程的状态：'</span>, p.status()</span><br><span class="line"><span class="keyword">print</span> <span class="string">'进程的拥有者：'</span> ,p.username()</span><br><span class="line"><span class="keyword">print</span> <span class="string">'进程创建的时间：'</span> ,p.create_time()</span><br><span class="line"><span class="keyword">print</span> <span class="string">'该进程打开的终端：'</span> ,p.terminal()</span><br><span class="line"><span class="keyword">print</span> <span class="string">'用户ID：'</span>, p.uids()</span><br><span class="line"><span class="keyword">print</span> <span class="string">'组ID：'</span>,p.gids()</span><br><span class="line"><span class="keyword">print</span> <span class="string">'进程的CPU时间：'</span>, p.cpu_times()</span><br><span class="line"><span class="keyword">print</span> <span class="string">'进程在3秒内的CPU占用率：'</span>, p.cpu_percent(interval=<span class="number">3.0</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'进程占用内存百分比：'</span>, p.memory_percent()</span><br><span class="line"><span class="keyword">print</span> <span class="string">'进程占用内存信息：'</span>, p.memory_info()</span><br><span class="line"><span class="keyword">print</span> <span class="string">'进程占用内存信息：'</span>, p.memory_info_ex()</span><br><span class="line"><span class="keyword">print</span> <span class="string">'进程的线程数量：'</span>, p.num_threads()</span><br><span class="line"><span class="keyword">print</span> <span class="string">'进程的文件描述数量：'</span>, p.num_fds()</span><br><span class="line"><span class="keyword">print</span> <span class="string">'进程切换（被调度）的次数：'</span>, p.num_ctx_switches()</span><br><span class="line"><span class="keyword">print</span> <span class="string">'进程的优先级：'</span>, p.nice()</span><br></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">进程名： python</span><br><span class="line">执行文件位置： /usr/bin/python2.7</span><br><span class="line">进程的工作目录： /home/shixin/python</span><br><span class="line">进程的状态： running</span><br><span class="line">进程的拥有者： root</span><br><span class="line">进程创建的时间： 1435977235.72</span><br><span class="line">该进程打开的终端： /dev/pts/7</span><br><span class="line">用户ID： puids(real=0, effective=0, saved=0)</span><br><span class="line">组ID： pgids(real=0, effective=0, saved=0)</span><br><span class="line">进程的CPU时间： pcputimes(user=5.02, system=3.76)</span><br><span class="line">进程在3秒内的CPU占用率： 0.0</span><br><span class="line">进程占用内存百分比： 1.06501072687</span><br><span class="line">进程占用内存信息： pmem(rss=22163456, vms=536449024)</span><br><span class="line">进程占用内存信息(详细)： pextmem(rss=22163456, vms=536449024, shared=5197824, text=3260416, lib=0, data=416690176, dirty=0)</span><br><span class="line">进程的线程数量： 8</span><br><span class="line">进程的文件描述数量： 52</span><br><span class="line">进程切换（被调度）的次数： pctxsw(voluntary=2164, involuntary=441)</span><br><span class="line">进程的优先级： 0</span><br></pre></td></tr></table></figure></p>
+<p>相关的名词解释：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&gt; /dev/pts：这里的 `/dev/pts` 为伪终端，所谓伪终端是逻辑上的终端设备，多用于模拟终端程序, 通常是我们在X Window下打开的终端</span><br><span class="line"></span><br><span class="line">&gt; real：实际ID</span><br><span class="line"></span><br><span class="line">&gt; effective：有效ID</span><br><span class="line"></span><br><span class="line">&gt; saved：保存设置ID</span><br><span class="line"></span><br><span class="line">&gt; rss: 实际使用物理内存</span><br><span class="line"></span><br><span class="line">&gt; vms: 虚拟内存</span><br><span class="line"></span><br><span class="line">&gt; shared：共享内存</span><br><span class="line"></span><br><span class="line">&gt; text：进程代码段的虚拟内存页个数</span><br><span class="line"></span><br><span class="line">&gt; lib： lib使用的内存</span><br><span class="line"></span><br><span class="line">&gt; data：数据占用的内存</span><br><span class="line"></span><br><span class="line">&gt; dirty：dirty标志，非dirty page都可以回收</span><br><span class="line"></span><br><span class="line">&gt; voluntary：主动(切换)</span><br><span class="line"></span><br><span class="line">&gt; involuntary：被动(切换)</span><br></pre></td></tr></table></figure></p>
+<p>测试代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line">p = psutil.Process(<span class="number">88102</span>)</span><br><span class="line">cmds = p.cmdline()</span><br><span class="line"><span class="keyword">print</span> <span class="string">'执行该进程的命令行和参数：'</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> cmds:</span><br><span class="line">    <span class="keyword">print</span> item</span><br></pre></td></tr></table></figure></p>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">执行该进程的命令行和参数:</span><br><span class="line">/usr/bin/python</span><br><span class="line">-m</span><br><span class="line">IPython.kernel</span><br><span class="line">-f</span><br><span class="line">/home/shixin/.ipython/profile_nbserver/security/kernel-91847b2f-51f9-4cb6-bf1a-320baf55f508.json</span><br><span class="line">--profile-dir</span><br><span class="line">/home/shixin/.ipython/profile_nbserver</span><br></pre></td></tr></table></figure>
+<p>测试代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line">p = psutil.Process(<span class="number">88102</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'进程的IO计数信息：'</span></span><br><span class="line"><span class="keyword">print</span> p.io_counters()</span><br></pre></td></tr></table></figure></p>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">进程的IO计数信息：</span><br><span class="line">pio(read_count=25342, write_count=5075, read_bytes=5877760, write_bytes=4001792)</span><br></pre></td></tr></table></figure>
+<p>相关的名词解释：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; read_count：读次数</span><br><span class="line"></span><br><span class="line">&gt; write_count：写次数</span><br><span class="line"></span><br><span class="line">&gt; read_bytes：读总量</span><br><span class="line"></span><br><span class="line">&gt; write_bytes：写总量</span><br></pre></td></tr></table></figure></p>
+<p>测试代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line">p = psutil.Process(<span class="number">88102</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'进程打开的文件：'</span></span><br><span class="line">files = p.open_files()</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> files:</span><br><span class="line">    <span class="keyword">print</span> item</span><br></pre></td></tr></table></figure></p>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">进程打开的文件：</span><br><span class="line">popenfile(path=&apos;/home/shixin/.ipython/profile_nbserver/history.sqlite&apos;, fd=44)</span><br><span class="line">popenfile(path=&apos;/home/shixin/.ipython/profile_nbserver/history.sqlite&apos;, fd=45)</span><br><span class="line">popenfile(path=&apos;/home/shixin/.ipython/profile_nbserver/history.sqlite-journal&apos;, fd=51)</span><br></pre></td></tr></table></figure>
+<p>测试代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line">p = psutil.Process(<span class="number">88102</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'和进程有关的连接：'</span></span><br><span class="line">conns = p.connections()</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> conns:</span><br><span class="line">    <span class="keyword">print</span> item</span><br></pre></td></tr></table></figure></p>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">和进程有关的连接：</span><br><span class="line">pconn(fd=37, family=2, type=1, laddr=(&apos;127.0.0.1&apos;, 38280), raddr=(), status=&apos;LISTEN&apos;)</span><br><span class="line">pconn(fd=41, family=2, type=1, laddr=(&apos;127.0.0.1&apos;, 35145), raddr=(), status=&apos;LISTEN&apos;)</span><br><span class="line">pconn(fd=26, family=2, type=1, laddr=(&apos;127.0.0.1&apos;, 55499), raddr=(), status=&apos;LISTEN&apos;)</span><br><span class="line">pconn(fd=24, family=2, type=1, laddr=(&apos;127.0.0.1&apos;, 33292), raddr=(), status=&apos;LISTEN&apos;)</span><br><span class="line">pconn(fd=28, family=2, type=1, laddr=(&apos;127.0.0.1&apos;, 48689), raddr=(), status=&apos;LISTEN&apos;)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">进程打开的文件：</span><br><span class="line">popenfile(path=&apos;/home/shixin/.ipython/profile_nbserver/history.sqlite&apos;, fd=44)</span><br><span class="line">popenfile(path=&apos;/home/shixin/.ipython/profile_nbserver/history.sqlite&apos;, fd=45)</span><br><span class="line">popenfile(path=&apos;/home/shixin/.ipython/profile_nbserver/history.sqlite-journal&apos;, fd=51)</span><br></pre></td></tr></table></figure>
+<p>测试代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line">p = psutil.Process(<span class="number">88102</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'子进程信息：'</span></span><br><span class="line">threads =  p.threads()</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> threads:</span><br><span class="line">    <span class="keyword">print</span> item</span><br></pre></td></tr></table></figure></p>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">子进程信息：</span><br><span class="line">pthread(id=88102, user_time=3.57, system_time=2.08)</span><br><span class="line">pthread(id=88107, user_time=0.0, system_time=0.0)</span><br><span class="line">pthread(id=88108, user_time=0.02, system_time=0.3)</span><br><span class="line">pthread(id=88109, user_time=0.0, system_time=0.0)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>测试代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line">p = psutil.Process(<span class="number">88102</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'内存映射信息：'</span></span><br><span class="line">maps=  p.memory_maps()</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> maps:</span><br><span class="line">    <span class="keyword">print</span> item</span><br></pre></td></tr></table></figure></p>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">内存映射信息：</span><br><span class="line">pmmap_grouped(path=&apos;[vdso]&apos;, rss=4096, size=8192, pss=0, shared_clean=4096, shared_dirty=0, private_clean=0, private_dirty=0, referenced=4096, anonymous=0, swap=0)</span><br><span class="line">pmmap_grouped(path=&apos;/lib/x86_64-linux-gnu/librt-2.21.so&apos;, rss=0, size=2129920, pss=0, shared_clean=0, shared_dirty=0, private_clean=0, private_dirty=0, referenced=0, anonymous=0, swap=8192)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>相关的名词解释：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&gt; path：被映射到内存的文件名称</span><br><span class="line"></span><br><span class="line">&gt; rss：实际使用物理内存</span><br><span class="line"></span><br><span class="line">&gt; size：进程使用的地址空间</span><br><span class="line"></span><br><span class="line">&gt; pss：实际使用物理内存</span><br><span class="line"></span><br><span class="line">&gt; shared_clean：和其他进程共享的未改写页面</span><br><span class="line"></span><br><span class="line">&gt; shared_dirty：和其他进程共享的已改写页面</span><br><span class="line"></span><br><span class="line">&gt; private_clean：未改写的私有页面页面</span><br><span class="line"></span><br><span class="line">&gt; private_dirty：已改写的私有页面页面</span><br><span class="line"></span><br><span class="line">&gt; referenced：标记为已经访问的内存大小</span><br><span class="line"></span><br><span class="line">&gt; anonymous：匿名内存数据，在文件系统中没有相应的“储备”文件</span><br><span class="line"></span><br><span class="line">&gt; swap：存在于交换分区的数据大小</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">运维</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">psutil</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/07/19/python/psutil-start-2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-python/psutil-start-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -977,7 +1098,7 @@ define service{
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 4Thing
+    		&copy; 2018 4Thing
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1052,6 +1173,30 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">读书</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">摄影</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">猫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">安全技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">咖啡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
@@ -1085,30 +1230,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nagios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">读书</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">摄影</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">猫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">咖啡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">安全技术</a>
               </li>
              
               <li class="article-tag-list-item">
