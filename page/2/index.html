@@ -140,6 +140,166 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-life/cat-01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/26/life/cat-01/">第一次摄猫</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/26/life/cat-01/" class="archive-article-date">
+  	<time datetime="2017-11-26T12:27:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="P1"><a href="#P1" class="headerlink" title="P1"></a>P1</h2><p><img src="/img/cat-photo/p1.jpg" alt="photo1.jpg"></p>
+<h2 id="P2"><a href="#P2" class="headerlink" title="P2"></a>P2</h2><p><img src="/img/cat-photo/p2.jpg" alt="photo2.jpg"></p>
+<h2 id="P3"><a href="#P3" class="headerlink" title="P3"></a>P3</h2><p><img src="/img/cat-photo/p3.jpg" alt="photo3.jpg"></p>
+<h2 id="P4"><a href="#P4" class="headerlink" title="P4"></a>P4</h2><p><img src="/img/cat-photo/p4.jpg" alt="photo4.jpg"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">摄影</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">猫</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/26/life/cat-01/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-python/feedparser-rss-mongodb" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/19/python/feedparser-rss-mongodb/">使用feedparser解析rss</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/19/python/feedparser-rss-mongodb/" class="archive-article-date">
+  	<time datetime="2017-11-19T13:44:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> feedparser</span><br><span class="line"><span class="keyword">from</span> apscheduler.schedulers.blocking <span class="keyword">import</span> BlockingScheduler</span><br><span class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_rss</span><span class="params">(url)</span>:</span></span><br><span class="line">    client = MongoClient(<span class="string">'192.168.6.240'</span>, <span class="number">27017</span>)</span><br><span class="line">    db = client.new.rss</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        feed = feedparser.parse(url)</span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> feed.entries:</span><br><span class="line">            md5 = hashlib.md5()</span><br><span class="line">            md5.update(item.link)</span><br><span class="line">            url_md5 = md5.hexdigest()</span><br><span class="line">            <span class="keyword">if</span> db.find_one(&#123;<span class="string">'urlMd5'</span>: url_md5&#125;) <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">                db.insert(&#123;</span><br><span class="line">                    <span class="string">'urlMd5'</span>: url_md5,</span><br><span class="line">                    <span class="string">'link'</span>: item.link,</span><br><span class="line">                    <span class="string">'title'</span>: item.title,</span><br><span class="line">                    <span class="string">'desc'</span>: item.description,</span><br><span class="line">                    <span class="string">'date'</span>: datetime.datetime.now()</span><br><span class="line">                &#125;)</span><br><span class="line">            print(item.link, datetime.datetime.now())</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(e)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rss_job</span><span class="params">()</span>:</span></span><br><span class="line">    parse_rss(<span class="string">'http://songshuhui.net/feed'</span>)</span><br><span class="line">    parse_rss(<span class="string">'http://www.iresearch.cn/common/rss/index.xml'</span>)</span><br><span class="line">    parse_rss(<span class="string">'http://rss.cnbeta.com/'</span>)</span><br><span class="line">    parse_rss(<span class="string">'http://feeds.geekpark.net'</span>)</span><br><span class="line">    parse_rss(<span class="string">'http://www.ifanr.com/feed'</span>)</span><br><span class="line">    parse_rss(<span class="string">'http://36kr.com/feed'</span>)</span><br><span class="line">    parse_rss(<span class="string">'http://www.infoq.com/cn/feed'</span>)</span><br><span class="line">    parse_rss(<span class="string">'http://blog.jobbole.com/feed/'</span>)</span><br><span class="line">    parse_rss(<span class="string">'http://www.juzicy.com/blog/feed'</span>)</span><br><span class="line">    parse_rss(<span class="string">'http://feeds.appinn.com/appinns/'</span>)</span><br><span class="line">    parse_rss(<span class="string">'https://www.zhihu.com/rss'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    sched = BlockingScheduler()</span><br><span class="line">    rss_job()</span><br><span class="line">    sched.add_job(rss_job, <span class="string">'interval'</span>, seconds=<span class="number">7200</span>, id=<span class="string">'rss-job'</span>)</span><br><span class="line">    sched.start()</span><br></pre></td></tr></table></figure>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p><img src="/img/python/Clipboard - 2017-12-25 15.55.46.png" alt="mongodb-view"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/19/python/feedparser-rss-mongodb/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-work/linux-rdesktop" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -916,176 +1076,9 @@
 
 
   
-    <article id="post-python/pytest-apply-and-plugin" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/13/python/pytest-apply-and-plugin/">使用pytest进行Python的单元测试</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/13/python/pytest-apply-and-plugin/" class="archive-article-date">
-  	<time datetime="2017-09-13T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>之前一直使用<code>unittest</code>进行<code>Python</code>的单元测试，最近接触<code>pytest</code>文档并使用它进行目前<code>Python</code>项目的单元测试</p>
-<h2 id="编写用例"><a href="#编写用例" class="headerlink" title="编写用例"></a>编写用例</h2><p>使用<code>pytest</code>可以方便的编写出测试用例，只需要在函数用例或者类用例前加<code>test_</code>或<code>Test</code>前缀即可</p>
-<h3 id="函数用例"><a href="#函数用例" class="headerlink" title="函数用例"></a>函数用例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_create_get_category_api</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""test create_get_category_api</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
-<h3 id="类用例"><a href="#类用例" class="headerlink" title="类用例"></a>类用例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestGw</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""the TestCase of xxx</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setup_class</span><span class="params">(cls)</span>:</span></span><br><span class="line">        <span class="string">""" mock collection to test collection</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_create_goods</span><span class="params">(self)</span>:</span>  </span><br><span class="line">        <span class="string">"""test create goods</span></span><br><span class="line"><span class="string">        ...</span></span><br></pre></td></tr></table></figure>
-<h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><h3 id="测试单个函数"><a href="#测试单个函数" class="headerlink" title="测试单个函数"></a>测试单个函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest .\qst\tests\api\zcy\test_factory_category.py::test_create_get_category_attrs_api</span><br></pre></td></tr></table></figure>
-<h3 id="测试单个类"><a href="#测试单个类" class="headerlink" title="测试单个类"></a>测试单个类</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest .\qst\tests\business\test_gw.py::TestGw</span><br></pre></td></tr></table></figure>
-<h3 id="测试单个类的某个方法"><a href="#测试单个类的某个方法" class="headerlink" title="测试单个类的某个方法"></a>测试单个类的某个方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest .\qst\tests\business\test_gw.py::TestGw::test_create_goods</span><br></pre></td></tr></table></figure>
-<h3 id="测试文件所有用例"><a href="#测试文件所有用例" class="headerlink" title="测试文件所有用例"></a>测试文件所有用例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest .\qst\tests\api\zcy\test_factory_category.py</span><br></pre></td></tr></table></figure>
-<h3 id="测试文件夹下所有用例"><a href="#测试文件夹下所有用例" class="headerlink" title="测试文件夹下所有用例"></a>测试文件夹下所有用例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest .\qst\tests</span><br></pre></td></tr></table></figure>
-<h2 id="mock的使用"><a href="#mock的使用" class="headerlink" title="mock的使用"></a>mock的使用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_create_goods</span><span class="params">(self, mocker)</span>:</span>  </span><br><span class="line">    <span class="string">"""test create goods</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    ...</span><br><span class="line">    mocker.patch.object(gw._goods_collection, <span class="string">'find_one'</span>)</span><br><span class="line">    gw._goods_collection.find_one.return_value = goods</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/13/python/pytest-apply-and-plugin/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-scrapy/scrapy-sn-jd" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/09/scrapy/scrapy-sn-jd/">抓取苏宁和京东价格</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/09/scrapy/scrapy-sn-jd/" class="archive-article-date">
-  	<time datetime="2017-09-09T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近业务部门需要对比平台上几个竞争对手的在售商品价格，因此编写了苏宁和京东的价格抓取脚本。</p>
-<h2 id="苏宁"><a href="#苏宁" class="headerlink" title="苏宁"></a>苏宁</h2><p>业务部门会将需要抓取的商品的信息和<code>url</code>以Excel方式提交，因此我只需要遍历Excel并抓取指定<code>url</code>即可。由于苏宁商品页面的价格是动态生成的，因此使用<code>selenium</code>抓取。代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">price_els = driver.find_elements_by_xpath(<span class="string">"//*[@id='mainPrice']"</span>)</span><br><span class="line"><span class="keyword">if</span> len(price_els) == <span class="number">1</span>:</span><br><span class="line">    small_price_els = price_els[<span class="number">0</span>].find_elements_by_xpath(<span class="string">".//*[@class='small-price']"</span>)</span><br><span class="line">    main_price_els = price_els[<span class="number">0</span>].find_elements_by_xpath(<span class="string">".//*[@class='small-price']"</span>)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
-<p>在这里之所以使用<code>find_elements_by_xpath</code>而不是<code>find_element_by_xpath</code>是因为<code>find_element_by_xpath</code>在定位不到元素时会发生异常，而我在有限的时间里并不保证所有的页面都包含<code>id=&#39;mainPrice&#39;</code>。</p>
-<h2 id="京东"><a href="#京东" class="headerlink" title="京东"></a>京东</h2><p>相对于苏宁，京东的有一个<code>api</code>接口可以查询价格，只要业务部门提供京东商品的<code>sku</code>代码即可。以<code>1816417</code>为例，访问<code>http://p.3.cn/prices/mgets?skuIds=J_1816417</code>，返回：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">"id"</span>: <span class="string">"J_1816417"</span>,</span><br><span class="line">    <span class="attr">"p"</span>: <span class="string">"1439.00"</span>,</span><br><span class="line">    <span class="attr">"m"</span>: <span class="string">"1699.00"</span>,</span><br><span class="line">    <span class="attr">"op"</span>: <span class="string">"1439.00"</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>因此只要使用<code>requests</code>即可抓取京东价格数据：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">response = requests.get(goods_url, headers=HEADERS)</span><br><span class="line">price = json.loads(response.text)[<span class="number">0</span>][<span class="string">'p'</span>]</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/09/scrapy/scrapy-sn-jd/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -1188,6 +1181,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">安全技术</a>
               </li>
              
@@ -1197,10 +1194,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1228,10 +1221,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
               </li>
              
@@ -1240,7 +1229,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1261,10 +1258,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">VPS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
             
             <div class="clearfix"></div>

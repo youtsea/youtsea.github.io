@@ -140,6 +140,179 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-uncategorized/get-vultr" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/25/uncategorized/get-vultr/">入手vultr</a>
+    </h1>
+  
+
+        
+        <a href="/2016/10/25/uncategorized/get-vultr/" class="archive-article-date">
+  	<time datetime="2016-10-25T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="bandwagon-gt-vultr"><a href="#bandwagon-gt-vultr" class="headerlink" title="bandwagon-&gt;vultr"></a>bandwagon-&gt;vultr</h2><p>在gmail里看到bandwagon的邮件后想起vps的租期要到了，正好想起GO神之前在群里安利，于是注册vultr的账号充了5$。网上找了优惠码，送了50$，心想着可以好好用半年，到账后马上开了一个东京机房的vps并装了SS。</p>
+<h2 id="SS安装"><a href="#SS安装" class="headerlink" title="SS安装"></a>SS安装</h2><p>用了go版的一件安装包,下载安装包：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-go.sh</span><br></pre></td></tr></table></figure></p>
+<p>设置权限：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x shadowsocks-go.sh</span><br></pre></td></tr></table></figure></p>
+<p>安装：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./shadowsocks-go.sh 2&gt;&amp;1 | tee shadowsocks-go.log</span><br></pre></td></tr></table></figure></p>
+<p>安装过程会提示输入ss服务器的密码和端口，也可以通过编辑 <code>/etc/shadowsocks/config.json</code> 设置ss服务器的参数。</p>
+<p>常用命令：</p>
+<blockquote>
+<p> 启动：/etc/init.d/shadowsocks start<br> 停止：/etc/init.d/shadowsocks stop<br> 重启：/etc/init.d/shadowsocks restart<br> 状态：/etc/init.d/shadowsocks status</p>
+</blockquote>
+<h2 id="vps评价"><a href="#vps评价" class="headerlink" title="vps评价"></a>vps评价</h2><p>刚开始用vultr的东京路线吓到我了，看youtube的720p很流畅。上班后在公司发现很慢，ping值也很高，上网查了才发现东京路线对中国移动的宽带比较友好。由于赠送的$50要在六个月内用完，于是再开了一个洛杉矶机房的vps。就性价比来说，完全没问题，就是不知道为什么，对电信路线不是很友好，联通未测。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">VPS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/10/25/uncategorized/get-vultr/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-work/workflow-optimization" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/24/work/workflow-optimization/">当前的工作流优化</a>
+    </h1>
+  
+
+        
+        <a href="/2016/10/24/work/workflow-optimization/" class="archive-article-date">
+  	<time datetime="2016-10-24T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>使用前后端分离开发，前端使用<code>nginx</code>将指定路由指向前端开发目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location /gw &#123;</span><br><span class="line">    alias C:\Project\html\web_page_gw;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>后端使用<code>python</code>开发，<code>web api</code>端口为<code>5000</code>，使用<code>nginx</code>重定向<code>/api</code>的路由：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location /api &#123;</span><br><span class="line">    proxy_pass http://127.0.0.1:5000/api;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样，在前端调用<code>web api</code>时，只需设置<code>/api/xxx</code>即可。</p>
+<h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><p>优化之前，前端的主要工具为<code>webpack</code>，如果要实现实时刷新，需要使用<code>webpack-dev-server</code>，因此再开发中需要指明<code>web api</code>的全路径。原先使用全局变量保存<code>web api</code>的地址，像这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> baseUrl = <span class="string">'127.0.0.1:5000/api/gw'</span>;</span><br></pre></td></tr></table></figure>
+<p>在发布的时候将地址改回：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> baseUrl = <span class="string">'/api/gw'</span>;</span><br></pre></td></tr></table></figure>
+<p>略微有点繁琐，某天端神问我关于<code>Browsersync</code>的事情，我突然豁然开朗。弃用<code>webpack-dev-server</code>，使用<code>browser-sync-webpack-plugin</code>，配置如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    ...</span><br><span class="line">plugins: [        </span><br><span class="line">        <span class="keyword">new</span> browserSyncPlugin(&#123;</span><br><span class="line">            host: <span class="string">'localhost'</span>,</span><br><span class="line">            port: <span class="number">3000</span>,</span><br><span class="line">            proxy: <span class="string">'http://localhost/gw'</span></span><br><span class="line">        &#125;)</span><br><span class="line">    ]</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<p>借助BrowserSync的代理模式，即实现了实时刷新技术，同时保证开发和部署无差异化。</p>
+<h2 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h2><p>后端使用<code>Flask</code>开发，为了方便部署，使用独立的<code>virtualenv.py</code>文件，将源码分发到远程服务器上，只需要执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python virtualenv.py ENV</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<p>即可完成安装</p>
+<h2 id="远程部署"><a href="#远程部署" class="headerlink" title="远程部署"></a>远程部署</h2><p>最近新功能上线，偶尔会遇到一些小bug和小功能调整，一天会更新数次服务端的代码，最开始的时候直接暴力复制粘贴到远程服务器。这个过程需要：复制本地代码-&gt;打开远程桌面-&gt;粘贴源码，尤其复制<code>python</code>的时候还需要清理<code>pyc</code>文件。为了精简过程，使用<code>Pycharm</code>和<code>Webstorm</code>的<code>Deployment</code>工具，对每个前端和后端项目均做了设置，每次小改动后，只需右键并<code>upload to xxx</code>即可同步远程代码，十分方便。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/10/24/work/workflow-optimization/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-life/ant-photo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1039,270 +1212,9 @@ REDIS_PORT = 6379
 
 
   
-    <article id="post-uncategorized/ElasticSearch-start" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/30/uncategorized/ElasticSearch-start/">ElasticSearch实践</a>
-    </h1>
-  
-
-        
-        <a href="/2015/07/30/uncategorized/ElasticSearch-start/" class="archive-article-date">
-  	<time datetime="2015-07-30T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
-<ul>
-<li><a href="https://www.elastic.co/downloads/elasticsearch" target="_blank" rel="noopener">https://www.elastic.co/downloads/elasticsearch</a></li>
-</ul>
-</blockquote>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>安装环境：ubuntu 15</p>
-<p>###jre安装</p>
-<p>运行 <code>ElasticSearch</code> 需要Java环境，因此需要安装 jre ：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openjdk-7-jre</span><br></pre></td></tr></table></figure>
-<h3 id="ElasticSearch安装"><a href="#ElasticSearch安装" class="headerlink" title="ElasticSearch安装"></a>ElasticSearch安装</h3><p>从 <a href="#参考"><code>参考</code></a> 下载 <code>ElasticSearch</code> ，官方提供的 <code>Installation Steps</code> 说明很简单，只有三步：</p>
-<blockquote>
-<ol>
-<li>解压</li>
-<li>运行</li>
-<li>使用</li>
-</ol>
-</blockquote>
-<p>解压 <code>ElasticSearch</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -zxvf elasticsearch-1.6.0.tar.gz -C /opt</span><br></pre></td></tr></table></figure>
-<p>进入目录并运行 <code>ElasticSearch</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt/elasticsearch-1.6.0</span><br><span class="line">sudo bin/elasticsearch</span><br></pre></td></tr></table></figure>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>使用浏览器访问 <a href="http://YourServerIP:9200/" target="_blank" rel="noopener">http://YourServerIP:9200/</a> 返回：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;status&quot; : 200,</span><br><span class="line">  &quot;name&quot; : &quot;Blistik&quot;,</span><br><span class="line">  &quot;cluster_name&quot; : &quot;elasticsearch&quot;,</span><br><span class="line">  &quot;version&quot; : &#123;</span><br><span class="line">    &quot;number&quot; : &quot;1.6.0&quot;,</span><br><span class="line">    &quot;build_hash&quot; : &quot;cdd3ac4dde4f69524ec0a14de3828cb95bbb86d0&quot;,</span><br><span class="line">    &quot;build_timestamp&quot; : &quot;2015-06-09T13:36:34Z&quot;,</span><br><span class="line">    &quot;build_snapshot&quot; : false,</span><br><span class="line">    &quot;lucene_version&quot; : &quot;4.10.4&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;tagline&quot; : &quot;You Know, for Search&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用浏览器访问 <a href="http://YourServerIP:9200/_search" target="_blank" rel="noopener">http://YourServerIP:9200/_search</a> 返回：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;took&quot; : 1,</span><br><span class="line">  &quot;timed_out&quot; : false,</span><br><span class="line">  &quot;_shards&quot; : &#123;</span><br><span class="line">    &quot;total&quot; : 0,</span><br><span class="line">    &quot;successful&quot; : 0,</span><br><span class="line">    &quot;failed&quot; : 0</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;hits&quot; : &#123;</span><br><span class="line">    &quot;total&quot; : 0,</span><br><span class="line">    &quot;max_score&quot; : 0.0,</span><br><span class="line">    &quot;hits&quot; : [ ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="python操作索引"><a href="#python操作索引" class="headerlink" title="python操作索引"></a>python操作索引</h2><h3 id="提交索引"><a href="#提交索引" class="headerlink" title="提交索引"></a>提交索引</h3><p> <code>ElasticSearch</code> 提供了多种语言的客户端API，参考 <a href="https://www.elastic.co/guide/index.html" target="_blank" rel="noopener">guide</a>，以下提供了python客户端的测试代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">es = Elasticsearch(YourServerIP)</span><br><span class="line">indexs = []</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">addIndex</span><span class="params">(f)</span>:</span></span><br><span class="line">  <span class="keyword">global</span> indexs</span><br><span class="line">  <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">      <span class="keyword">print</span> line</span><br><span class="line">      index = &#123;</span><br><span class="line">               <span class="string">"_index"</span>: <span class="string">"news-index"</span>,</span><br><span class="line">               <span class="string">"_type"</span>: <span class="string">"news"</span>,</span><br><span class="line">               <span class="string">"_source"</span>: &#123;</span><br><span class="line">                           <span class="string">"content"</span>: line,</span><br><span class="line">                           <span class="string">"timestamp"</span>: datetime.now()</span><br><span class="line">                           &#125;</span><br><span class="line">               &#125;</span><br><span class="line">      indexs.append(index)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">      <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> files:</span><br><span class="line">  f = codecs.open(<span class="string">'cnlg.txt'</span>, encoding=<span class="string">'utf-8'</span>)</span><br><span class="line">  addIndex(f)</span><br><span class="line"></span><br><span class="line">helpers.bulk(es, indexs)</span><br></pre></td></tr></table></figure>
-<p><code>files</code> 为保存着新闻标题的文件，仅作为测试 <code>Elasticsearch</code> 的功能。</p>
-<h3 id="在浏览器中进行搜索请求"><a href="#在浏览器中进行搜索请求" class="headerlink" title="在浏览器中进行搜索请求"></a>在浏览器中进行搜索请求</h3><p>在浏览器中输入以下命令进行搜索请求：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://YourServerIP/news-index/_search?pretty=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<p>浏览器中显示如下内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   &quot;took&quot;: 3,</span><br><span class="line">   &quot;timed_out&quot;: false,</span><br><span class="line">   &quot;_shards&quot;: &#123;</span><br><span class="line">      &quot;total&quot;: 5,</span><br><span class="line">      &quot;successful&quot;: 5,</span><br><span class="line">      &quot;failed&quot;: 0</span><br><span class="line">   &#125;,</span><br><span class="line">   &quot;hits&quot;: &#123;</span><br><span class="line">      &quot;total&quot;: 110031,</span><br><span class="line">      &quot;max_score&quot;: 1,</span><br><span class="line">      &quot;hits&quot;: [</span><br><span class="line">         &#123;</span><br><span class="line">            &quot;_index&quot;: &quot;news-index&quot;,</span><br><span class="line">            &quot;_type&quot;: &quot;news&quot;,</span><br><span class="line">            &quot;_id&quot;: &quot;AU5SY3xQFLGrdE9OAPd3&quot;,</span><br><span class="line">            &quot;_score&quot;: 1,</span><br><span class="line">            &quot;_source&quot;: &#123;</span><br><span class="line">               &quot;content&quot;: &quot;龙港体育馆(在建)随拍 ……\n&quot;,</span><br><span class="line">               &quot;timestamp&quot;: &quot;2015-07-03T13:28:22.448000&quot;</span><br><span class="line">            &#125;</span><br><span class="line">         &#125;,</span><br><span class="line">         ...</span><br><span class="line">         ...</span><br><span class="line">         ...</span><br><span class="line">         &#123;</span><br><span class="line">            &quot;_index&quot;: &quot;news-index&quot;,</span><br><span class="line">            &quot;_type&quot;: &quot;news&quot;,</span><br><span class="line">            &quot;_id&quot;: &quot;AU5SY3xQFLGrdE9OAPel&quot;,</span><br><span class="line">            &quot;_score&quot;: 1,</span><br><span class="line">            &quot;_source&quot;: &#123;</span><br><span class="line">               &quot;content&quot;: &quot;龙跃路必成咖啡什么情况？打斗\n&quot;,</span><br><span class="line">               &quot;timestamp&quot;: &quot;2015-07-03T13:28:22.454000&quot;</span><br><span class="line">            &#125;</span><br><span class="line">         &#125;</span><br><span class="line">      ]</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="使用python进行搜索请求"><a href="#使用python进行搜索请求" class="headerlink" title="使用python进行搜索请求"></a>使用python进行搜索请求</h3><p>测试代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">es = Elasticsearch(YourServerIP)</span><br><span class="line">res = es.search(index=<span class="string">'news-index'</span>, body=&#123;<span class="string">"query"</span>: &#123;<span class="string">"match_all"</span>: &#123;&#125;&#125;&#125;)</span><br><span class="line"><span class="keyword">for</span> hit <span class="keyword">in</span> res[<span class="string">'hits'</span>][<span class="string">'hits'</span>]:</span><br><span class="line">  print(<span class="string">"%(timestamp)s: %(content)s"</span> % hit[<span class="string">"_source"</span>])</span><br></pre></td></tr></table></figure>
-<p>成功执行代码后输出如下内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2015-07-03T13:28:22.448000: 龙港体育馆(在建)随拍 ……</span><br><span class="line">2015-07-03T13:28:22.449000: 我记得当年龙港镇有出了一本龙港历史的书，谁有见到过啊？</span><br><span class="line">2015-07-03T13:28:22.450000: 警方为此开展为期两个多月的“打侵财防盗骗”行动</span><br><span class="line">2015-07-03T13:28:22.451000: 一周天气预报（北风和东北风继续吹）</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p><code>ElasticSearch</code> 的安装相当简单，根据官方提供的文档，两个小时内就能完成以上试验。本篇只是最基础的安装和测试，若要应用到生产中，还有更多内容要深入掌握。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ElasticSearch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">搜索引擎</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/07/30/uncategorized/ElasticSearch-start/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-sa/Logstash-start" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/27/sa/Logstash-start/">Logstash单机入门实验</a>
-    </h1>
-  
-
-        
-        <a href="/2015/07/27/sa/Logstash-start/" class="archive-article-date">
-  	<time datetime="2015-07-27T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
-<ul>
-<li><a href="https://www.elastic.co/downloads/logstash" target="_blank" rel="noopener">https://www.elastic.co/downloads/logstash</a></li>
-<li><a href="http://kibana.logstash.es/content/" target="_blank" rel="noopener">http://kibana.logstash.es/content/</a> </li>
-</ul>
-</blockquote>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>本次实验的安装环境为：ubuntu 15</p>
-<h3 id="jre安装"><a href="#jre安装" class="headerlink" title="jre安装"></a>jre安装</h3><p>运行 <code>Logstash</code> 需要Java环境，因此需要安装 jre ：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openjdk-7-jre</span><br></pre></td></tr></table></figure>
-<h3 id="Logstash-安装"><a href="#Logstash-安装" class="headerlink" title="Logstash 安装"></a>Logstash 安装</h3><p>从 <a href="#参考"><code>参考</code></a> 下载 <code>Logstash</code> ，官方提供的 <code>Installation Steps</code> 说明，只有三步：</p>
-<blockquote>
-<ol>
-<li>解压</li>
-<li>添加logstash配置文件</li>
-<li>运行</li>
-</ol>
-</blockquote>
-<p>解压 <code>Logstash</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -zxvf logstash-1.5.2.tar.gz -C /opt</span><br></pre></td></tr></table></figure>
-<p>添加 <code>HelloWorld.conf</code> 文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">input &#123;</span><br><span class="line">    stdin &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">    stdout &#123; codec=&gt;rubydebug &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>进入 <code>Logstash</code> 目录并运行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt/logstash-1.5.2</span><br><span class="line">bin/logstash -f HelloWorld.conf</span><br></pre></td></tr></table></figure>
-<p>在终端中输入测试数据并查看输出:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">hello</span><br><span class="line">&#123;</span><br><span class="line">       &quot;message&quot; =&gt; &quot;hello&quot;,</span><br><span class="line">      &quot;@version&quot; =&gt; &quot;1&quot;,</span><br><span class="line">    &quot;@timestamp&quot; =&gt; &quot;2015-07-04T00:16:35.595Z&quot;,</span><br><span class="line">          &quot;host&quot; =&gt; &quot;ubuntu&quot;</span><br><span class="line">&#125;</span><br><span class="line">test</span><br><span class="line">&#123;</span><br><span class="line">       &quot;message&quot; =&gt; &quot;test&quot;,</span><br><span class="line">      &quot;@version&quot; =&gt; &quot;1&quot;,</span><br><span class="line">    &quot;@timestamp&quot; =&gt; &quot;2015-07-04T00:17:18.090Z&quot;,</span><br><span class="line">          &quot;host&quot; =&gt; &quot;ubuntu&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="从文件中读取日志"><a href="#从文件中读取日志" class="headerlink" title="从文件中读取日志"></a>从文件中读取日志</h2><p>添加 <code>fileInput.conf</code> 文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">input&#123;</span><br><span class="line">    file &#123;</span><br><span class="line">        path =&gt; [&quot;/var/log/apache2/access.log&quot;]</span><br><span class="line">        type =&gt; &quot;system&quot;</span><br><span class="line">        start_position =&gt; &quot;beginning&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">    stdout &#123; codec=&gt;rubydebug </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行 <code>Logstash</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/logstash -f fileInput.conf</span><br></pre></td></tr></table></figure>
-<p>输出结果:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">       &quot;message&quot; =&gt; &quot;192.168.3.190 - - [03/Jul/2015:17:23:26 -0700] \&quot;GET / HTTP/1.1\&quot; 200 3469 \&quot;-\&quot; \&quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36\&quot;&quot;,</span><br><span class="line">      &quot;@version&quot; =&gt; &quot;1&quot;,</span><br><span class="line">    &quot;@timestamp&quot; =&gt; &quot;2015-07-04T00:27:45.814Z&quot;,</span><br><span class="line">          &quot;host&quot; =&gt; &quot;ubuntu&quot;,</span><br><span class="line">          &quot;path&quot; =&gt; &quot;/var/log/apache2/access.log&quot;,</span><br><span class="line">          &quot;type&quot; =&gt; &quot;system&quot;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">       &quot;message&quot; =&gt; &quot;192.168.3.190 - - [03/Jul/2015:17:23:26 -0700] \&quot;GET /icons/ubuntu-logo.png HTTP/1.1\&quot; 200 3634 \&quot;http://192.168.3.99/\&quot; \&quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36\&quot;&quot;,</span><br><span class="line">      &quot;@version&quot; =&gt; &quot;1&quot;,</span><br><span class="line">    &quot;@timestamp&quot; =&gt; &quot;2015-07-04T00:27:45.815Z&quot;,</span><br><span class="line">          &quot;host&quot; =&gt; &quot;ubuntu&quot;,</span><br><span class="line">          &quot;path&quot; =&gt; &quot;/var/log/apache2/access.log&quot;,</span><br><span class="line">          &quot;type&quot; =&gt; &quot;system&quot;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">       &quot;message&quot; =&gt; &quot;192.168.3.190 - - [03/Jul/2015:17:23:26 -0700] \&quot;GET /favicon.ico HTTP/1.1\&quot; 404 448 \&quot;http://192.168.3.99/\&quot; \&quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36\&quot;&quot;,</span><br><span class="line">      &quot;@version&quot; =&gt; &quot;1&quot;,</span><br><span class="line">    &quot;@timestamp&quot; =&gt; &quot;2015-07-04T00:27:45.816Z&quot;,</span><br><span class="line">          &quot;host&quot; =&gt; &quot;ubuntu&quot;,</span><br><span class="line">          &quot;path&quot; =&gt; &quot;/var/log/apache2/access.log&quot;,</span><br><span class="line">          &quot;type&quot; =&gt; &quot;system&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="从TCP中读取日志"><a href="#从TCP中读取日志" class="headerlink" title="从TCP中读取日志"></a>从TCP中读取日志</h2><p>添加 <code>tcpInput.conf</code> 文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">input &#123;</span><br><span class="line">    tcp &#123;</span><br><span class="line">        port =&gt; 5000</span><br><span class="line">        mode =&gt; &quot;server&quot;</span><br><span class="line">        ssl_enable =&gt; false</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">    stdout &#123; codec=&gt;rubydebug </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行 <code>Logstash</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/logstash -f tcpInput.conf</span><br></pre></td></tr></table></figure>
-<p>使用 <code>TPC/IP</code> 调试工具连接5000端口并输入任意内容，<code>Logstash</code> 输出以下内容:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">       &quot;message&quot; =&gt; &quot;send first log&quot;,</span><br><span class="line">      &quot;@version&quot; =&gt; &quot;1&quot;,</span><br><span class="line">    &quot;@timestamp&quot; =&gt; &quot;2015-07-04T00:36:24.878Z&quot;,</span><br><span class="line">          &quot;host&quot; =&gt; &quot;192.168.3.15&quot;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">       &quot;message&quot; =&gt; &quot;send second log&quot;,</span><br><span class="line">      &quot;@version&quot; =&gt; &quot;1&quot;,</span><br><span class="line">    &quot;@timestamp&quot; =&gt; &quot;2015-07-04T00:36:34.598Z&quot;,</span><br><span class="line">          &quot;host&quot; =&gt; &quot;192.168.3.15&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="从Redis中读取日志"><a href="#从Redis中读取日志" class="headerlink" title="从Redis中读取日志"></a>从Redis中读取日志</h2><p>添加 <code>redisInput.conf</code> 文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">input &#123;</span><br><span class="line">    redis &#123;</span><br><span class="line">	batch_count =&gt; 1</span><br><span class="line">        data_type =&gt; &quot;list&quot;</span><br><span class="line">        key =&gt; &quot;logstash-list&quot;</span><br><span class="line">        host =&gt; &quot;127.0.0.1&quot;</span><br><span class="line">        port =&gt; 6379</span><br><span class="line">        threads =&gt; 1</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">    stdout &#123;</span><br><span class="line">        codec =&gt; rubydebug &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行 <code>Logstash</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/logstash -f redisInput.conf</span><br></pre></td></tr></table></figure>
-<p>使用Redis客户端工具，并向 <code>logstash-list</code> 键中添加任意值：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; RPUSH logstash-list <span class="string">"log from redis NO.1"</span></span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; RPUSH logstash-list <span class="string">"log from redis NO.2"</span></span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; RPUSH logstash-list <span class="string">"log from redis NO.3"</span></span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br></pre></td></tr></table></figure>
-<p><code>Logstash</code> 输出以下内容:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">       &quot;message&quot; =&gt; &quot;log from redis NO.1&quot;,</span><br><span class="line">          &quot;tags&quot; =&gt; [</span><br><span class="line">        [0] &quot;_jsonparsefailure&quot;</span><br><span class="line">    ],</span><br><span class="line">      &quot;@version&quot; =&gt; &quot;1&quot;,</span><br><span class="line">    &quot;@timestamp&quot; =&gt; &quot;2015-07-04T00:43:04.628Z&quot;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">       &quot;message&quot; =&gt; &quot;log from redis NO.2&quot;,</span><br><span class="line">          &quot;tags&quot; =&gt; [</span><br><span class="line">        [0] &quot;_jsonparsefailure&quot;</span><br><span class="line">    ],</span><br><span class="line">      &quot;@version&quot; =&gt; &quot;1&quot;,</span><br><span class="line">    &quot;@timestamp&quot; =&gt; &quot;2015-07-04T00:43:06.955Z&quot;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">       &quot;message&quot; =&gt; &quot;log from redis NO.3&quot;,</span><br><span class="line">          &quot;tags&quot; =&gt; [</span><br><span class="line">        [0] &quot;_jsonparsefailure&quot;</span><br><span class="line">    ],</span><br><span class="line">      &quot;@version&quot; =&gt; &quot;1&quot;,</span><br><span class="line">    &quot;@timestamp&quot; =&gt; &quot;2015-07-04T00:43:09.147Z&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="将日志输出到文件中"><a href="#将日志输出到文件中" class="headerlink" title="将日志输出到文件中"></a>将日志输出到文件中</h2><p>添加 <code>fileOutput.conf</code> 文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">input &#123;</span><br><span class="line">    stdin &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">    file &#123;</span><br><span class="line">        path =&gt; &quot;/var/log/test.log&quot;</span><br><span class="line">        message_format =&gt; &quot;%&#123;message&#125;&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行 <code>Logstash</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo bin/logstash -f fileOutput.conf</span><br></pre></td></tr></table></figure>
-<p>输入测试内容:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hello world</span><br><span class="line">hello world again</span><br></pre></td></tr></table></figure>
-<p>查看 <code>/var/log/test.log</code> 文件内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hello world</span><br><span class="line">hello world again</span><br></pre></td></tr></table></figure>
-<h2 id="将日志输出到TCP中"><a href="#将日志输出到TCP中" class="headerlink" title="将日志输出到TCP中"></a>将日志输出到TCP中</h2><p>添加 <code>tcpOutput.conf</code> 文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">input &#123;</span><br><span class="line">    stdin &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">    tcp &#123;</span><br><span class="line">        host  =&gt; &quot;YourServerIP&quot;</span><br><span class="line">        port  =&gt; 5000</span><br><span class="line">        codec=&gt;rubydebug </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>首先在服务器上运行 <code>TCP Server</code> ，并监听5000端口，然后运行 <code>Logstash</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/logstash -f tcpOutput.conf</span><br></pre></td></tr></table></figure>
-<p>输入测试内容:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tcp out </span><br><span class="line">tcp out again</span><br></pre></td></tr></table></figure>
-<p>查看TCP Server，收到以下数据：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;.       &quot;message&quot;.[0;37m =&gt; .[0m.[0;33m&quot;tcp out &quot;.[0m,.      &quot;@version&quot;.[0;37m =&gt; .[0m.[0;33m&quot;1&quot;.[0m,.    &quot;@timestamp&quot;.[0;37m =&gt; .[0m&quot;2015-07-04T01:27:34.469Z&quot;,.          &quot;host&quot;.[0;37m =&gt; .[0m.[0;33m&quot;ubuntu&quot;.[0m.&#125;.</span><br><span class="line"></span><br><span class="line">&#123;.       &quot;message&quot;.[0;37m =&gt; .[0m.[0;33m&quot;tcp out again&quot;.[0m,.      &quot;@version&quot;.[0;37m =&gt; .[0m.[0;33m&quot;1&quot;.[0m,.    &quot;@timestamp&quot;.[0;37m =&gt; .[0m&quot;2015-07-04T01:27:39.147Z&quot;,.          &quot;host&quot;.[0;37m =&gt; .[0m.[0;33m&quot;ubuntu&quot;.[0m.&#125;.</span><br></pre></td></tr></table></figure>
-<h2 id="将日志输出到Redis中"><a href="#将日志输出到Redis中" class="headerlink" title="将日志输出到Redis中"></a>将日志输出到Redis中</h2><p>添加 <code>redisOutput.conf</code> 文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">input &#123;</span><br><span class="line">    stdin &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">    redis &#123; </span><br><span class="line">	host =&gt; &quot;127.0.0.1&quot; </span><br><span class="line">	data_type =&gt; &quot;list&quot; </span><br><span class="line">	key =&gt; &quot;logstash-list&quot;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行 <code>Logstash</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/logstash -f redisOutput.conf</span><br></pre></td></tr></table></figure>
-<p>输入测试内容:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis out testt </span><br><span class="line">redis out <span class="built_in">test</span> again</span><br></pre></td></tr></table></figure>
-<p>使用Redis客户端工具查看logstash-list的值：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; lrange logstash-list 0 -1</span><br><span class="line">1) <span class="string">"&#123;\"message\":\"redis out test\",\"@version\":\"1\",\"@timestamp\":\"2015-07-04T01:33:03.502Z\",\"host\":\"ubuntu\"&#125;"</span></span><br><span class="line">2) <span class="string">"&#123;\"message\":\"redis out test again\",\"@version\":\"1\",\"@timestamp\":\"2015-07-04T01:33:12.592Z\",\"host\":\"ubuntu\"&#125;"</span></span><br></pre></td></tr></table></figure>
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>本篇只是 <code>Logstash</code> 最基础的安装和测试，若要应用到生产中，还有更多内容要深入掌握。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">运维</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Logstash</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/07/27/sa/Logstash-start/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
     </nav>
   
 
@@ -1405,6 +1317,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">安全技术</a>
               </li>
              
@@ -1414,10 +1330,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1445,10 +1357,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
               </li>
              
@@ -1457,7 +1365,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nagios</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1478,10 +1394,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">VPS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
             
             <div class="clearfix"></div>
