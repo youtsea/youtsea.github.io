@@ -140,6 +140,129 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-sa/elk-start" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/03/sa/elk-start/">ELK实践</a>
+    </h1>
+  
+
+        
+        <a href="/2015/08/03/sa/elk-start/" class="archive-article-date">
+  	<time datetime="2015-08-03T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<ul>
+<li><a href="https://www.elastic.co/downloads/kibana" target="_blank" rel="noopener">https://www.elastic.co/downloads/kibana</a></li>
+<li><a href="http://kibana.logstash.es/content/" target="_blank" rel="noopener">http://kibana.logstash.es/content/</a> </li>
+</ul>
+</blockquote>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>本次实验的安装环境为：ubuntu 15。</p>
+<p>ELK的组成包括 <code>ElasticSearch</code>、 <code>Logstash</code>和<code>Kibana</code>。根据 <a href="/2015/07/05/ElasticSearch-start/"><code>ElasticSearch单机入门实验</code></a> 和 <a href="/2015/07/06/Logstash-start/"><code>Logstash单机入门实验</code></a>安装 <code>ElasticSearch</code> 和 <code>Logstash</code>。</p>
+<h3 id="Kibana的安装"><a href="#Kibana的安装" class="headerlink" title="Kibana的安装"></a>Kibana的安装</h3><p>从 <a href="#参考"><code>参考</code></a> 下载 <code>Kibana</code> ，官方提供的 <code>Installation Steps</code> 说明很简单， 只有四步：</p>
+<blockquote>
+<ol>
+<li>解压</li>
+<li>config/kibana.yml配置文件</li>
+<li>设置 <code>ElasticSearch</code> 实例</li>
+<li>运行</li>
+</ol>
+</blockquote>
+<p>解压 <code>Kibana</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -zxvf kibana-4.1.1-linux-x64.tar.gz -C /opt</span><br></pre></td></tr></table></figure>
+<p>因为是单机测试， <code>kibana.yml</code> 无需修改，实际应用中需要根据 <code>ElasticSearch</code> 的安装情况设置 <code>port</code>、<code>host</code>和<code>elasticsearch_url</code>。</p>
+<p>运行 <code>Kibana</code>：</p>
+<blockquote>
+<p>在运行 <code>Kibana</code> 之前需要保证 <code>ElasticSearch</code> 正常运行。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/kibana</span><br></pre></td></tr></table></figure>
+<p>访问<a href="http://YourServerIP:5601/" target="_blank" rel="noopener">http://YourServerIP:5601/</a> 测试 <code>Kibana</code> 是否安装成功。</p>
+<h2 id="ELK测试"><a href="#ELK测试" class="headerlink" title="ELK测试"></a>ELK测试</h2><p>最近数据库服务器被人攻击，频繁暴破数据库管理员的密码，生成了大量日志文件。因此，本测试将该日志文件作为ELK样本，使用 <code>Logstash</code> 获取日志中的IP并保存到 <code>ElasticSearch</code> 中，同时使用 <code>Kibana</code> 查看和分析日志。</p>
+<h3 id="配置Logstash"><a href="#配置Logstash" class="headerlink" title="配置Logstash"></a>配置Logstash</h3><p>编辑 <code>Logstash</code> 配置文件如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">input&#123;</span><br><span class="line">    file &#123;</span><br><span class="line">        path =&gt; [&quot;/var/log/dbLog/*.log&quot;]</span><br><span class="line">        type =&gt; &quot;system&quot;</span><br><span class="line">        start_position =&gt; &quot;beginning&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">filter &#123;</span><br><span class="line">    grok &#123;</span><br><span class="line">        match =&gt; &#123;</span><br><span class="line">            &quot;message&quot; =&gt; &quot;%&#123;IPV4:message&#125;&quot;</span><br><span class="line">        &#125;</span><br><span class="line">	overwrite =&gt; [&quot;message&quot;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">    if !(&quot;_grokparsefailure&quot; in [tags]) &#123;</span><br><span class="line">	elasticsearch &#123; </span><br><span class="line">			host =&gt; &quot;yourElasticsearchServerIP&quot;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行 <code>Logstash</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/logstash -f dbInput.conf</span><br></pre></td></tr></table></figure>
+<p>运行成功后，<code>Logstash</code>自动分析数据库日志文件，获取其中的IP地址并保存至 <code>Elasticsearch</code> 当中。</p>
+<h3 id="Kibana的配置"><a href="#Kibana的配置" class="headerlink" title="Kibana的配置"></a>Kibana的配置</h3><p>访问<a href="http://YourServerIP:5601，进入" target="_blank" rel="noopener">http://YourServerIP:5601，进入</a> <code>Setting</code>，填写 <code>index name or pattern</code> 为 <code>logstash-*</code>并点击创建：</p>
+<p><img src="/img/elk-start/03.png" alt="03.png"></p>
+<p>在 <code>Discover</code> 页中可以实现日志数据的交互式探索，效果图如下：<br><img src="/img/elk-start/01.png" alt="01.png"><br>从图中可以查看时间间隔内 <code>日志的接收量</code>、<code>日志数据</code>、<code>日志的处理时间</code> 等数据。</p>
+<p><code>Visualize</code> 页可以实现日志数据的可视化操作，效果图如下：<br><img src="/img/elk-start/02.png" alt="02.png"><br>根据上图，可以分析出哪些 <code>IP</code> 对数据库管理员的密码进行暴破。</p>
+<p>##结论<br>本篇只是最基础的安装和测试，实验中均使用了默认的参数和配置。<a href="#配置Logstash"><code>配置Logstash</code></a> 中使用默认的配置，仅对日志文件做了IP的简单筛选，并没有涉及到错误类型和日志生成时间等数据的解析。接下来以下图为基础，学习 <code>ELK</code> 的应用。</p>
+<p><img src="http://img1.51cto.com/attachment/201211/225912530.png" alt="ELK理论拓扑"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">运维</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Logstash</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ElasticSearch</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Kibana4</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/08/03/sa/elk-start/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-uncategorized/ElasticSearch-start" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1150,111 +1273,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2015/07/02/scrapy/Local-network- media-Wordcount2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-scrapy/Local-network- media-Wordcount1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/29/scrapy/Local-network- media-Wordcount1/">本地网络媒体词频统计(一)</a>
-    </h1>
-  
-
-        
-        <a href="/2015/06/29/scrapy/Local-network- media-Wordcount1/" class="archive-article-date">
-  	<time datetime="2015-06-29T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-06-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>对本地网络媒体的信息量感兴趣，于是针对以下三个板块的标题进行采集分析：</p>
-<blockquote>
-<ul>
-<li><a href="http://www.cangnan5.com/f-177-1.html" target="_blank" rel="noopener">苍南在线</a></li>
-<li><a href="http://bbs.0577cnw.com/forum-133-1.html" target="_blank" rel="noopener">苍南网</a></li>
-<li><a href="http://bbs.cnlg.cn/forum-8-1.html" target="_blank" rel="noopener">龙港网</a></li>
-</ul>
-</blockquote>
-<h2 id="标题采集"><a href="#标题采集" class="headerlink" title="标题采集"></a>标题采集</h2><p>为了快速编码，采集部分使用了 <code>Scrapy</code> 框架，以下代码实现了自动遍历 <code>目标板块</code> 所有页面，并将页面保存至本地：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></span><br><span class="line">	url = response.url.split(<span class="string">'/'</span>)</span><br><span class="line">        filename = url[<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">with</span> open(basePath+filename,<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">	    f.write(response.body)</span><br><span class="line">        records = response.xpath(<span class="string">'//a[re:test(@class, "nxt")]'</span>)</span><br><span class="line">	<span class="keyword">if</span>( len(records) &gt; <span class="number">0</span> ):</span><br><span class="line">            nxturl = records[<span class="number">0</span>].xpath(<span class="string">'@href'</span>).extract()[<span class="number">0</span>]	   </span><br><span class="line">            <span class="keyword">yield</span> Request(nxturl, callback=self.parse)</span><br></pre></td></tr></table></figure>
-<p>出于个人的习惯，<code>Scrapy</code> 仅作为下载器使用。</p>
-<h2 id="内容解析"><a href="#内容解析" class="headerlink" title="内容解析"></a>内容解析</h2><p>下载所有页面后，对所有页面进行解析，如果倾向于边采集边解析，可以在 <a href="#标题采集"><code>标题采集</code></a> 中完成内容解析。以下使用了 <code>BeautifulSoup</code> 获取本地所有页面的标题集，并将其保存至文件中：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">f = open(path,<span class="string">'w'</span>)</span><br><span class="line"><span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(filesPath):</span><br><span class="line">    soup = BeautifulSoup(open(filesPath+filename))</span><br><span class="line">    tatet  = soup.find_all(id= re.compile(<span class="string">"normalthread_\d+"</span>))</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> tatet:</span><br><span class="line">        title =  item.find(<span class="string">"a"</span>,class_=<span class="string">"s xst"</span>).text</span><br><span class="line">        <span class="keyword">print</span> title</span><br><span class="line">        f.writelines(title+<span class="string">'\n'</span>)</span><br></pre></td></tr></table></figure>
-<p>标题贡献量：</p>
-<blockquote>
-<ul>
-<li>苍南在线：1099</li>
-<li>苍南网：7108</li>
-<li>龙港网：36694</li>
-</ul>
-</blockquote>
-<h2 id="词频统计"><a href="#词频统计" class="headerlink" title="词频统计"></a>词频统计</h2><p>起初没有打算使用 <code>python</code> 进行词频统计，因此 <a href="#内容解析"><code>内容解析</code></a> 和 <a href="#词频统计"><code>词频统计</code></a> 的代码没有合并在一起。在得知标题数量并不多的情况下，决定使用 <code>jieba</code> 对标题进行分词操作，分出来的 <code>词</code> 作为字典的 <code>key</code> ， <code>词</code> 的出现次数作为字典的 <code>vlaue</code> 。实现代码如下:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">reload(sys)</span><br><span class="line">sys.setdefaultencoding(<span class="string">'utf-8'</span>)</span><br><span class="line">c = &#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getWords</span><span class="params">(f)</span>:</span></span><br><span class="line">  <span class="keyword">global</span> d</span><br><span class="line">  <span class="keyword">global</span> c</span><br><span class="line">  <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">      seg_list = jieba.cut(line)</span><br><span class="line">      <span class="keyword">for</span> item <span class="keyword">in</span> seg_list:</span><br><span class="line">	  <span class="keyword">if</span> c.get(item) == <span class="keyword">None</span>:</span><br><span class="line">	      c[item] = <span class="number">1</span></span><br><span class="line">	  <span class="keyword">else</span>:</span><br><span class="line">   	      c[item] = c[item] + <span class="number">1</span></span><br><span class="line">   	      </span><br><span class="line">f = open(path)</span><br><span class="line">getWords(f)</span><br><span class="line">new = sorted(c.iteritems(), key=<span class="keyword">lambda</span> d:d[<span class="number">1</span>], reverse = <span class="keyword">True</span> )</span><br><span class="line"><span class="keyword">for</span> k,v <span class="keyword">in</span> new:</span><br><span class="line">	result = <span class="string">"%s:%d"</span> % (k,v)</span><br><span class="line">	<span class="keyword">print</span> result</span><br></pre></td></tr></table></figure>
-<p>输出如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">龙港:10902</span><br><span class="line">的:10889</span><br><span class="line">，:8585</span><br><span class="line">！:5528</span><br><span class="line">苍南:5426</span><br><span class="line">“:5199</span><br><span class="line">”:5148</span><br><span class="line">？:5034</span><br><span class="line">了:4351</span><br><span class="line">-:2919</span><br><span class="line">：:2759</span><br><span class="line">在:2347</span><br><span class="line">。:2316</span><br><span class="line">被:2280</span><br><span class="line">温州:2089</span><br><span class="line">是:2059</span><br><span class="line">有:1889</span><br><span class="line">一:1756</span><br><span class="line">人:1596</span><br><span class="line">）:1589</span><br><span class="line">（:1536</span><br><span class="line">—:1511</span><br><span class="line">你:1465</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>停止词出现的频率太高，于是加入停止词字典进行过滤，同时计算百分比，效果如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">龙港:10902 24.280083%</span><br><span class="line">苍南:5426 12.084363%</span><br><span class="line">男子:984 2.191488%</span><br><span class="line">建设:945 2.104630%</span><br><span class="line">灵溪:839 1.868555%</span><br><span class="line">发展:814 1.812877%</span><br><span class="line">政府:701 1.561212%</span><br><span class="line">大道:682 1.518897%</span><br><span class="line">后:670 1.492172%</span><br><span class="line">城市:632 1.407541%</span><br><span class="line">发生:615 1.369680%</span><br><span class="line">浙江:571 1.271687%</span><br><span class="line">平阳:566 1.260551%</span><br><span class="line">...</span><br><span class="line">台风:240 0.534509%</span><br><span class="line">...</span><br><span class="line">垃圾:219 0.487740%</span><br><span class="line">...</span><br><span class="line">火灾:207 0.461014%</span><br><span class="line">...</span><br><span class="line">停水:110 0.244983%</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>如需再进一步过滤可以自定义停止词字典，加入 <code>龙港</code> 、 <code>苍南</code> 、 <code>灵溪</code> 等本地化词汇，以方便分析数据。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">scrapy</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/06/29/scrapy/Local-network- media-Wordcount1/">展开全文 >></a>
         </p>
       
 

@@ -140,6 +140,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-python/pip-douban-proxy" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/04/python/pip-douban-proxy/">pip使用豆瓣源和代理</a>
+    </h1>
+  
+
+        
+        <a href="/2016/11/04/python/pip-douban-proxy/" class="archive-article-date">
+  	<time datetime="2016-11-04T13:34:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>安装<code>jupyter</code>的时候卡在<code>notebook</code>一动不动,</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">λ pip install jupyter</span><br><span class="line">Collecting jupyter</span><br><span class="line">  Downloading jupyter-1.0.0-py2.py3-none-any.whl</span><br><span class="line">Collecting qtconsole (from jupyter)</span><br><span class="line">  Downloading qtconsole-4.3.1-py2.py3-none-any.whl (108kB)</span><br><span class="line">    100% |████████████████████████████████| 112kB 12kB/s</span><br><span class="line">Collecting ipywidgets (from jupyter)</span><br><span class="line">  Downloading ipywidgets-7.0.5-py2.py3-none-any.whl (68kB)</span><br><span class="line">    100% |████████████████████████████████| 71kB 6.8kB/s</span><br><span class="line">Collecting notebook (from jupyter)</span><br><span class="line">  Downloading notebook-5.2.2-py2.py3-none-any.whl (8.0MB)</span><br><span class="line">    17% |█████▌                          | 1.4MB 11kB/s eta 0:10:02</span><br></pre></td></tr></table></figure>
+<h3 id="pip代理"><a href="#pip代理" class="headerlink" title="pip代理"></a>pip代理</h3><p>本机装了ss，所以直接用<code>--proxy http://ip:port</code>,</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">λ pip install --proxy http://127.0.0.1:2080 jupyter</span><br><span class="line">Collecting jupyter</span><br><span class="line">  Using cached jupyter-1.0.0-py2.py3-none-any.whl</span><br><span class="line">Collecting nbconvert (from jupyter)</span><br><span class="line">  Downloading nbconvert-5.3.1-py2.py3-none-any.whl (387kB)</span><br><span class="line">    100% |████████████████████████████████| 389kB 1.8MB/s</span><br><span class="line">Collecting notebook (from jupyter)</span><br><span class="line">  Downloading notebook-5.2.2-py2.py3-none-any.whl (8.0MB)</span><br><span class="line">    100% |████████████████████████████████| 8.0MB 150kB/s</span><br><span class="line">Collecting ipywidgets (from jupyter)</span><br><span class="line">  Using cached ipywidgets-7.0.5-py2.py3-none-any.whl</span><br><span class="line">Collecting qtconsole (from jupyter)</span><br><span class="line">  Using cached qtconsole-4.3.1-py2.py3-none-any.whl</span><br><span class="line">Collecting ipykernel (from jupyter)</span><br><span class="line">  Downloading ipykernel-4.7.0-py3-none-any.whl (106kB)</span><br><span class="line">    100% |████████████████████████████████| 112kB 1.7MB/s</span><br><span class="line">Collecting jupyter-console (from jupyter)</span><br><span class="line">  Downloading jupyter_console-5.2.0-py2.py3-none-any.whl</span><br><span class="line">Collecting jinja2 (from nbconvert-&gt;jupyter)</span><br><span class="line">  Downloading Jinja2-2.10-py2.py3-none-any.whl (126kB)</span><br><span class="line">    100% |████████████████████████████████| 133kB 161kB/s</span><br><span class="line">Collecting testpath (from nbconvert-&gt;jupyter)</span><br><span class="line">  Downloading testpath-0.3.1-py2.py3-none-any.whl (161kB)</span><br><span class="line">    100% |████████████████████████████████| 163kB 74kB/s</span><br><span class="line">Collecting mistune&gt;=0.7.4 (from nbconvert-&gt;jupyter)</span><br><span class="line">  Downloading mistune-0.8.3-py2.py3-none-any.whl</span><br><span class="line">Collecting nbformat&gt;=4.4 (from nbconvert-&gt;jupyter)</span><br><span class="line">  Downloading nbformat-4.4.0-py2.py3-none-any.whl (155kB)</span><br><span class="line">    100% |████████████████████████████████| 163kB 311kB/s</span><br><span class="line">Collecting pygments (from nbconvert-&gt;jupyter)</span><br><span class="line">  Downloading Pygments-2.2.0-py2.py3-none-any.whl (841kB)</span><br><span class="line">    100% |████████████████████████████████| 849kB 1.2MB/s</span><br><span class="line">Collecting traitlets&gt;=4.2 (from nbconvert-&gt;jupyter)</span><br><span class="line">  Downloading traitlets-4.3.2-py2.py3-none-any.whl (74kB)</span><br><span class="line">    100% |████████████████████████████████| 81kB 263kB/s</span><br></pre></td></tr></table></figure>
+<h3 id="pip豆瓣源"><a href="#pip豆瓣源" class="headerlink" title="pip豆瓣源"></a>pip豆瓣源</h3><p>国内使用豆瓣源也是一个很好的选择,</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">λ  pip install -i http://pypi.douban.com/simple/ requests --trusted-host pypi.douban.com</span><br><span class="line">Collecting requests</span><br><span class="line">  Downloading http://pypi.doubanio.com/packages/49/df/50aa1999ab9bde74656c2919d9c0c085fd2b3775fd3eca826012bef76d8c/requests-2.18.4-py2.py3-none-any.whl (88kB)</span><br><span class="line">    100% |████████████████████████████████| 92kB 2.6MB/s</span><br><span class="line">Collecting chardet&lt;3.1.0,&gt;=3.0.2 (from requests)</span><br><span class="line">  Downloading http://pypi.doubanio.com/packages/bc/a9/01ffebfb562e4274b6487b4bb1ddec7ca55ec7510b22e4c51f14098443b8/chardet-3.0.4-py2.py3-none-any.whl (133kB)</span><br><span class="line">    100% |████████████████████████████████| 143kB 4.7MB/s</span><br><span class="line">Collecting idna&lt;2.7,&gt;=2.5 (from requests)</span><br><span class="line">  Downloading http://pypi.doubanio.com/packages/27/cc/6dd9a3869f15c2edfab863b992838277279ce92663d334df9ecf5106f5c6/idna-2.6-py2.py3-none-any.whl (56kB)</span><br><span class="line">    100% |████████████████████████████████| 61kB 5.8MB/s</span><br><span class="line">Collecting urllib3&lt;1.23,&gt;=1.21.1 (from requests)</span><br><span class="line">  Downloading http://pypi.doubanio.com/packages/63/cb/6965947c13a94236f6d4b8223e21beb4d576dc72e8130bd7880f600839b8/urllib3-1.22-py2.py3-none-any.whl (132kB)</span><br><span class="line">    100% |████████████████████████████████| 133kB 5.7MB/s</span><br><span class="line">Collecting certifi&gt;=2017.4.17 (from requests)</span><br><span class="line">  Downloading http://pypi.doubanio.com/packages/29/9b/25ef61e948321296f029f53c9f67cc2b54e224db509eb67ce17e0df6044a/certifi-2017.11.5-py2.py3-none-any.whl (330kB)</span><br><span class="line">    100% |████████████████████████████████| 337kB 17.1MB/s</span><br><span class="line">Installing collected packages: chardet, idna, urllib3, certifi, requests</span><br><span class="line">Successfully installed certifi-2017.11.5 chardet-3.0.4 idna-2.6 requests-2.18.4 urllib3-1.22</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/11/04/python/pip-douban-proxy/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-uncategorized/get-vultr" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1060,129 +1138,6 @@ REDIS_PORT = 6379
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2015/08/10/scrapy/scrapy-collection/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-sa/elk-start" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/03/sa/elk-start/">ELK实践</a>
-    </h1>
-  
-
-        
-        <a href="/2015/08/03/sa/elk-start/" class="archive-article-date">
-  	<time datetime="2015-08-03T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
-<ul>
-<li><a href="https://www.elastic.co/downloads/kibana" target="_blank" rel="noopener">https://www.elastic.co/downloads/kibana</a></li>
-<li><a href="http://kibana.logstash.es/content/" target="_blank" rel="noopener">http://kibana.logstash.es/content/</a> </li>
-</ul>
-</blockquote>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>本次实验的安装环境为：ubuntu 15。</p>
-<p>ELK的组成包括 <code>ElasticSearch</code>、 <code>Logstash</code>和<code>Kibana</code>。根据 <a href="/2015/07/05/ElasticSearch-start/"><code>ElasticSearch单机入门实验</code></a> 和 <a href="/2015/07/06/Logstash-start/"><code>Logstash单机入门实验</code></a>安装 <code>ElasticSearch</code> 和 <code>Logstash</code>。</p>
-<h3 id="Kibana的安装"><a href="#Kibana的安装" class="headerlink" title="Kibana的安装"></a>Kibana的安装</h3><p>从 <a href="#参考"><code>参考</code></a> 下载 <code>Kibana</code> ，官方提供的 <code>Installation Steps</code> 说明很简单， 只有四步：</p>
-<blockquote>
-<ol>
-<li>解压</li>
-<li>config/kibana.yml配置文件</li>
-<li>设置 <code>ElasticSearch</code> 实例</li>
-<li>运行</li>
-</ol>
-</blockquote>
-<p>解压 <code>Kibana</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -zxvf kibana-4.1.1-linux-x64.tar.gz -C /opt</span><br></pre></td></tr></table></figure>
-<p>因为是单机测试， <code>kibana.yml</code> 无需修改，实际应用中需要根据 <code>ElasticSearch</code> 的安装情况设置 <code>port</code>、<code>host</code>和<code>elasticsearch_url</code>。</p>
-<p>运行 <code>Kibana</code>：</p>
-<blockquote>
-<p>在运行 <code>Kibana</code> 之前需要保证 <code>ElasticSearch</code> 正常运行。</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/kibana</span><br></pre></td></tr></table></figure>
-<p>访问<a href="http://YourServerIP:5601/" target="_blank" rel="noopener">http://YourServerIP:5601/</a> 测试 <code>Kibana</code> 是否安装成功。</p>
-<h2 id="ELK测试"><a href="#ELK测试" class="headerlink" title="ELK测试"></a>ELK测试</h2><p>最近数据库服务器被人攻击，频繁暴破数据库管理员的密码，生成了大量日志文件。因此，本测试将该日志文件作为ELK样本，使用 <code>Logstash</code> 获取日志中的IP并保存到 <code>ElasticSearch</code> 中，同时使用 <code>Kibana</code> 查看和分析日志。</p>
-<h3 id="配置Logstash"><a href="#配置Logstash" class="headerlink" title="配置Logstash"></a>配置Logstash</h3><p>编辑 <code>Logstash</code> 配置文件如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">input&#123;</span><br><span class="line">    file &#123;</span><br><span class="line">        path =&gt; [&quot;/var/log/dbLog/*.log&quot;]</span><br><span class="line">        type =&gt; &quot;system&quot;</span><br><span class="line">        start_position =&gt; &quot;beginning&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">filter &#123;</span><br><span class="line">    grok &#123;</span><br><span class="line">        match =&gt; &#123;</span><br><span class="line">            &quot;message&quot; =&gt; &quot;%&#123;IPV4:message&#125;&quot;</span><br><span class="line">        &#125;</span><br><span class="line">	overwrite =&gt; [&quot;message&quot;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">    if !(&quot;_grokparsefailure&quot; in [tags]) &#123;</span><br><span class="line">	elasticsearch &#123; </span><br><span class="line">			host =&gt; &quot;yourElasticsearchServerIP&quot;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行 <code>Logstash</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/logstash -f dbInput.conf</span><br></pre></td></tr></table></figure>
-<p>运行成功后，<code>Logstash</code>自动分析数据库日志文件，获取其中的IP地址并保存至 <code>Elasticsearch</code> 当中。</p>
-<h3 id="Kibana的配置"><a href="#Kibana的配置" class="headerlink" title="Kibana的配置"></a>Kibana的配置</h3><p>访问<a href="http://YourServerIP:5601，进入" target="_blank" rel="noopener">http://YourServerIP:5601，进入</a> <code>Setting</code>，填写 <code>index name or pattern</code> 为 <code>logstash-*</code>并点击创建：</p>
-<p><img src="/img/elk-start/03.png" alt="03.png"></p>
-<p>在 <code>Discover</code> 页中可以实现日志数据的交互式探索，效果图如下：<br><img src="/img/elk-start/01.png" alt="01.png"><br>从图中可以查看时间间隔内 <code>日志的接收量</code>、<code>日志数据</code>、<code>日志的处理时间</code> 等数据。</p>
-<p><code>Visualize</code> 页可以实现日志数据的可视化操作，效果图如下：<br><img src="/img/elk-start/02.png" alt="02.png"><br>根据上图，可以分析出哪些 <code>IP</code> 对数据库管理员的密码进行暴破。</p>
-<p>##结论<br>本篇只是最基础的安装和测试，实验中均使用了默认的参数和配置。<a href="#配置Logstash"><code>配置Logstash</code></a> 中使用默认的配置，仅对日志文件做了IP的简单筛选，并没有涉及到错误类型和日志生成时间等数据的解析。接下来以下图为基础，学习 <code>ELK</code> 的应用。</p>
-<p><img src="http://img1.51cto.com/attachment/201211/225912530.png" alt="ELK理论拓扑"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">运维</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Logstash</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ElasticSearch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Kibana4</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/08/03/sa/elk-start/">展开全文 >></a>
         </p>
       
 
