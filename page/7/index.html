@@ -140,6 +140,540 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-python/VerbalExpressions" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/21/python/VerbalExpressions/">VerbalExpressions</a>
+    </h1>
+  
+
+        
+        <a href="/2016/07/21/python/VerbalExpressions/" class="archive-article-date">
+  	<time datetime="2016-07-21T12:27:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="导入库"><a href="#导入库" class="headerlink" title="导入库"></a>导入库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from verbalexpressions import VerEx</span><br><span class="line">verbal_expression = VerEx()</span><br></pre></td></tr></table></figure>
+<h2 id="构建正则表达式"><a href="#构建正则表达式" class="headerlink" title="构建正则表达式"></a>构建正则表达式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">verbal_expression.start_of_line().find(<span class="string">'http'</span>).maybe(<span class="string">'s'</span>).find(<span class="string">'://'</span>).maybe(<span class="string">'www.'</span>).anything_but(<span class="string">' '</span>).end_of_line()</span><br></pre></td></tr></table></figure>
+<h2 id="获取正则表达式字符串"><a href="#获取正则表达式字符串" class="headerlink" title="获取正则表达式字符串"></a>获取正则表达式字符串</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(verbal_expression.source())</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(http)(s)?(\:\/\/)(www\.)?([^\ ]*)$</span><br></pre></td></tr></table></figure>
+<h2 id="匹配字符串"><a href="#匹配字符串" class="headerlink" title="匹配字符串"></a>匹配字符串</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(verbal_expression.match(<span class="string">"https://www.google.com"</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;_sre.SRE_Match object at 0x02D1FBC0&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="替换字符串"><a href="#替换字符串" class="headerlink" title="替换字符串"></a>替换字符串</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">replace_me = <span class="string">"https://www.baidu.com"</span></span><br><span class="line">result = verbal_expression.replace(replace_me, <span class="string">'https://www.google.com'</span>)</span><br><span class="line"><span class="built_in">print</span> result</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.google.com</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/07/21/python/VerbalExpressions/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-python/docopt" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/17/python/docopt/">docopt</a>
+    </h1>
+  
+
+        
+        <a href="/2016/07/17/python/docopt/" class="archive-article-date">
+  	<time datetime="2016-07-17T14:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="ex-01"><a href="#ex-01" class="headerlink" title="ex.01"></a>ex.01</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""Usage:</span></span><br><span class="line"><span class="string">  quick_example.py tcp &lt;host&gt; &lt;port&gt; [--timeout=&lt;seconds&gt;]</span></span><br><span class="line"><span class="string">  quick_example.py serial &lt;port&gt; [--baud=9600] [--timeout=&lt;seconds&gt;]</span></span><br><span class="line"><span class="string">  quick_example.py -h | --help | --version</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">from</span> docopt <span class="keyword">import</span> docopt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    arguments = docopt(__doc__, version=<span class="string">'0.1.1rc'</span>)</span><br><span class="line">    print(arguments)</span><br></pre></td></tr></table></figure>
+<h3 id="test-01"><a href="#test-01" class="headerlink" title="test.01"></a>test.01</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;python quick_example.py tcp 192.168.1.1 8000 --timeout=100</span><br><span class="line">&#123;<span class="string">'--baud'</span>: None,</span><br><span class="line"> <span class="string">'--help'</span>: False,</span><br><span class="line"> <span class="string">'--timeout'</span>: <span class="string">'100'</span>,</span><br><span class="line"> <span class="string">'--version'</span>: False,</span><br><span class="line"> <span class="string">'-h'</span>: False,</span><br><span class="line"> <span class="string">'&lt;host&gt;'</span>: <span class="string">'192.168.1.1'</span>,</span><br><span class="line"> <span class="string">'&lt;port&gt;'</span>: <span class="string">'8000'</span>,</span><br><span class="line"> <span class="string">'serial'</span>: False,</span><br><span class="line"> <span class="string">'tcp'</span>: True&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="test-02"><a href="#test-02" class="headerlink" title="test.02"></a>test.02</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;python quick_example.py serial com1 --baud=9600 --timeout=100</span><br><span class="line">&#123;<span class="string">'--baud'</span>: <span class="string">'9600'</span>,</span><br><span class="line"> <span class="string">'--help'</span>: False,</span><br><span class="line"> <span class="string">'--timeout'</span>: <span class="string">'100'</span>,</span><br><span class="line"> <span class="string">'--version'</span>: False,</span><br><span class="line"> <span class="string">'-h'</span>: False,</span><br><span class="line"> <span class="string">'&lt;host&gt;'</span>: None,</span><br><span class="line"> <span class="string">'&lt;port&gt;'</span>: <span class="string">'com1'</span>,</span><br><span class="line"> <span class="string">'serial'</span>: True,</span><br><span class="line"> <span class="string">'tcp'</span>: False&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ex-02"><a href="#ex-02" class="headerlink" title="ex.02"></a>ex.02</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""Usage: odd_even_example.py [-h | --help] (ODD EVEN)...</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Example, try:</span></span><br><span class="line"><span class="string">  odd_even_example.py 1 2 3 4</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Options:</span></span><br><span class="line"><span class="string">  -h, --help</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">from</span> docopt <span class="keyword">import</span> docopt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    arguments = docopt(__doc__)</span><br><span class="line">    print(arguments)</span><br></pre></td></tr></table></figure>
+<h3 id="test-01-1"><a href="#test-01-1" class="headerlink" title="test.01"></a>test.01</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;python odd_even_example.py 1 2 3 4 4 5</span><br><span class="line">&#123;<span class="string">'--help'</span>: False,</span><br><span class="line"> <span class="string">'EVEN'</span>: [<span class="string">'2'</span>, <span class="string">'4'</span>, <span class="string">'5'</span>],</span><br><span class="line"> <span class="string">'ODD'</span>: [<span class="string">'1'</span>, <span class="string">'3'</span>, <span class="string">'4'</span>]&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="test-02-1"><a href="#test-02-1" class="headerlink" title="test.02"></a>test.02</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;python odd_even_example.py 1 2 3 4 4 5</span><br><span class="line">&#123;<span class="string">'--help'</span>: False,</span><br><span class="line"> <span class="string">'EVEN'</span>: [<span class="string">'2'</span>, <span class="string">'4'</span>, <span class="string">'5'</span>],</span><br><span class="line"> <span class="string">'ODD'</span>: [<span class="string">'1'</span>, <span class="string">'3'</span>, <span class="string">'4'</span>]&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/07/17/python/docopt/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-python/arrow-apply" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/13/python/arrow-apply/">arrow介绍</a>
+    </h1>
+  
+
+        
+        <a href="/2016/07/13/python/arrow-apply/" class="archive-article-date">
+  	<time datetime="2016-07-13T14:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="获取当前时间"><a href="#获取当前时间" class="headerlink" title="获取当前时间"></a>获取当前时间</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>now = arrow.utcnow()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(now)</span><br><span class="line"><span class="number">2016</span><span class="number">-07</span><span class="number">-12</span>T03:<span class="number">56</span>:<span class="number">23.917000</span>+<span class="number">00</span>:<span class="number">00</span></span><br></pre></td></tr></table></figure>
+<h2 id="时间增减"><a href="#时间增减" class="headerlink" title="时间增减"></a>时间增减</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; one_hour_ago = now.replace(hours = -1)</span><br><span class="line">&gt;&gt;&gt; print(one_hour_ago)</span><br><span class="line">2016-07-12T02:56:23.917000+00:00</span><br><span class="line">&gt;&gt;&gt; one_day_ago = now.replace(days = -1)</span><br><span class="line">&gt;&gt;&gt; print(one_day_ago)</span><br><span class="line">2016-07-11T03:56:23.917000+00:00</span><br><span class="line">&gt;&gt;&gt; minutes_ago = now.replace(minutes = 20)</span><br><span class="line">&gt;&gt;&gt; print(minutes_ago)</span><br><span class="line">2016-07-12T04:16:23.917000+00:00</span><br></pre></td></tr></table></figure>
+<h2 id="时区修改"><a href="#时区修改" class="headerlink" title="时区修改"></a>时区修改</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>now_local = now.to(<span class="string">'Asia/Shanghai'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> now_local</span><br><span class="line"><span class="number">2016</span><span class="number">-07</span><span class="number">-12</span>T11:<span class="number">56</span>:<span class="number">23.917000</span>+<span class="number">08</span>:<span class="number">00</span></span><br></pre></td></tr></table></figure>
+<h2 id="字符串转时间"><a href="#字符串转时间" class="headerlink" title="字符串转时间"></a>字符串转时间</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>arrow.get(<span class="string">' 2014-12-12T00:00:00.000+0800'</span>)</span><br><span class="line">&lt;Arrow [<span class="number">2014</span><span class="number">-12</span><span class="number">-12</span>T00:<span class="number">00</span>:<span class="number">00</span>+<span class="number">08</span>:<span class="number">00</span>]&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arrow.get(<span class="string">' 2014-12-12T00:00:00.000+0800'</span>).format()</span><br><span class="line"><span class="string">u'2014-12-12 00:00:00+08:00'</span></span><br></pre></td></tr></table></figure>
+<h2 id="时间戳"><a href="#时间戳" class="headerlink" title="时间戳"></a>时间戳</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>now_local.timestamp</span><br><span class="line"><span class="number">1468295783</span></span><br></pre></td></tr></table></figure>
+<h2 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>now_local.format(<span class="string">"YYYYMMDD"</span>)</span><br><span class="line"><span class="string">u'20160712'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>now_local.format(<span class="string">"YYYYMMDDHHmmss"</span>)</span><br><span class="line"><span class="string">u'20160712115623'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>now_local.format(<span class="string">"YYYY/MM/DD"</span>)</span><br><span class="line"><span class="string">u'2016/07/12'</span></span><br></pre></td></tr></table></figure>
+<h2 id="本地化个性时间短语"><a href="#本地化个性时间短语" class="headerlink" title="本地化个性时间短语"></a>本地化个性时间短语</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>now_local.humanize()</span><br><span class="line"><span class="string">u'13 minutes ago'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>now_local.humanize(locale=<span class="string">'zh'</span>)</span><br><span class="line"><span class="string">u'14\u5206\u949f\u524d'</span></span><br></pre></td></tr></table></figure>
+<h3 id="本地化支持列表"><a href="#本地化支持列表" class="headerlink" title="本地化支持列表"></a>本地化支持列表</h3><p><a href="https://github.com/crsmithdev/arrow/blob/master/arrow/locales.py" target="_blank" rel="noopener">传送门</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/07/13/python/arrow-apply/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-scrapy/scrapy-collection" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/10/scrapy/scrapy-collection/">scrapy系列</a>
+    </h1>
+  
+
+        
+        <a href="/2015/08/10/scrapy/scrapy-collection/" class="archive-article-date">
+  	<time datetime="2015-08-10T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><blockquote>
+<ul>
+<li><a href="#1st">本地网站爬取</a></li>
+<li><a href="#2nd">房产网站信息爬取</a></li>
+<li><a href="#3rd">论坛信息爬取</a></li>
+<li><a href="#4th">爬虫ban策略和反ban策略</a></li>
+<li><a href="#5th">代理IP的验证</a></li>
+<li><a href="#6th">分布式爬虫</a></li>
+<li><a href="#7th">学习资料</a></li>
+</ul>
+</blockquote>
+<h1 id="1st"><a href="#1st" class="headerlink" title="1st"></a>1st</h1><h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>研究 <code>Apache Solr</code> 和 <code>Elasticsearch</code> 时缺少内容，于是以爬虫的方式获取资源。未来有需要将会学习使用 <code>Apache Solr</code> 或 <code>Elasticsearch</code> 实现企业级搜索引擎</p>
+<h2 id="Scrapy"><a href="#Scrapy" class="headerlink" title="Scrapy"></a>Scrapy</h2><p>python-scrapy是个快速实现爬虫的高层次框架，感谢python带来的无限可能。关于Scrapy，有兴趣的可以点这里：<a href="http://scrapy.org/" target="_blank" rel="noopener">Scrapy</a></p>
+<h3 id="爬取目标"><a href="#爬取目标" class="headerlink" title="爬取目标"></a>爬取目标</h3><blockquote>
+<ul>
+<li>cnxw.com.cn     苍南新闻</li>
+<li>cncn.gov.cn     苍南政府</li>
+<li>cnjyw.net       苍南教育网</li>
+<li>cnlx.gov.cn     灵溪政务</li>
+<li>cnhrss.gov.cn   苍南人力资源</li>
+<li>0577cnw.com     苍南网</li>
+<li>cnlxw.cn        苍南灵溪网</li>
+<li>cnzgh.org       苍南总工会</li>
+<li>cnys.gov.cn     苍南宜山</li>
+<li>cnlg.cn         苍南龙港</li>
+<li>zjjx.gov.cn     金乡</li>
+<li>cngt.gov.cn     苍南国土资源</li>
+<li>cnkjj.gov.cn    苍南科技</li>
+<li>cnmz.gov.cn     苍南明政</li>
+<li>cnwmw.gov.cn    苍南文明网</li>
+<li>cangnan5.com    苍南在线</li>
+</ul>
+</blockquote>
+<h3 id="目标分析"><a href="#目标分析" class="headerlink" title="目标分析"></a>目标分析</h3><p>对于新闻类网站，例如 <code>cnxw.com.cn</code> ，使用以下代码即可获取整站新闻:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">regex_cncn = <span class="string">'.*cncn.gov.cn/art/.*html'</span></span><br></pre></td></tr></table></figure></p>
+<p>对于使用了动态页面的站点，例如 <code>cnjyw.net</code> ，使用以下代码即可:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">regex_cnjyw = <span class="string">'.*cnjyw.net/.*aspx?id=.*'</span></span><br></pre></td></tr></table></figure></p>
+<p>对于 <code>0577cnw.com、cangnan5.com和cnlg.cn</code> ，它们使用相同的Discuz系列，可以使用类似如下的代码:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">regex_0577cnw = <span class="string">'.*0577cnw.com/.*html'</span></span><br></pre></td></tr></table></figure></p>
+<p>由于这几个站点都使用BBS发布数据，所以在制定URL规则的时候需要过滤除第一页之外的其他页面，可以使用类似如下的代码:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">regex_0577cnw = <span class="string">'.*0577cnw.com/.*-1-1.html'</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><p>Scrapy默认使用了深度优先进行爬取，因此它会以<a href="#爬取目标"><code>目标</code></a>为顺序进行爬取。由于各个站点之间可能有重复的URL出现，需要使用指纹信息以避免重复采集。Redis是一个 <code>Key-Value</code> 数据库，并支持python。每次进行爬取页面之前会在Redis数据库查询该页面的URL是否存在，不存在则进行爬取。相关代码如下:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">r = getRedis()</span><br><span class="line">data = r.get(url)</span><br><span class="line"><span class="keyword">if</span>(data <span class="keyword">is</span> <span class="keyword">None</span>):</span><br><span class="line">    ...</span><br><span class="line">    r.set(key, response.url)</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>关于指纹信息，最终采用对URL做MD5计算生成。代码如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">m = hashlib.md5()</span><br><span class="line">m.update(url)</span><br><span class="line"><span class="keyword">return</span> m.hexdigest()</span><br></pre></td></tr></table></figure>
+<h3 id="Goose-Extractor"><a href="#Goose-Extractor" class="headerlink" title="Goose Extractor"></a>Goose Extractor</h3><p>到目前为止，爬虫部分的设计已经结束，只要执行，它就会爬遍<a href="#爬取目标"><code>目标</code></a>所有符合规则的页面，接下来还需要对页面进行解析。 <code>Goose
+Extractor</code> 是一个Python的开源文章提取库。可以用它提取文章的文本内容、图片、视频、元信息和标签，从GitHub可以获取源码和示例。正如GitHub所描述的，只要如下代码即可获取页面的标题和正文:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">url = <span class="string">"http://bbs.0577cnw.com/thread-43205-1-1.html"</span></span><br><span class="line">g = Goose(&#123;<span class="string">'stopwords_class'</span>: StopWordsChinese&#125;)</span><br><span class="line">article = g.extract(url=url)</span><br><span class="line">title = article.title</span><br><span class="line">content = article.cleaned_text</span><br></pre></td></tr></table></figure>
+<p>可以从这里获取 <code>Goose
+Extractor</code> 的相关信息：<a href="https://pypi.python.org/pypi/goose-extractor/" target="_blank" rel="noopener"><code>Goose</code></a></p>
+<h2 id="The-End"><a href="#The-End" class="headerlink" title="The End"></a>The End</h2><p>至此，基于scrapy框架的爬虫基本实现。单机运行了几天，爬取了几十万的页面并解析，没有防BAN处理</p>
+<h1 id="2nd"><a href="#2nd" class="headerlink" title="2nd"></a>2nd</h1><h2 id="房产网站信息爬取"><a href="#房产网站信息爬取" class="headerlink" title="房产网站信息爬取"></a>房产网站信息爬取</h2><p>几天前在微信朋友圈看到苍南房地产微站，想起之前写过一个关于房地产的爬虫。最开始以百度排行第一的www.cnfce.net作为目标，当作熟悉scrapy的作业</p>
+<h3 id="URL规则分析"><a href="#URL规则分析" class="headerlink" title="URL规则分析"></a>URL规则分析</h3><p>以<a href="http://www.cnfce.net/sale/为分析目标，简称为" target="_blank" rel="noopener">http://www.cnfce.net/sale/为分析目标，简称为</a> <code>目标</code></p>
+<p><code>目标</code> 以分页的方式展示出售房源，设置爬取页面为:</p>
+<pre><code>http://www.cnfce.net/sale/page\d*.html
+</code></pre><p>由于页面的有效范围为:[1,50]，可以通过设置start_urls指定爬取页面:</p>
+<pre><code>for i in range(1,51):
+    start_urls.append(&quot;http://www.cnfce.net/sale/page%s.html&quot; %i)
+</code></pre><p>到这里，爬虫已经可以爬遍 <code>目标</code> 的所有出售房源。由于房源的详细信息还未获取到，还需要对爬到的页面进行解析，获取类似如下的信息:</p>
+<blockquote>
+<ul>
+<li>区域 </li>
+<li>小区</li>
+<li>房型</li>
+<li>楼层 </li>
+<li>户型</li>
+<li>装修 </li>
+<li>面积 </li>
+<li>单价</li>
+<li>价格</li>
+<li>日期</li>
+</ul>
+</blockquote>
+<h3 id="chrome开发者工具和选择器"><a href="#chrome开发者工具和选择器" class="headerlink" title="chrome开发者工具和选择器"></a>chrome开发者工具和选择器</h3><p>scrapy通过选择器(seletors)提取数据，通过特定的 XPath 或者 CSS表达式来“选择”HTML文件中的某个部分。使用chrome开发者工具可以很方便的得到自己所需要的 <code>XPath</code> 。例如通过以下 <code>XPath</code> ，即可获取展示部分的div:<br>    //*[@id=”main”]<br>通过:</p>
+<pre><code>xpath(&apos;//*[@id=&quot;mainn&quot;]/ul[re:test(@class, &quot;ul[0-1]&quot;)]&apos;)
+</code></pre><p>获取展示部分中的所有记录的合集</p>
+<p>使用以下代码既可遍历当前页面的所有记录:</p>
+<pre><code>records = response.xpath(&apos;//*[@id=&quot;mainn&quot;]/ul[re:test(@class, &quot;ul[0-1]&quot;)]&apos;)
+for record in records:
+    ......
+</code></pre><p>通过下面代码，可以获取到各个字段的数值:</p>
+<pre><code>item[&apos;area&apos;] = record.xpath(&apos;li[re:test(@class, &quot;lifw[0-1]&quot;)]/a/text()&apos;).extract() 
+item[&apos;unitprice&apos;] = record.xpath(&apos;li[re:test(@class, &quot;lidj[0-1]&quot;)]/a/text()&apos;).extract() 
+item[&apos;price&apos;] = record.xpath(&apos;li[re:test(@class, &quot;lijg[0-1]&quot;)]/a/text()&apos;).extract() 
+item[&apos;date&apos;] = record.xpath(&apos;li[re:test(@class, &quot;lirq[0-1]&quot;)]/a/text()&apos;).extract()
+......
+</code></pre><h2 id="运行效果"><a href="#运行效果" class="headerlink" title="运行效果"></a>运行效果</h2><p>在硬件配置和网络条件尚可的情况下，1分钟内即可爬遍50个页面，获取2000+条记录，内容大志如下:</p>
+<pre><code>url,date,price,unitprice,area
+/sale/10024038.html,2015-02-24,102.00万,8500元,灵溪镇
+/sale/10023090.html,2015-02-22,116.00万,8854元,灵溪镇
+/sale/10022669.html,2015-02-22,70.00万,5468元,灵溪镇
+/sale/10019716.html,2015-02-14,243.00万,14294元,灵溪镇
+/sale/10023935.html,2015-02-14,188.50万,13876元,灵溪镇
+/sale/10023939.html,2015-02-14,105.00万,3750元,灵溪镇
+/sale/10024011.html,2015-02-14,215.00万,7166元,灵溪镇
+/sale/10022802.html,2015-02-14,158.00万,6076元,灵溪镇
+/sale/10022803.html,2015-02-14,90.00万,9782元,灵溪镇
+......
+</code></pre><h2 id="The-End-1"><a href="#The-End-1" class="headerlink" title="The End"></a>The End</h2><p>如果有需求，可以深入爬取，进入某条记录的详细页面，例如:</p>
+<pre><code>sale/10024038.html
+</code></pre><p>获取该房源的更详细的信息</p>
+<h1 id="3rd"><a href="#3rd" class="headerlink" title="3rd"></a>3rd</h1><h2 id="论坛信息爬取"><a href="#论坛信息爬取" class="headerlink" title="论坛信息爬取"></a>论坛信息爬取</h2><p><a href="http://www.0577cnw.com" target="_blank" rel="noopener">苍南网</a>，<a href="http://www.cangnan5.com" target="_blank" rel="noopener">苍南在线</a>，<a href="http://cnlg.cn" target="_blank" rel="noopener">龙港网</a>均使用了Discuz系统，因此只要设计出一种爬虫即可实现这三个站点论坛数据的爬取。在服务器未做设置的情况下，可以轻易实现整站的爬取</p>
+<h3 id="URL规则分析-1"><a href="#URL规则分析-1" class="headerlink" title="URL规则分析"></a>URL规则分析</h3><p>以 <code>http://www.cangnan5.com/forum-143-1.html</code> 为分析目标，简称为 <code>目标</code> 。</p>
+<p><code>目标</code> 为今日苍南板块，每个帖子分为主题、标题、作者等几个部分。本篇仅研究标题和帖子URL的获取，目标页面的url规则为:</p>
+<pre><code>http://www.cangnan5.com/forum-143-d*.html
+</code></pre><p>截至本篇，页面的有效范围为:[1,206]，因此可以通过设置start_urls指定爬取页面:</p>
+<pre><code>for i in range(1,206):
+    start_urls.append(&quot;http://www.cangnan5.com/forum-143-%s.html&quot; %i)
+</code></pre><p>到这里，爬虫可以爬遍今日苍南板块的所有页面了。接下来还需要对爬到的页面进行解析，获取类似如下的信息:</p>
+<blockquote>
+<ul>
+<li>标题 </li>
+<li>帖子   </li>
+<li>URL</li>
+</ul>
+</blockquote>
+<h3 id="chrome开发者工具和选择器-1"><a href="#chrome开发者工具和选择器-1" class="headerlink" title="chrome开发者工具和选择器"></a>chrome开发者工具和选择器</h3><p>scrapy通过选择器(seletors)提取数据，使用特定的 XPath 或者 CSS<br>表达式来“选择”<br>HTML文件中的某个部分。使用chrome开发者工具可以很方便的得到自己所需要的XPath。例如通过以下XPath，即可获取每个页面所有帖子的集合:</p>
+<pre><code>//tbody[re:test(@id, &quot;normalthread_\d+&quot;)]/tr/th/a[3]
+</code></pre><p>使用以下代码既可遍历当前页面的所有记录:</p>
+<pre><code>records = response.xpath(&apos;//tbody[re:test(@id, &quot;normalthread_\d+&quot;)]/tr/th/a[3]&apos;)
+for record in records:
+    ......
+</code></pre><p>通过下面代码，可以获取到标题和帖子URL字段:</p>
+<pre><code>item[&apos;title&apos;] = record.xpath(&apos;text()&apos;).extract()
+item[&apos;url&apos;] = record.xpath(&apos;@href&apos;).extract()
+</code></pre><h3 id="运行效果-1"><a href="#运行效果-1" class="headerlink" title="运行效果"></a>运行效果</h3><p>为了避免不必要的流量，只最一个页面进行爬取，获得类似如下数据:</p>
+<pre><code>url,title
+http://www.cangnan5.com/thread-38492-1-1.html,震惊！苍南渔民废弃的“老船木”卖出天价！
+http://www.cangnan5.com/thread-38490-1-1.html,&quot;苍南环卫工讨红包被拒,商家门前垃圾成堆!&quot;
+http://www.cangnan5.com/thread-38489-1-1.html,&quot;苍南有个奇葩姓,姓＂操＂&quot;
+http://www.cangnan5.com/thread-38487-1-1.html,&quot;苍南小偷潜伏15小时,刀逼女主人破密码&quot;
+http://www.cangnan5.com/thread-38486-1-1.html,瑞安酒驾女汉子被查后当众脱裤子？
+......
+</code></pre><h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>本地论坛的内容确实有点low</p>
+<p>⊙﹏⊙‖∣°</p>
+<h1 id="4th"><a href="#4th" class="headerlink" title="4th"></a>4th</h1><h2 id="爬虫ban策略和反ban策略"><a href="#爬虫ban策略和反ban策略" class="headerlink" title="爬虫ban策略和反ban策略"></a>爬虫ban策略和反ban策略</h2><p>关于为什么要有爬虫ban策略，可以参考此文：<a href="http://www.iteye.com/topic/718874" target="_blank" rel="noopener">关于网络爬虫</a></p>
+<p>之前分布爬取的时候因为设计的爬虫比较弱智，一天内爬取某站上百万次。反省了一下，出于道德考虑，我把爬虫运行的时间集中在深夜。</p>
+<p>关于为什么别人把你的爬虫ban了之后需要有反ban策略，当然是因为需要获取有价值的信息</p>
+<p>(#‵′)</p>
+<h2 id="关于robots协议"><a href="#关于robots协议" class="headerlink" title="关于robots协议"></a>关于robots协议</h2><p>robots协议，请参考百度百科：<a href="http://baike.baidu.com/link?url=M0asQts72ScQB9KoC_EzlGzZzTK-WDksviho7Tj7pk4Y7OyPWApWz0De65FIhKvi-px-lxxcr2fvMp4Jim24u_dUgEfNXhgslD8Zly8HULFy36qbz2nSSlGypzayU14r" target="_blank" rel="noopener">robots协议</a></p>
+<p>制定robots.txt可以阻止有道德的爬虫，例如google、百度…</p>
+<p>而对于无品的爬虫，根本不遵循robots.txt的内容，就好像直接把别人家门踢开一样。</p>
+<h2 id="爬虫的防范"><a href="#爬虫的防范" class="headerlink" title="爬虫的防范"></a>爬虫的防范</h2><p>本篇所涉及的爬虫防范主要针对无品爬虫，毕竟对于google、百度等爬虫，简单robots.txt就可以将他们拒之门外</p>
+<h3 id="IP封锁"><a href="#IP封锁" class="headerlink" title="IP封锁"></a>IP封锁</h3><p>简单的说是将你的IP甚至IP段拉入黑名单，以此达到防范目的</p>
+<h3 id="IP访问频率限制"><a href="#IP访问频率限制" class="headerlink" title="IP访问频率限制"></a>IP访问频率限制</h3><p>部分爬虫对网站的利益会大于其毙，通过爬虫身后的产品可以宣传自己，例如搜索引擎。此时，在保证允许爬虫爬取，可以通过IP访问频率限制来防止高并发下导致网站无法正常运行的情况。</p>
+<h3 id="User-Agent"><a href="#User-Agent" class="headerlink" title="User-Agent"></a>User-Agent</h3><p>用户代理<br>User-Agent，是指浏览器,它的信息包括硬件平台、系统软件、应用软件和用户个人偏好。服务器端可以通过分析User-Agent来获取爬虫行为。例如出现 <code>baiduspider</code> 的 <code>User-Agent</code> 代表百度爬虫曾经来访过。在对IP未做限制的情况下，可以通过分析 <code>User-Agent</code> 来判断哪些爬虫耍了流氓。</p>
+<h2 id="爬虫反ban策略"><a href="#爬虫反ban策略" class="headerlink" title="爬虫反ban策略"></a>爬虫反ban策略</h2><p>一般来说，对于一个网站，除非关闭服务，否则是没有完美的策略来防范爬虫的。Scrapy官方文档提到了集中防Ban的策略：<a href="http://doc.scrapy.org/en/0.24/topics/practices.html#bans" target="_blank" rel="noopener">Scrapy文档</a></p>
+<p>除去费用来说，使用高度分布式的下载器是最理想的反ban策略</p>
+<h3 id="IP池"><a href="#IP池" class="headerlink" title="IP池"></a>IP池</h3><p>一般的服务器，会将比较频繁访问的IP拉入黑名单，导致爬虫无法正常访问该站点。通过IP池可以一定程度上解决该问题。</p>
+<p>打个比方，IP池可以想象成一个拥有很多IP的池子。当你爬取某个站点时，随机从池子中获取一个IP作为代理，以达到防止被服务器认出的效果。</p>
+<h3 id="DOWNLOAD-DELAY设置"><a href="#DOWNLOAD-DELAY设置" class="headerlink" title="DOWNLOAD_DELAY设置"></a>DOWNLOAD_DELAY设置</h3><p>某些服务器会以每秒的访问量来识别爬虫，通过 <code>DOWNLOAD\_DELAY</code> ，可以设置爬虫延时</p>
+<h3 id="User-Agent池"><a href="#User-Agent池" class="headerlink" title="User-Agent池"></a>User-Agent池</h3><p>使用 <code>User-Agent</code> 池，轮流选择之一来作为 <code>User-Agent</code> 。池中包含常见的浏览器的 <code>User-Agent</code> ，以达到骗过浏览器伪装自己的目的</p>
+<h2 id="The-End-2"><a href="#The-End-2" class="headerlink" title="The End"></a>The End</h2><p>本篇纯属于搬砖文，ban和反ban的内容均来之网络</p>
+<p>对于ban，目前 <code>apache</code> 和 <code>nginx</code> 均可实现相关功能</p>
+<h1 id="5th"><a href="#5th" class="headerlink" title="5th"></a>5th</h1><h2 id="代理IP的验证"><a href="#代理IP的验证" class="headerlink" title="代理IP的验证"></a>代理IP的验证</h2><p>进行反ban策略时，我们通过某种途径获取了一批代理IP，简称 <code>IPs</code> 。此时，还需要对 <code>IPs</code> 进行筛选，获取其中可用的IP集合作为爬虫的IP池。</p>
+<h3 id="IPs的获取"><a href="#IPs的获取" class="headerlink" title="IPs的获取"></a>IPs的获取</h3><p>反ban的策略中，类似Crawlera的产品是很好的方案，但是通常需要付费授权，本篇主要讨论以免费的方式获取 <code>IPs</code> 。目前可以通过网络爬虫的方式对各个代理IP发布站进行抓取以获取 <code>IPs</code> ，或者通过商业软件的试用版获取 <code>IPs</code> </p>
+<h4 id="代理IP发布站"><a href="#代理IP发布站" class="headerlink" title="代理IP发布站"></a>代理IP发布站</h4><p>例如 <a href="http://www.xici.net.co/" target="_blank" rel="noopener">http://www.xici.net.co/</a><br>等站点，对于编写爬虫获取代理IP，可以参考 <a href="#1st">1st</a></p>
+<p><code>要修改部分</code></p>
+<h4 id="商业软件"><a href="#商业软件" class="headerlink" title="商业软件"></a>商业软件</h4><p>No Hands Proxies 是一个很好的选择</p>
+<h2 id="IPs的筛选"><a href="#IPs的筛选" class="headerlink" title="IPs的筛选"></a>IPs的筛选</h2><p>遍历 <code>IPs</code> ，并设置代理访问百度，通过返回信息判断该IP是否有效。通过下面的代码可以轻松遍历 <code>IPs</code>:</p>
+<pre><code>for line in file:
+    ip_queue.put(line.rstrip())
+</code></pre><p>通过下面的代码可以设置代理:</p>
+<pre><code>opener = urllib2.build_opener(urllib2.ProxyHandler({&apos;http&apos;:&apos;http://%s/&apos;%ip}))
+</code></pre><p>通过下面的代码访问百度:</p>
+<pre><code>request = urllib2.Request(&apos;http://www.baidu.com/&apos;)
+response = opener.open(request, timeout=30)
+</code></pre><p>可以使用response的url来判断代理是否有效:</p>
+<pre><code>response.geturl().find(&quot;baidu&quot;)
+</code></pre><p>最终效果如下:</p>
+<pre><code>183.207.228.123:80: is valid!
+111.13.12.216:80: is valid!
+116.236.216.116:8080: is valid!
+221.176.14.72:80: is valid!
+218.5.74.174:80: is valid!
+</code></pre><h1 id="6th"><a href="#6th" class="headerlink" title="6th"></a>6th</h1><h2 id="分布式爬虫"><a href="#分布式爬虫" class="headerlink" title="分布式爬虫"></a>分布式爬虫</h2><p>在单机运行爬虫的时候，已经充分利用硬件资源，无法提高爬虫的效率，此时可以考虑分布式爬虫。可以这么理解，在打扫一间很大很大的房间时，已经双手甚至双脚都用了，此时可以叫其他人帮忙打扫以增加打扫速度。换做分布式爬虫而言，就是N台主机协同合作一个爬虫项目</p>
+<h2 id="分布式爬虫的实现方式"><a href="#分布式爬虫的实现方式" class="headerlink" title="分布式爬虫的实现方式"></a>分布式爬虫的实现方式</h2><p>分布式爬虫首先要实现一个任务队列，该任务队列可以理解成对某个页面的访问。然后每个主机通过访问任务队列并执行相关任务，同时向任务队列添加新任务，即任务调度的过程。添加任务的时候会通过指纹信息来判断该任务是否已经被执行过。最后，当任务队列的长度为0时，结束爬虫。</p>
+<h3 id="Scrapy-redis"><a href="#Scrapy-redis" class="headerlink" title="Scrapy-redis"></a>Scrapy-redis</h3><p><code>scrapy-redis</code> 是一个实现Scrapy分布式的框架，可以从<a href="https://github.com/darkrho/scrapy-redis" target="_blank" rel="noopener">这里</a>获取关于 <code>scrapy-redis</code> 的介绍。根据文档，安装 <code>scrapy-redis</code> 后，只要在原有Scrapy爬虫的基础上添加如下代码即可实现分布式:</p>
+<pre><code>SCHEDULER = &quot;scrapy_redis.scheduler.Scheduler&quot;
+SCHEDULER_PERSIST = True
+</code></pre><p>同时我们需要通过如下代码指定Redis服务器的地址:</p>
+<pre><code>REDIS_HOST = &apos;192.168.1.132&apos;
+REDIS_PORT = 6379
+</code></pre><h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>本段取自<a href="https://github.com/darkrho/scrapy-redis" target="_blank" rel="noopener"><code>scrapy-redis</code></a>中的README</p>
+<ol>
+<li>安装scrapy-redis</li>
+<li>第一次运行爬虫并停止它:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> example-project</span><br><span class="line">$ scrapy crawl dmoz</span><br><span class="line">... [dmoz] ...</span><br><span class="line">^C</span><br></pre></td></tr></table></figure>
+<ol>
+<li>再次运行恢复停止的爬虫:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ scrapy crawl dmoz</span><br><span class="line">... [dmoz] DEBUG: Resuming crawl (9019 requests scheduled)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>启动一个或多个其他主机上的爬虫:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ scrapy crawl dmoz</span><br><span class="line">... [dmoz] DEBUG: Resuming crawl (8712 requests scheduled)</span><br></pre></td></tr></table></figure>
+<h1 id="7th"><a href="#7th" class="headerlink" title="7th"></a>7th</h1><h2 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h2><p>在 <a href="https://realpython.com" target="_blank" rel="noopener">https://realpython.com</a> 看到两篇关于Scrapy入门的文章写的很好</p>
+<blockquote>
+<ul>
+<li><a href="https://realpython.com/blog/python/web-scraping-with-scrapy-and-mongodb/" target="_blank" rel="noopener">Web Scraping With Scrapy and MongoDB</a></li>
+<li><a href="https://realpython.com/blog/python/web-scraping-and-crawling-with-scrapy-and-mongodb/" target="_blank" rel="noopener">Web Scraping and Crawling With Scrapy and MongoDB</a></li>
+</ul>
+</blockquote>
+<p>尝试翻译这两篇文章，鉴于语言水平的问题，字面意思和原文出入比较大，所以决定私藏</p>
+<p><code>readthedocs</code> 上提供了官方文档的中文版，感谢翻译者</p>
+<blockquote>
+<ul>
+<li><a href="http://scrapy-chs.readthedocs.org/zh_CN/latest/index.html" target="_blank" rel="noopener">http://scrapy-chs.readthedocs.org/zh_CN/latest/index.html</a></li>
+</ul>
+</blockquote>
+<p>提供几个较好的scrapy系列</p>
+<blockquote>
+<ul>
+<li><a href="http://www.52ml.net/4318.html" target="_blank" rel="noopener">我爱机器学习</a></li>
+<li><a href="http://blog.csdn.net/u012150179/article/details/32343635" target="_blank" rel="noopener">Scrapy研究探索系列</a></li>
+<li><a href="http://www.cnblogs.com/txw1958/archive/2012/07/12/scrapy_installation_introduce.html" target="_blank" rel="noopener">方倍工作室</a></li>
+</ul>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">scrapy</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/08/10/scrapy/scrapy-collection/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-sa/elk-start" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -215,11 +749,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Logstash</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ElasticSearch</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ElasticSearch</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Logstash</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -878,430 +1412,6 @@
 
 
   
-    <article id="post-uncategorized/RPi-PM2-5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/13/uncategorized/RPi-PM2-5/">树莓派读取PM2.5</a>
-    </h1>
-  
-
-        
-        <a href="/2015/07/13/uncategorized/RPi-PM2-5/" class="archive-article-date">
-  	<time datetime="2015-07-13T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>淘宝购买的 <code>GP2Y1010AU0FCO1</code> 模块，通过标定可以检测PM2.5，该模块提供了串口读取方式，操作十分简单。</p>
-<h2 id="工作状态查询"><a href="#工作状态查询" class="headerlink" title="工作状态查询"></a>工作状态查询</h2><p>发送 <code>05FEF603</code> 确认工作状态 </p>
-<p>返回 <code>06FEF103</code> 处于开机状态</p>
-<p>返回 <code>06FEF003</code> 处于关机状态</p>
-<h2 id="灰尘浓度查询"><a href="#灰尘浓度查询" class="headerlink" title="灰尘浓度查询"></a>灰尘浓度查询</h2><p>发送 <code>05FEF503</code></p>
-<p>返回 <code>06ABCD03</code> 浓度为 <code>0XABCD</code> 微克/立方米</p>
-<h2 id="串口助手调试"><a href="#串口助手调试" class="headerlink" title="串口助手调试"></a>串口助手调试</h2><p>使用 <code>xgcom</code> 发送命令调试 <code>GP2Y1010AU0FCO1</code> 模块。</p>
-<p>安装依赖库：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install automake</span><br><span class="line"></span><br><span class="line">sudo apt-get install libglib2.0-dev</span><br><span class="line"></span><br><span class="line">sudo apt-get install libvte-dev</span><br><span class="line"></span><br><span class="line">sudo apt-get install libgtk2.0-dev</span><br></pre></td></tr></table></figure>
-<p>获取 <code>xgcom</code> 源码：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/helight/xgcom.git</span><br></pre></td></tr></table></figure>
-<p>编译并运行 <code>xgcom</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./autogen.sh</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br><span class="line">xgcom</span><br></pre></td></tr></table></figure>
-<p>配置 <code>xgcom</code> 的参数如下:</p>
-<blockquote>
-<p>串口描述</p>
-<p>波特率</p>
-</blockquote>
-<p>使用 <code>xgcom</code> 发送工作状态查询命令时无内容返回，但是发送 <code>灰尘浓度查询命令</code> 成功返回内容如下:</p>
-<blockquote>
-<p>串口描述</p>
-<p>波特率</p>
-</blockquote>
-<p>既然能正常查到灰尘浓度就可以进行下一步工作， <code>工作状态查询命令</code> 无返回的问题等到有空再做研究。</p>
-<h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><p>使用 <code>pyserial</code> 库操作树莓派串口并获取 <code>GP2Y1010AU0FCO1</code> 模块的数据，实现代码如下:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">serialOP</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, com, baud, recLen)</span>:</span></span><br><span class="line">        self.__serial = serial.Serial(com, baud)</span><br><span class="line">        self.__recData = <span class="string">""</span></span><br><span class="line">        self.__recLen = recLen</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__readSerialThread</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">            <span class="keyword">if</span> self.__serial.inWaiting() &gt; <span class="number">0</span>:</span><br><span class="line">                self.__recData += self.__serial.read(<span class="number">1</span>)</span><br><span class="line">                <span class="keyword">if</span> self.__recData != <span class="string">''</span> <span class="keyword">and</span> len(self.__recData) == self.__recLen:</span><br><span class="line">                    data = bytearray(self.__recData)</span><br><span class="line">		    <span class="keyword">if</span>( int(data[<span class="number">0</span>]) == <span class="number">6</span> ):</span><br><span class="line">		    <span class="keyword">print</span> <span class="string">"%d %d %d %d"</span> %(int(data[<span class="number">0</span>]),int(data[<span class="number">1</span>]),int(data[<span class="number">2</span>]),int(data[<span class="number">3</span>]))</span><br><span class="line">		    self.__recData = <span class="string">''</span>   			</span><br><span class="line">                    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">startSerial</span><span class="params">(self)</span>:</span></span><br><span class="line">        t = threading.Thread(target=self.__readSerialThread)</span><br><span class="line">        t.setDaemon(<span class="number">1</span>)</span><br><span class="line">        t.start()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sendData</span><span class="params">(self)</span>:</span></span><br><span class="line">        order = [<span class="number">0x05</span>,<span class="number">0xfe</span>,<span class="number">0xf5</span>,<span class="number">0x03</span>]</span><br><span class="line">        <span class="keyword">print</span> self.__serial.write(order)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">startSend</span><span class="params">(self)</span>:</span></span><br><span class="line">    	t = threading.Thread(target=self.__sendData)</span><br><span class="line">        t.setDaemon(<span class="number">1</span>)</span><br><span class="line">        t.start()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    s = serialOP(<span class="string">"/dev/ttyAMA0"</span>, <span class="number">9600</span>, <span class="number">4</span>)</span><br><span class="line">    s.startSerial()</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        time.sleep(<span class="number">30</span>)</span><br><span class="line">        s.sendData()</span><br></pre></td></tr></table></figure>
-<p>将数据保存至 <code>yeelink</code> ：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    url = <span class="string">'http://api.yeelink.net/v1.0/device/60679/sensor/115266/datapoints'</span>  </span><br><span class="line">    headers = &#123;<span class="string">'U-ApiKey'</span>: yourKey, <span class="string">'content-type'</span>: <span class="string">'application/json'</span>&#125;           </span><br><span class="line">    val = int(data[<span class="number">1</span>])*<span class="number">256</span> + int(data[<span class="number">2</span>])</span><br><span class="line">    data = &#123;<span class="string">'value'</span>: val&#125;</span><br><span class="line">    r = requests.post(url, headers=headers, data=json.dumps(data))  </span><br><span class="line">    <span class="keyword">print</span> r.status_code</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'something wrong in post'</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最近都是雨天，测试环境为室内，从 <code>yeelink</code> 显示的数据来看，室内的PM2.5在 <code>7~21</code> 之间。 <code>GP2Y1010AU0FCO1</code> 模块标定后存在 <code>15%</code> 的误差，因此有效范围应该是 <code>5.95~24.15</code> ，目前室内PM2.5标准为不超过 <code>35</code>。</p>
-<p>yeelink——&gt; <a href="http://www.yeelink.net/devices/60679" target="_blank" rel="noopener">设备地址</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">树莓派</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">传感器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/07/13/uncategorized/RPi-PM2-5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-uncategorized/RPi-yeelink" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/10/uncategorized/RPi-yeelink/">向yeelink上传树莓派数据</a>
-    </h1>
-  
-
-        
-        <a href="/2015/07/10/uncategorized/RPi-yeelink/" class="archive-article-date">
-  	<time datetime="2015-07-10T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>查找IoT资料的时候发现了yeelink，通过知乎了解到这是个有趣的产品，顺便写两个小程序测试yeelink的功能。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
-<ul>
-<li><a href="http://www.yeelink.net/developer/api" target="_blank" rel="noopener">yeelink API文档</a></li>
-</ul>
-</blockquote>
-<h1 id="树莓派CPU温度代码"><a href="#树莓派CPU温度代码" class="headerlink" title="树莓派CPU温度代码"></a>树莓派CPU温度代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-  </span></span><br><span class="line"><span class="keyword">import</span> requests  </span><br><span class="line"><span class="keyword">import</span> json  </span><br><span class="line"><span class="keyword">import</span> time  </span><br><span class="line">file = open(<span class="string">"/sys/class/thermal/thermal_zone0/temp"</span>)  </span><br><span class="line">temp = float(file.read()) / <span class="number">1000.0</span>  </span><br><span class="line">file.close()</span><br><span class="line">url = <span class="string">'http://api.yeelink.net/v1.0/device/60679/sensor/78055/datapoints'</span></span><br><span class="line">headers = &#123;<span class="string">'U-ApiKey'</span>: <span class="string">'6c00d62391a626df5232a00b7287292f'</span>, <span class="string">'content-type'</span>: <span class="string">'application/json'</span>&#125;</span><br><span class="line">data = &#123;<span class="string">'value'</span>: temp&#125;</span><br><span class="line">requests.post(url, headers=headers, data=json.dumps(data))</span><br></pre></td></tr></table></figure>
-<h1 id="树莓派CPU使用率代码"><a href="#树莓派CPU使用率代码" class="headerlink" title="树莓派CPU使用率代码"></a>树莓派CPU使用率代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-  </span></span><br><span class="line"><span class="keyword">import</span> requests  </span><br><span class="line"><span class="keyword">import</span> json  </span><br><span class="line"><span class="keyword">import</span> time  </span><br><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line">percent = psutil.cpu_percent(interval=<span class="number">30</span>)  </span><br><span class="line">url = <span class="string">'http://api.yeelink.net/v1.0/device/60679/sensor/78206/datapoints'</span>  </span><br><span class="line">headers = &#123;<span class="string">'U-ApiKey'</span>: <span class="string">'6c00d62391a626df5232a00b7287292f'</span>, <span class="string">'content-type'</span>: <span class="string">'application/json'</span>&#125;</span><br><span class="line">data = &#123;<span class="string">'value'</span>: percent&#125;</span><br><span class="line">requests.post(url, headers=headers, data=json.dumps(data))</span><br></pre></td></tr></table></figure>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>通过yeelink还可以实现很多功能，例如让树莓派访问yeelink上的开关量并执行相关动作。</p>
-<p>yeelink——&gt;<a href="http://www.yeelink.net/devices/60679" target="_blank" rel="noopener">设备地址</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">树莓派</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">传感器</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">yeelink</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/07/10/uncategorized/RPi-yeelink/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-uncategorized/RPi-start" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/07/uncategorized/RPi-start/">树莓派入门</a>
-    </h1>
-  
-
-        
-        <a href="/2015/07/07/uncategorized/RPi-start/" class="archive-article-date">
-  	<time datetime="2015-07-07T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>入手树莓派已有一段时间，做了一个基于采集串口设备的web应用后因为工作太忙没时间折腾，趁着这两天闲暇把手头几个模块测试了一遍。</p>
-<blockquote>
-<ul>
-<li>DHT11温湿度模块</li>
-<li>HC-SR04超声波模块</li>
-<li>光敏电阻模块</li>
-<li>PCF8591模块</li>
-</ul>
-</blockquote>
-<p><img src="http://shumeipai.nxez.com/wp-content/uploads/2015/03/rpi-pins-40-0.png" alt="针脚对照"></p>
-<p>图片来至 <a href="http://shumeipai.nxez.com/raspberry-pi-pins-version-40" target="_blank" rel="noopener">树莓派实验室</a></p>
-<h1 id="DHT11温湿度模块接线及代码"><a href="#DHT11温湿度模块接线及代码" class="headerlink" title="DHT11温湿度模块接线及代码"></a>DHT11温湿度模块接线及代码</h1><p><code>vcc</code> 接 <code>BOARD 2</code></p>
-<p><code>gnd</code> 接 <code>BOARD 6</code></p>
-<p><code>data</code> 接 <code>BOARD 12</code></p>
-<p>在GitHub上找到 <a href="https://github.com/LeStarch/pi-dht11" target="_blank" rel="noopener">pi-dht11</a> ,作者对读取DHT11做了封装，设置 <code>BOARD</code> 编码即可实现读取DHT11的湿度。</p>
-<p>获取代码:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/LeStarch/pi-dht11.git</span><br></pre></td></tr></table></figure>
-<p>修改test-sensor.py代码:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> sensor.dht11 <span class="keyword">import</span> HTSensor,ReadError</span><br><span class="line">yolo = HTSensor(<span class="number">12</span>)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    humidity, temperature = yolo.read()</span><br><span class="line">    print(<span class="string">"Humidity:"</span>,humidity,<span class="string">"Temperature:"</span>,temperature)</span><br><span class="line"><span class="keyword">except</span> ReadError <span class="keyword">as</span> err:</span><br><span class="line">    print(<span class="string">"Read failed:"</span>)</span><br><span class="line">    print(err)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    yolo.cleanup()</span><br></pre></td></tr></table></figure>
-<p>执行:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./<span class="built_in">test</span>-sensor.py</span><br></pre></td></tr></table></figure>
-<p>报错：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NameError: name <span class="string">'sys'</span> is not defined</span><br></pre></td></tr></table></figure></p>
-<p>查看源码，貌似作者忘了导入sys库，在dht11.py首行加入</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br></pre></td></tr></table></figure>
-<p>因为对 <code>python2</code> 比较熟悉，fork了一份改成 <code>python2</code> 版本，<a href="www.google.com">传送门</a></p>
-<h1 id="HC-SR04超声波模块接线及代码"><a href="#HC-SR04超声波模块接线及代码" class="headerlink" title="HC-SR04超声波模块接线及代码"></a>HC-SR04超声波模块接线及代码</h1><p><code>vcc</code> 接 <code>BOARD 2</code></p>
-<p><code>gnd</code> 接 <code>BOARD 6</code></p>
-<p><code>data</code> 接 <code>BOARD 12</code></p>
-<h1 id="光敏电阻模块接线及代码"><a href="#光敏电阻模块接线及代码" class="headerlink" title="光敏电阻模块接线及代码"></a>光敏电阻模块接线及代码</h1><p><code>vcc</code> 接 <code>BOARD 2</code></p>
-<p><code>gnd</code> 接 <code>BOARD 6</code></p>
-<p><code>data</code> 接 <code>BOARD 16</code></p>
-<p>测试代码如下:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> RPi.GPIO <span class="keyword">as</span> gpio</span><br><span class="line">gpio.setmode(gpio.BCM)<span class="comment">#注意，这里设置为BCM模式</span></span><br><span class="line">gpio.setup(<span class="number">23</span>,gpio.IN)</span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">print</span> gpio.input(<span class="number">23</span>)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-<p>光敏电阻模块同时提供了 <code>DO</code> 和 <code>AO</code> 两种输出方式，在 <a href="#PCF8591模块接线及代码"><code>这里</code></a> 提供了以 <code>AO</code> 方式的操作方法。</p>
-<h1 id="PCF8591模块接线及代码"><a href="#PCF8591模块接线及代码" class="headerlink" title="PCF8591模块接线及代码"></a>PCF8591模块接线及代码</h1><p>PCF8591实现了AD/DA转换，但是需要树莓派开启I2C功能，关于I2C功能的开启，参考 <a href="http://www.raspberrypi-spy.co.uk/2014/11/enabling-the-i2c-interface-on-the-raspberry-pi/" target="_blank" rel="noopener"><code>Enabling The I2C Interface On The Raspberry Pi</code></a>。由于手头没有更多模块，将就拿光敏电阻模块的 <code>AO</code> 作为信号源。</p>
-<p><code>vcc</code> 接 <code>BOARD 2</code></p>
-<p><code>gnd</code> 接 <code>BOARD 6</code></p>
-<p><code>SCL</code> 接 <code>BOARD 5</code></p>
-<p><code>SDA</code> 接 <code>BOARD 3</code></p>
-<p><code>AINO</code> 接 光敏电阻模块的 <code>AO</code></p>
-<p>参考 <a href="http://blog.csdn.net/xukai871105/article/details/15029843" target="_blank" rel="noopener"><code>树莓派学习笔记——I2C Tools 学习笔记</code></a>   测试I2C:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">i2cdetect -l</span><br><span class="line">...</span><br><span class="line">i2cdetect -y 1 </span><br><span class="line">...</span><br><span class="line">i2cdump -y 1 0x48</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>由于对I2C一窍不通，又涉及到电子部分，只好硬着头皮google。找到GitHub上的一个项目:<a href="https://github.com/jchuang1977/pcf8591" target="_blank" rel="noopener">pcf8591</a>，该项目使用python的smbus库获取 <code>PCF8591</code> 4路 <code>AO</code> 的值并通过 <code>Tkinter</code> 框架实现数值显示。根据该项目，编写测试代码如下:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> smbus</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line">bus = smbus.SMBus(<span class="number">1</span>)</span><br><span class="line">address = <span class="number">0x48</span></span><br><span class="line">bus.write_byte(address,<span class="number">0x40</span>)</span><br><span class="line">bus.read_byte(address)</span><br><span class="line"><span class="keyword">print</span> bus.read_byte(address)</span><br></pre></td></tr></table></figure>
-<p>对于树莓派并不需要界面部分，因此fork一份并做了修改，<a href="www.google.com">传送门</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">树莓派</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">传感器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/07/07/uncategorized/RPi-start/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-scrapy/Local-network- media-Wordcount2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/02/scrapy/Local-network- media-Wordcount2/">本地网络媒体词频统计(二)</a>
-    </h1>
-  
-
-        
-        <a href="/2015/07/02/scrapy/Local-network- media-Wordcount2/" class="archive-article-date">
-  	<time datetime="2015-07-02T12:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>对本地网络媒体的信息量感兴趣，于是针对以下三个网站的主页内容进行采集分析：</p>
-<blockquote>
-<p> 苍南在线：<a href="http://www.cangnan5.com" target="_blank" rel="noopener">http://www.cangnan5.com</a></p>
-<p> 苍南网：<a href="http://www.0577cnw.com" target="_blank" rel="noopener">http://www.0577cnw.com</a></p>
-<p> 龙港网：<a href="http://www.cnlg.cn" target="_blank" rel="noopener">http://www.cnlg.cn</a></p>
-</blockquote>
-<h2 id="标题贡献量"><a href="#标题贡献量" class="headerlink" title="标题贡献量"></a>标题贡献量</h2><blockquote>
-<ul>
-<li>苍南在线：378</li>
-<li>苍南网：350</li>
-<li>龙港网：466</li>
-</ul>
-</blockquote>
-<h2 id="词频统计"><a href="#词频统计" class="headerlink" title="词频统计"></a>词频统计</h2><p>使用了 <code>BeautifulSoup</code> 提取页面所有标题，代码如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sites = [<span class="string">"http://www.0577cnw.com/"</span>,<span class="string">"http://www.cangnan5.com/"</span>,<span class="string">"http://www.cnlg.cn/"</span>]</span><br><span class="line">titles = []</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getPate</span><span class="params">(url)</span>:</span></span><br><span class="line">  <span class="keyword">global</span> titles</span><br><span class="line">  count = <span class="number">0</span></span><br><span class="line">  page = urllib2.urlopen(url) </span><br><span class="line">  soup = BeautifulSoup(page)</span><br><span class="line">  <span class="keyword">for</span> link <span class="keyword">in</span> soup.find_all(<span class="string">'a'</span>):</span><br><span class="line">    titles.append(link.text)</span><br><span class="line">    count = count + <span class="number">1</span></span><br><span class="line">  <span class="keyword">return</span> count</span><br><span class="line">  </span><br><span class="line"><span class="keyword">for</span> url <span class="keyword">in</span> sites:</span><br><span class="line">    <span class="keyword">print</span> getPate(url)</span><br></pre></td></tr></table></figure>
-<p>使用 <code>jieba</code> 分词并统计词频，结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">苍南 112 11.558308%</span><br><span class="line">龙港 44 4.540764%</span><br><span class="line">在线 25 2.579979%</span><br><span class="line">社区 23 2.373581%</span><br><span class="line">汽车 22 2.270382%</span><br><span class="line">生活 21 2.167183%</span><br><span class="line">活动 19 1.960784%</span><br><span class="line">美食 18 1.857585%</span><br><span class="line">房产 14 1.444788%</span><br><span class="line">论坛 14 1.444788%</span><br><span class="line">积分 13 1.341589%</span><br><span class="line">温州 13 1.341589%</span><br><span class="line">文明 12 1.238390%</span><br><span class="line">宝贝 12 1.238390%</span><br><span class="line">楼市 11 1.135191%</span><br><span class="line">东路 10 1.031992%</span><br><span class="line">摄影 9 0.928793%</span><br><span class="line">装修 9 0.928793%</span><br><span class="line">2015 9 0.928793%</span><br><span class="line">亲子 9 0.928793%</span><br><span class="line">溪河 9 0.928793%</span><br><span class="line">卤鹅里 8 0.825593%</span><br><span class="line">男子 8 0.825593%</span><br><span class="line">长满 8 0.825593%</span><br><span class="line">张国荣 8 0.825593%</span><br><span class="line">公布 8 0.825593%</span><br><span class="line">CCC 8 0.825593%</span><br><span class="line">店里 8 0.825593%</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>昨天正好在朋友圈里看到关于 <code>卤鹅里长满白色的虫子</code> 的帖子，以指数作为衡量单位的话，<code>卤鹅里</code> 的指数在这两天会上升。实际进入各站点首页搜索该关键词，只有 <code>苍南在线</code> 的主页多次出现该连接。</p>
-<h2 id="进一步完善"><a href="#进一步完善" class="headerlink" title="进一步完善"></a>进一步完善</h2><blockquote>
-<ul>
-<li>首页可能出现相同的标题</li>
-<li>三个站点的定位并不相同</li>
-</ul>
-</blockquote>
-<p>根据以上三点，完善代码，获得数据如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">苍南网词频统计：</span><br><span class="line"></span><br><span class="line"> 苍南 39 14.828897%</span><br><span class="line"> 生活 15 5.703422%</span><br><span class="line"> 汽车 15 5.703422%</span><br><span class="line"> 活动 9 3.422053%</span><br><span class="line"> 楼市 9 3.422053%</span><br><span class="line"> 在线 8 3.041825%</span><br><span class="line"> 房产 7 2.661597%</span><br><span class="line"> 论坛 6 2.281369%</span><br><span class="line"> 随手 6 2.281369%</span><br><span class="line"> 宝贝 6 2.281369%</span><br><span class="line"> 家居装饰 5 1.901141%</span><br><span class="line"> 摄影 5 1.901141%</span><br><span class="line"> 妈咪 5 1.901141%</span><br><span class="line"> 男子 4 1.520913%</span><br><span class="line"> 美食 4 1.520913%</span><br><span class="line"> 交友 3 1.140684%</span><br><span class="line"> 平阳 3 1.140684%</span><br><span class="line"> 邀请 3 1.140684%</span><br><span class="line"> 亲子 3 1.140684%</span><br><span class="line"> 文明 3 1.140684%</span><br><span class="line"> 温州 3 1.140684%</span><br><span class="line"> 信息港 3 1.140684%</span><br><span class="line"> 派对 3 1.140684%</span><br><span class="line"> ...</span><br><span class="line"> </span><br><span class="line">苍南在线：</span><br><span class="line"></span><br><span class="line"> 苍南 23 9.829060%</span><br><span class="line"> 美食 8 3.418803%</span><br><span class="line"> 在线 6 2.564103%</span><br><span class="line"> 活动 6 2.564103%</span><br><span class="line"> RE 5 2.136752%</span><br><span class="line"> 2015 5 2.136752%</span><br><span class="line"> 论坛 5 2.136752%</span><br><span class="line"> 家装 4 1.709402%</span><br><span class="line"> 我要 4 1.709402%</span><br><span class="line"> 僵尸 4 1.709402%</span><br><span class="line"> 亲子 4 1.709402%</span><br><span class="line"> 招聘 4 1.709402%</span><br><span class="line"> 03 4 1.709402%</span><br><span class="line"> 有限公司 4 1.709402%</span><br><span class="line"> 装修 4 1.709402%</span><br><span class="line"> 发生 3 1.282051%</span><br><span class="line"> 网络科技 3 1.282051%</span><br><span class="line"> 积分 3 1.282051%</span><br><span class="line"> 26 3 1.282051%</span><br><span class="line"> 火灾事故 3 1.282051%</span><br><span class="line"> ...</span><br><span class="line"> </span><br><span class="line">龙港网：</span><br><span class="line"></span><br><span class="line"> 龙港 36 17.647059%</span><br><span class="line"> 社区 20 9.803922%</span><br><span class="line"> 苍南 9 4.411765%</span><br><span class="line"> 文明 6 2.941176%</span><br><span class="line"> 龙港镇 6 2.941176%</span><br><span class="line"> 温州 4 1.960784%</span><br><span class="line"> 生活 4 1.960784%</span><br><span class="line"> 导航 4 1.960784%</span><br><span class="line"> 活动 4 1.960784%</span><br><span class="line"> 少儿 4 1.960784%</span><br><span class="line"> 百日 3 1.470588%</span><br><span class="line"> 中国 3 1.470588%</span><br><span class="line"> 推出 3 1.470588%</span><br><span class="line"> 访谈 3 1.470588%</span><br><span class="line"> 男子 3 1.470588%</span><br><span class="line"> 城市 3 1.470588%</span><br><span class="line"> 攻坚 3 1.470588%</span><br><span class="line"> 专题 3 1.470588%</span><br><span class="line"> 万元 3 1.470588%</span><br><span class="line"> 上市 3 1.470588%</span><br><span class="line"> 孩子 3 1.470588%</span><br><span class="line"> 浙江 3 1.470588%</span><br><span class="line"> 银泰 3 1.470588%</span><br><span class="line"> 优惠 3 1.470588%</span><br><span class="line"> ...</span><br></pre></td></tr></table></figure>
-<p>根据实际内容分析，三个站点的主页内容并无太多交集，以 <code>僵尸</code> 该词为例，最近热议 <code>僵尸肉</code> ,如果每个网站都转载相关文章，从词频分析中应该很容易发现。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">scrapy</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/07/02/scrapy/Local-network- media-Wordcount2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
@@ -1391,6 +1501,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
@@ -1411,15 +1525,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">安全技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">咖啡</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+                <a href="javascript:void(0)" class="js-tag color5">安全技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1435,18 +1545,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Kibana4</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">scrapy</a>
               </li>
              
@@ -1455,15 +1553,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Logstash</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Kibana4</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nagios</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1484,6 +1590,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">VPS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
             
             <div class="clearfix"></div>
